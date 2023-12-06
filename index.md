@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a second-year Master student of Computer Science and Engineering at the [University of Michigan](https://umich.edu/). I am a member of [SLED lab](https://sled.eecs.umich.edu/). I do research on Embodied AI, 3D Computer Vision, and Robotics. I am interested in building and applying foundation models as well as generative models. My ultimate aspiration is to create digital twins that mirror physics, the environment, intelligence, and their integration into robotics, autonomous vehicles, and beyond.
+I am a second-year Master student of Computer Science and Engineering at the [University of Michigan](https://umich.edu/). I am a member of [SLED lab](https://sled.eecs.umich.edu/). I do research on Embodied AI, 3D Computer Vision, and Robotics. I am interested in building and applying foundation models as well as generative models. My research goal is to **facilitate language agents that can perceive in 3D, interact with humans, and ultimately follow complicated instructions in the physical environment**. Toward this goal, my current research focused on language grounding and robot motion planning in the 3D world.
 
 Before joining UMich, I obtained my bachelor's degree in [Applied and Computational Mathematics Science](https://acms.washington.edu/) at the [University of Washington](https://www.washington.edu/) where I worked with [Prof. Yunhe feng](https://yunhefeng.me/) on Responsible AI.
 
