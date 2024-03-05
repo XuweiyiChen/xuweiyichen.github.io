@@ -18,6 +18,7 @@ I'm currently on the lookout for a Ph.D. position starting Fall 2024. If you're 
 
 ## News
 
+- **[Mar. 2024]** Our paper about improving spatiotemporary consistency in video diffusion model: **UniCtrl** is out.
 - **[Jan. 2024]** Our paper about Zero-Shot 3D Language Grounding has been accepted by ICRA 2024.
 - **[Sept. 2023]** Our paper about Zero-Shot 3D Language Grounding is submitted to ICRA 2024.
 - **[Aug. 2022]** Joined the SLED lab at the University of Michigan
