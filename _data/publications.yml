@@ -1,6 +1,6 @@
 main:
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
-    authors: *Xuweiyi Chen/**, Tian Xia*, Sihan Xu 
+    authors: *Xuweiyi Chen/**, Tian Xia*, Sihan XU 
     pdf: https://arxiv.org/pdf/2403.02332.pdf
     code: https://github.com/XuweiyiChen/UniCtrl
     page: https://unified-attention-control.github.io/
