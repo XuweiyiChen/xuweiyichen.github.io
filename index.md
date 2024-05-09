@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a incoming Ph.D. at the University of Virginia advised by [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision and NLP. My research goal is to **facilitate language agents that can perceive in 3D, interact with humans, and ultimately follow complicated instructions in the physical environment**. Toward this goal, my current research focused on language grounding and robot motion planning in the 3D world.
+I am an incoming Ph.D. at the University of Virginia advised by [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision and NLP. My research goal is to **facilitate language agents that can perceive in 3D, interact with humans, and ultimately follow complicated instructions in the physical environment**. Toward this goal, my current research focused on language grounding and robot motion planning in the 3D world.
 
 Before joining UVA, I have completed master of Computer Science and Engineering at the [University of Michigan](https://umich.edu/). I was a member of [SLED lab](https://sled.eecs.umich.edu/). I obtained my bachelor's degree in [Applied and Computational Mathematics Science](https://acms.washington.edu/) at the [University of Washington](https://www.washington.edu/) where I worked with [Prof. Yunhe feng](https://yunhefeng.me/) on Responsible AI.
 
