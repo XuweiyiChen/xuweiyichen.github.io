@@ -9,7 +9,7 @@ main:
     conference_short: In Processing
     
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
-    authors: "Jianing Yang*, **Xuweiyi Chen\***, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
+    authors: Jianing Yang\*, **Xuweiyi Chen\***, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai
     conference_short: ICRA
     conference: IEEE Robotics and Automation Society, 2024.
     pdf: https://arxiv.org/pdf/2309.12311.pdf
