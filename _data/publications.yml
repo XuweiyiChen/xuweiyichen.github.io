@@ -1,4 +1,12 @@
 main:
+  - title: "3D-GRAND: Towards Better Grounding and Less Hallucination for 3D-LLMs"
+    authors: "Jianing Yang*, Xuweiyi Chen*, Nikhil Madaan, Madhavan Iyengar, Shengyi Qian, David F. Fouhey, Joyce Chai"
+    pdf: https://arxiv.org/abs/2406.05132
+    page: https://3d-grand.github.io/
+    livedemo: https://3553d6bb6bca62cbc6.gradio.live/
+    image: ./assets/img/teaser_pic_3d_grand.jpg
+    conference_short: In proceedings
+    
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu"
     pdf: https://arxiv.org/pdf/2403.02332.pdf
@@ -6,7 +14,7 @@ main:
     page: https://unified-attention-control.github.io/
     livedemo: https://huggingface.co/spaces/Xuweiyi/UniCtrl
     image: ./assets/img/teaser_pic.jpg
-    conference_short: In Processing
+    conference_short: In proceedings
     
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
     authors: "Jianing Yang*, Xuweiyi Chen*, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
