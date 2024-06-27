@@ -1,4 +1,11 @@
 main:
+  - title: "Multi-Object Hallucination in Vision-Language Models"
+    authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, David Fouhey, Joyce Y. Chai"
+    page: https://multi-object-hallucination.github.io/
+    dataset: https://huggingface.co/datasets/sled-umich/ROPE
+    image: ./assets/img/benchmark.jpg
+    conference_short: In proceedings
+
   - title: "3D-GRAND: Towards Better Grounding and Less Hallucination for 3D-LLMs"
     authors: "Jianing Yang*, Xuweiyi Chen*, Nikhil Madaan, Madhavan Iyengar, Shengyi Qian, David F. Fouhey, Joyce Chai"
     pdf: https://arxiv.org/abs/2406.05132
