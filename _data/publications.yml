@@ -1,6 +1,6 @@
 main:
   - title: "Multi-Object Hallucination in Vision-Language Models"
-    authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, David Fouhey, Joyce Y. Chai"
+    authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, Jianing Yang, David Fouhey, Joyce Y. Chai"
     page: https://multi-object-hallucination.github.io/
     dataset: https://huggingface.co/datasets/sled-umich/ROPE
     code: https://github.com/sled-group/moh
