@@ -14,7 +14,7 @@ main:
     page: https://3d-grand.github.io/
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
-    conference_short: Under review
+    conference_short: Under Review
     
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu"
@@ -23,7 +23,7 @@ main:
     page: https://unified-attention-control.github.io/
     livedemo: https://huggingface.co/spaces/Xuweiyi/UniCtrl
     image: ./assets/img/teaser_pic.jpg
-    conference_short: Under review
+    conference_short: Under Review
     
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
     authors: "Jianing Yang*, Xuweiyi Chen*, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
