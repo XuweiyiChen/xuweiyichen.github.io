@@ -1,6 +1,7 @@
 main:
   - title: "Multi-Object Hallucination in Vision-Language Models"
     authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, Jianing Yang, David Fouhey, Joyce Y. Chai"
+    pdf: https://arxiv.org/abs/2407.06192
     page: https://multi-object-hallucination.github.io/
     dataset: https://huggingface.co/datasets/sled-umich/ROPE
     code: https://github.com/sled-group/moh
@@ -13,7 +14,7 @@ main:
     page: https://3d-grand.github.io/
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
-    conference_short: In proceedings
+    conference_short: Under review
     
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu"
@@ -22,7 +23,7 @@ main:
     page: https://unified-attention-control.github.io/
     livedemo: https://huggingface.co/spaces/Xuweiyi/UniCtrl
     image: ./assets/img/teaser_pic.jpg
-    conference_short: In proceedings
+    conference_short: Under review
     
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
     authors: "Jianing Yang*, Xuweiyi Chen*, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
