@@ -8,7 +8,7 @@ main:
     image: ./assets/img/benchmark.jpg
     conference_short: ALVR @ ACL 2024
 
-  - title: "3D-GRAND: Towards Better Grounding and Less Hallucination for 3D-LLMs"
+  - title: "3D-GRAND: A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination"
     authors: "Jianing Yang*, Xuweiyi Chen*, Nikhil Madaan, Madhavan Iyengar, Shengyi Qian, David F. Fouhey, Joyce Chai"
     pdf: https://arxiv.org/abs/2406.05132
     page: https://3d-grand.github.io/
