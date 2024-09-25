@@ -17,9 +17,9 @@ My research centers on scalable approaches to 3D Computer Vision, Language, and 
 
 ## News
 
+- **[Sep. 2024]** One Paper has been accepted to NeurIPS 2024.
 - **[Aug. 2024]** Join the University of Virginia advised by Zezhou Cheng.
-- **[Mar. 2024]** Our paper about improving spatiotemporary consistency in video diffusion model: **UniCtrl** is out.
-- **[Jan. 2024]** Our paper **LLM-Grounder** about Zero-Shot 3D Language Grounding has been accepted by ICRA 2024.
+- **[Jan. 2024]** Our paper has been accepted by ICRA 2024.
 - **[Aug. 2022]** Joined the SLED lab at the University of Michigan.
 
 
