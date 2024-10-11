@@ -14,7 +14,7 @@ main:
     page: https://3d-grand.github.io/
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
-    conference_short: Under Review
+    conference_short: OWA @ NeurIPS 2024
     
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu"
