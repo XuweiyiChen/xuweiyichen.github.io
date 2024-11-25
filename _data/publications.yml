@@ -1,11 +1,20 @@
 main:
   - title: "Learning 3D Representations from Procedural 3D Programs"
     authors: "Xuweiyi Chen, Zezhou Cheng"
-    pdf: https://uva-computer-vision-lab.github.io/point-mae-zero/
-    page: https://uva-computer-vision-lab.github.io/point-mae-zero/
+    pdf: https://point-mae-zero.cs.virginia.edu/
+    page: https://point-mae-zero.cs.virginia.edu/
     dataset: https://huggingface.co/datasets/uva-cv-lab/Point-MAE-Zero
-    code: https://uva-computer-vision-lab.github.io/point-mae-zero/
+    code: https://point-mae-zero.cs.virginia.edu/
     image: ./assets/img/teaser_noise.jpg
+    conference_short: arxiv
+  
+    - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
+    authors: "Xuweiyi Chen, Markus Marks, Zezhou Cheng"
+    pdf: https://midvision-probe.cs.virginia.edu/
+    page: https://midvision-probe.cs.virginia.edu/
+    dataset: https://midvision-probe.cs.virginia.edu/
+    code: https://midvision-probe.cs.virginia.edu/
+    image: ./assets/img/teaser_probing.jpg
     conference_short: arxiv
 
   - title: "Multi-Object Hallucination in Vision-Language Models"
