@@ -8,7 +8,7 @@ main:
     image: ./assets/img/teaser_noise.jpg
     conference_short: arxiv
   
-    - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
+  - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
     authors: "Xuweiyi Chen, Markus Marks, Zezhou Cheng"
     pdf: https://midvision-probe.cs.virginia.edu/
     page: https://midvision-probe.cs.virginia.edu/
