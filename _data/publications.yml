@@ -1,4 +1,13 @@
 main:
+  - title: "Learning 3D Representations from Procedural 3D Programs"
+    authors: "Xuweiyi Chen, Zezhou Cheng"
+    pdf: https://uva-computer-vision-lab.github.io/point-mae-zero/
+    page: https://uva-computer-vision-lab.github.io/point-mae-zero/
+    dataset: https://huggingface.co/datasets/uva-cv-lab/Point-MAE-Zero
+    code: https://uva-computer-vision-lab.github.io/point-mae-zero/
+    image: ./assets/img/teaser_noise.jpg
+    conference_short: arxiv
+
   - title: "Multi-Object Hallucination in Vision-Language Models"
     authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, Jianing Yang, David Fouhey, Joyce Y. Chai"
     pdf: https://arxiv.org/abs/2407.06192
