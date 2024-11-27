@@ -1,7 +1,7 @@
 main:
   - title: "Learning 3D Representations from Procedural 3D Programs"
     authors: "Xuweiyi Chen, Zezhou Cheng"
-    pdf: https://point-mae-zero.cs.virginia.edu/
+    pdf: https://arxiv.org/abs/2411.17467
     page: https://point-mae-zero.cs.virginia.edu/
     dataset: https://huggingface.co/datasets/uva-cv-lab/Point-MAE-Zero
     code: https://point-mae-zero.cs.virginia.edu/
@@ -10,7 +10,7 @@ main:
   
   - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
     authors: "Xuweiyi Chen, Markus Marks, Zezhou Cheng"
-    pdf: https://midvision-probe.cs.virginia.edu/
+    pdf: https://arxiv.org/abs/2411.17474
     page: https://midvision-probe.cs.virginia.edu/
     dataset: https://midvision-probe.cs.virginia.edu/
     code: https://midvision-probe.cs.virginia.edu/
