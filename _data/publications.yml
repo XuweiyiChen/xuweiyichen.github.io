@@ -15,7 +15,7 @@ main:
     dataset: https://midvision-probe.cs.virginia.edu/
     code: https://midvision-probe.cs.virginia.edu/
     image: ./assets/img/teaser_probing.jpg
-    conference_short: CVPR
+    conference_short: CVPR 2025
 
   - title: "Multi-Object Hallucination in Vision-Language Models"
     authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, Jianing Yang, David Fouhey, Joyce Y. Chai"
@@ -32,7 +32,7 @@ main:
     page: https://3d-grand.github.io/
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
-    conference_short: CVPR
+    conference_short: CVPR 2025
     
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Tian Xia*, Xuweiyi Chen*, Sihan Xu"
