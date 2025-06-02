@@ -3,7 +3,7 @@ main:
     authors: "Xuweiyi Chen, Wentao Zhou, Aruni RoyChowdhury, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2505.23926
     page: https://uva-computer-vision-lab.github.io/point-moe/
-    image: ./assets/img/teaser_noise.jpg
+    image: ./assets/img/point-moe.jpg
     conference_short: arxiv
 
   - title: "Learning 3D Representations from Procedural 3D Programs"
