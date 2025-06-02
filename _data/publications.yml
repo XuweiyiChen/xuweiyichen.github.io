@@ -1,4 +1,11 @@
 main:
+  - title: "Point-MoE: Towards Cross-Domain Generalization in 3D Semantic Segmentation via Mixture-of-Experts"
+    authors: "Xuweiyi Chen, Wentao Zhou, Aruni RoyChowdhury, Zezhou Cheng"
+    pdf: https://arxiv.org/abs/2505.23926
+    page: https://uva-computer-vision-lab.github.io/point-moe/
+    image: ./assets/img/teaser_noise.jpg
+    conference_short: arxiv
+
   - title: "Learning 3D Representations from Procedural 3D Programs"
     authors: "Xuweiyi Chen, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2411.17467
