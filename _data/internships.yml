@@ -1,4 +1,4 @@
 internships:
   - company: "Lambda Labs"
     duration: "2025"
-    logo: "./assets/img/lambda.png"
+    logo: ./assets/img/lambda.png

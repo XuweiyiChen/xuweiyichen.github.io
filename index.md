@@ -15,6 +15,45 @@ My research centers on scalable approaches to 3D Computer Vision, Language, and 
 - Developing Vision-Centric 3D Foundational Models.
 - Grounding Language Concepts in 3D Environments and Robotic Actions.
 
+## Internships
+
+<div class="internship-list">
+{% for internship in site.data.internships %}
+<div class="internship-item">
+  <img src="{{ internship.logo }}" alt="{{ internship.company }} logo" class="internship-logo">
+  <div class="internship-info">
+    <strong>{{ internship.company }}</strong><br>
+    <em>{{ internship.duration }}</em>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<style>
+  .internship-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .internship-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .internship-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+  }
+  .internship-info {
+    font-size: 0.9rem;
+  }
+</style>
+
 ## News
 
 - **[Feb. 2025]** Two papers have been accepted to CVPR 2025.
