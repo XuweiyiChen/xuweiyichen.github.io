@@ -20,7 +20,7 @@ My research centers on scalable approaches to 3D Computer Vision, Language, and 
 <div class="internship-list">
 {% for internship in site.data.internships %}
 <div class="internship-item">
-  <img src="{{ internship.logo }}" alt="{{ internship.company }} logo" class="internship-logo">
+  <img src="{{ internship.logo | absolute_url }}" alt="{{ internship.company }} logo" class="internship-logo">
   <div class="internship-info">
     <strong>{{ internship.company }}</strong><br>
     <em>{{ internship.duration }}</em>
