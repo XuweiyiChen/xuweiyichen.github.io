@@ -11,7 +11,7 @@ main:
     pdf: https://www.arxiv.org/pdf/2506.02112
     page: https://uva-computer-vision-lab.github.io/sab3r/
     image: ./assets/img/sab3r.jpg
-    conference_short: S3D-LLM/VLA @ CVPR 2025
+    conference_short: 3D-LLM/VLA @ CVPR 2025
 
   - title: "Learning 3D Representations from Procedural 3D Programs"
     authors: "Xuweiyi Chen, Zezhou Cheng"
