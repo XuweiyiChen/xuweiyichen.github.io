@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a 1st year Ph.D. student at the University of Virginia advised by Prof. [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision.
+I am a 2nd year Ph.D. student at the University of Virginia advised by Prof. [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision.
 
 Before joining UVA, I have completed master of Computer Science and Engineering at the [University of Michigan](https://umich.edu/). I was a member of [SLED lab](https://sled.eecs.umich.edu/). I obtained my bachelor's degree in [Applied and Computational Mathematics Science](https://acms.washington.edu/) at the [University of Washington](https://www.washington.edu/) where I worked with [Prof. Yunhe feng](https://yunhefeng.me/) on Responsible AI.
 
