@@ -56,6 +56,7 @@ My research centers on scalable approaches to 3D Computer Vision, Language, and 
 
 ## News
 
+- **[Nov. 2025]** One paper has been accepted to 3DV 2026.
 - **[Feb. 2025]** Two papers have been accepted to CVPR 2025.
 - **[Nov. 2024]** One Paper has been accepted to TMLR.
 - **[Sep. 2024]** One Paper has been accepted to NeurIPS 2024.

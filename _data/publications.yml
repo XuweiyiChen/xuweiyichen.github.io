@@ -13,14 +13,14 @@ main:
     image: ./assets/img/sab3r.jpg
     conference_short: 3D-LLM/VLA @ CVPR 2025
 
-  - title: "Learning 3D Representations from Procedural 3D Programs"
+  - title: "Semantic-Free Procedural 3D Shapes Are Surprisingly Good Teachers"
     authors: "Xuweiyi Chen, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2411.17467
     page: https://point-mae-zero.cs.virginia.edu/
     dataset: https://huggingface.co/datasets/uva-cv-lab/Point-MAE-Zero
     code: https://point-mae-zero.cs.virginia.edu/
     image: ./assets/img/teaser_noise.jpg
-    conference_short: SynData4CV @ CVPR2025
+    conference_short: 3DV 2026
   
   - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
     authors: "Xuweiyi Chen, Markus Marks, Zezhou Cheng"
