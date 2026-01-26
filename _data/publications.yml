@@ -11,7 +11,7 @@ main:
     pdf: https://arxiv.org/abs/2505.23926
     page: https://uva-computer-vision-lab.github.io/point-moe/
     image: ./assets/img/point-moe.jpg
-    conference_short: arxiv
+    conference_short: ICLR 2026
 
   - title: "SAB3R: Semantic-Augmented Backbone in 3D Reconstruction"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu, Jed Jianing Yang, Joyce Chai, Zezhou Cheng"
