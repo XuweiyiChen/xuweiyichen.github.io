@@ -6,7 +6,8 @@ main:
     code: https://github.com/UVA-Computer-Vision-Lab/wild-rayzer
     dataset: https://huggingface.co/datasets/uva-cv-lab/Dynamic-RE10K
     image: ./assets/img/teaser_wildrayzer.jpg
-    conference_short: CVPR 2026
+    demo: https://huggingface.co/spaces/uva-cv-lab/wildrayzer
+    conference_short: CVPR 2026 (Highlight)
 
   - title: "Point-MoE: Large-Scale Multi-Dataset Training with Mixture-of-Experts for 3D Semantic Segmentation"
     authors: "Xuweiyi Chen, Wentao Zhou, Aruni RoyChowdhury, Zezhou Cheng"
