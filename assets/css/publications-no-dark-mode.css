@@ -14,7 +14,7 @@
 .badge {
     color: #043361 !important;
     border-radius: 0.125rem;
-    border: 1px solid #043361;
+    border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -41,7 +41,7 @@ blockquote { background: var(--global-bg-color); border-left: 2px solid var(--gl
 
 .publications ol.bibliography li .abbr { height: 8rem; margin-bottom: 0.5rem; }
 
-.publications ol.bibliography li .abbr abbr { display: inline-block; background-color: #F5EFE0; padding-left: 1rem; padding-right: 1rem; position: absolute; top: 8px; left: 16px; }
+.publications ol.bibliography li .abbr abbr { display: inline-block; background-color: #B8D4E8; padding-left: 1rem; padding-right: 1rem; position: absolute; top: 8px; left: 16px; border: none; }
 
 .publications ol.bibliography li .abbr abbr a { color: #043361; }
 
