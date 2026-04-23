@@ -56,6 +56,7 @@ My research centers on scalable approaches to 3D Computer Vision, Language, and 
 
 ## News
 
+- **[Apr. 2026]** WildRayZer has been selected as Highlight at CVPR 2026.
 - **[Feb. 2026]** One first-author paper has been accepted to CVPR 2026.
 - **[Jan. 2026]** One first-author paper has been accepted to ICLR 2026.
 - **[Nov. 2025]** One first-author paper has been accepted to 3DV 2026.
