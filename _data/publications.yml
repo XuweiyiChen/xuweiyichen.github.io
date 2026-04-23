@@ -8,6 +8,7 @@ main:
     image: ./assets/img/teaser_wildrayzer.jpg
     livedemo: https://huggingface.co/spaces/uva-cv-lab/wildrayzer
     conference_short: CVPR 2026 (Highlight)
+    conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2026.
 
   - title: "Point-MoE: Large-Scale Multi-Dataset Training with Mixture-of-Experts for 3D Semantic Segmentation"
     authors: "Xuweiyi Chen, Wentao Zhou, Aruni RoyChowdhury, Zezhou Cheng"
@@ -16,6 +17,7 @@ main:
     code: https://github.com/UVA-Computer-Vision-Lab/point_moe
     image: ./assets/img/point-moe.jpg
     conference_short: ICLR 2026
+    conference: International Conference on Learning Representations, 2026.
 
   - title: "SAB3R: Semantic-Augmented Backbone in 3D Reconstruction"
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu, Jed Jianing Yang, Joyce Chai, Zezhou Cheng"
@@ -34,6 +36,7 @@ main:
     code: https://point-mae-zero.cs.virginia.edu/
     image: ./assets/img/teaser_noise.jpg
     conference_short: 3DV 2026
+    conference: International Conference on 3D Vision, 2026.
   
   - title: "Probing the Mid-level Vision Capabilities of Self-Supervised Learning"
     authors: "Xuweiyi Chen, Markus Marks, Zezhou Cheng"
@@ -43,6 +46,7 @@ main:
     code: https://midvision-probe.cs.virginia.edu/
     image: ./assets/img/teaser_probing.jpg
     conference_short: CVPR 2025
+    conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2025.
 
   - title: "Multi-Object Hallucination in Vision-Language Models"
     authors: "Xuweiyi Chen*, Ziqiao Ma*, Xuejun Zhang*, Sihan Xu, Shengyi Qian, Jianing Yang, David Fouhey, Joyce Y. Chai"
@@ -52,6 +56,7 @@ main:
     code: https://github.com/sled-group/moh
     image: ./assets/img/benchmark.jpg
     conference_short: NeurIPS 2024
+    conference: Conference on Neural Information Processing Systems, 2024.
 
   - title: "3D-GRAND: A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination"
     authors: "Jianing Yang*, Xuweiyi Chen*, Nikhil Madaan, Madhavan Iyengar, Shengyi Qian, David F. Fouhey, Joyce Chai"
@@ -61,6 +66,7 @@ main:
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
     conference_short: CVPR 2025
+    conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2025.
     
   - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
     authors: "Tian Xia*, Xuweiyi Chen*, Sihan Xu"
@@ -70,6 +76,7 @@ main:
     livedemo: https://huggingface.co/spaces/Xuweiyi/UniCtrl
     image: ./assets/img/teaser_pic.jpg
     conference_short: TMLR
+    conference: Transactions on Machine Learning Research.
     
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
     authors: "Jianing Yang*, Xuweiyi Chen*, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
