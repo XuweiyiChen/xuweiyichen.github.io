@@ -19,6 +19,8 @@ main:
     authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu, Jed Jianing Yang, Joyce Chai, Zezhou Cheng"
     pdf: https://www.arxiv.org/pdf/2506.02112
     page: https://uva-computer-vision-lab.github.io/sab3r/
+    code: https://github.com/UVA-Computer-Vision-Lab/sab-3r
+    livedemo: https://huggingface.co/spaces/uva-cv-lab/SAB3R
     image: ./assets/img/sab3r.jpg
     conference_short: 3D-LLM/VLA @ CVPR 2025
 
