@@ -57,6 +57,7 @@ main:
     authors: "Jianing Yang*, Xuweiyi Chen*, Nikhil Madaan, Madhavan Iyengar, Shengyi Qian, David F. Fouhey, Joyce Chai"
     pdf: https://arxiv.org/abs/2406.05132
     page: https://3d-grand.github.io/
+    code: https://github.com/sled-group/3D-GRAND
     livedemo: https://3553d6bb6bca62cbc6.gradio.live/
     image: ./assets/img/teaser_pic_3d_grand.jpg
     conference_short: CVPR 2025
