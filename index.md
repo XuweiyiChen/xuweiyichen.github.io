@@ -10,10 +10,14 @@ Before joining UVA, I have completed master of Computer Science and Engineering 
 
 ## Research Interests
 
-My research centers on scalable approaches to 3D Computer Vision, Language, and Robotics. Currently, I am focusing on two key areas:
+My research centers on scalable approaches to **3D computer vision, language-grounded robotics, and visual world models**. I am broadly interested in how visual foundation models can acquire **persistent, dynamic, and geometry-aware** world representations from real-world multi-view, video, and 3D data.
 
-- Developing Vision-Centric 3D Foundational Models.
-- Grounding Language Concepts in 3D Environments and Robotic Actions.
+
+I currently focus on two themes:
+
+- **Developing vision-centric 3D/4D foundation models.** I study how large-scale visual models can learn spatially grounded representations of static and dynamic environments, with an emphasis on multi-view perception, novel view synthesis, 3D scene understanding, and persistent visual memory.
+
+- **Grounding language concepts in 3D environments and robotic actions.** I explore how language can be connected to 3D scenes, object affordances, spatial relations, and embodied actions, enabling agents to reason, navigate, and interact in complex physical environments.
 
 ## Internships
 
