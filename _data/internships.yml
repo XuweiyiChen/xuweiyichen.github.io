@@ -1,3 +1,7 @@
 - company: "Lambda Labs"
-  duration: "2025"
+  duration: "Summer 2025"
   logo: ./assets/img/lambda.png
+
+- company: "Meta"
+  duration: "Summer 2026"
+  logo: ./assets/img/meta.svg
