@@ -7,6 +7,13 @@ main:
     conference_short: arXiv 2026
     conference: arXiv preprint, 2026.
 
+  - title: "Metric 4D Modeling for Embodied Perception"
+    authors: "Di Liu, Xuweiyi Chen, Cheng Zhang, Adam Harley, Zhao Dong, Tanner Schmidt, David Caruso, Pierre Moulon, Shugao Ma, Zezhou Cheng, Richard Newcombe, Jakob Julian Engel"
+    pdf_soon: true
+    image: ./assets/img/teaser_scale4d.jpg
+    conference_short: arXiv 2026
+    conference: arXiv preprint, 2026.
+
   - title: "WildRayZer: Self-supervised Large View Synthesis in Dynamic Environments"
     authors: "Xuweiyi Chen, Wentao Zhou, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2601.10716
