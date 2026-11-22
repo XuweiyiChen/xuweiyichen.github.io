@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a 2nd year Ph.D. student at the University of Virginia advised by Prof. [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision.
+I am a 3rd year Ph.D. student at the University of Virginia advised by Prof. [Zezhou Cheng](https://sites.google.com/site/zezhoucheng/). I do research in 3D Computer Vision.
 
 Before joining UVA, I have completed master of Computer Science and Engineering at the [University of Michigan](https://umich.edu/). I was a member of [SLED lab](https://sled.eecs.umich.edu/). I obtained my bachelor's degree in [Applied and Computational Mathematics Science](https://acms.washington.edu/) at the [University of Washington](https://www.washington.edu/) where I worked with [Prof. Yunhe feng](https://yunhefeng.me/) on Responsible AI.
 
@@ -60,16 +60,17 @@ I currently focus on two themes:
 
 ## News
 
-- **[Apr. 2026]** WildRayZer has been selected as Highlight at CVPR 2026.
-- **[Feb. 2026]** One first-author paper has been accepted to CVPR 2026.
-- **[Jan. 2026]** One first-author paper has been accepted to ICLR 2026.
-- **[Nov. 2025]** One first-author paper has been accepted to 3DV 2026.
-- **[Feb. 2025]** Two first-author papers have been accepted to CVPR 2025.
-- **[Nov. 2024]** One first-author paper has been accepted to TMLR.
-- **[Sep. 2024]** One first-author paper has been accepted to NeurIPS 2024.
-- **[Aug. 2024]** Join the University of Virginia advised by Zezhou Cheng.
-- **[Jan. 2024]** Our first-author paper has been accepted by ICRA 2024.
-- **[Aug. 2022]** Joined the SLED lab at the University of Michigan.
+- **Summer 2026** Internship at Meta.
+- **Apr. 2026** WildRayZer has been selected as Highlight at CVPR 2026.
+- **Feb. 2026** One first-author paper has been accepted to CVPR 2026.
+- **Jan. 2026** One first-author paper has been accepted to ICLR 2026.
+- **Nov. 2025** One first-author paper has been accepted to 3DV 2026.
+- **Feb. 2025** Two first-author papers have been accepted to CVPR 2025.
+- **Nov. 2024** One first-author paper has been accepted to TMLR.
+- **Sep. 2024** One first-author paper has been accepted to NeurIPS 2024.
+- **Aug. 2024** Join the University of Virginia advised by Zezhou Cheng.
+- **Jan. 2024** Our first-author paper has been accepted by ICRA 2024.
+- **Aug. 2022** Joined the SLED lab at the University of Michigan.
 
 
 {% if site.show_blog %}

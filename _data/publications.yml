@@ -27,15 +27,6 @@ main:
     conference_short: ICLR 2026
     conference: International Conference on Learning Representations, 2026.
 
-  - title: "SAB3R: Semantic-Augmented Backbone in 3D Reconstruction"
-    authors: "Xuweiyi Chen*, Tian Xia*, Sihan Xu, Jed Jianing Yang, Joyce Chai, Zezhou Cheng"
-    pdf: https://www.arxiv.org/pdf/2506.02112
-    page: https://uva-computer-vision-lab.github.io/sab3r/
-    code: https://github.com/UVA-Computer-Vision-Lab/sab-3r
-    livedemo: https://huggingface.co/spaces/uva-cv-lab/SAB3R
-    image: ./assets/img/sab3r.jpg
-    conference_short: 3D-LLM/VLA @ CVPR 2025
-
   - title: "Semantic-Free Procedural 3D Shapes Are Surprisingly Good Teachers"
     authors: "Xuweiyi Chen, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2411.17467
@@ -95,4 +86,4 @@ main:
     page: https://chat-with-nerf.github.io/
     livedemo: http://sled-whistler.eecs.umich.edu:7777/
     video: https://www.youtube.com/watch?v=eO-Vaf-1R1s&feature=youtu.be
-    image: ./assets/img/llm-grounder.png
+    image: ./assets/img/llm-grounder.jpg

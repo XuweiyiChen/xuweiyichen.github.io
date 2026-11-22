@@ -18,7 +18,7 @@
   <div class="col-sm-9" style="position: relative;padding-right: 15px;padding-left: 20px;">
       {% capture title_href %}{% if link.pdf %}{{ link.pdf }}{% elsif link.blog and site.show_blog %}{{ link.blog }}{% endif %}{% endcapture %}
       <div class="title"><a{% if title_href != "" %} href="{{ title_href }}"{% endif %}>{{ link.title }}</a></div>
-      <div class="author">{{ link.authors }}</div>
+      <div class="author">{{ link.authors | replace: "Xuweiyi Chen", "<span class='me'>Xuweiyi Chen</span>" }}</div>
       <div class="periodical"><em>{{ link.conference }}</em>
       </div>
       <div class="links">
