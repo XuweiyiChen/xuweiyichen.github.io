@@ -1,4 +1,12 @@
 main:
+  - title: "Tracking Any Point with Agentic Visual Reasoning"
+    authors: "Xuweiyi Chen*‡, Jin Yao*, Linzhan Mou*, Lei Gong*, Di Liu, Cheng Zhang, Ziqiao Ma, Sihan Xu, Adam W. Harley, Shengyi Qian†, Zezhou Cheng†"
+    pdf_soon: true
+    blog: ./blog/agentap/
+    image: ./assets/img/teaser_agentap.jpg
+    conference_short: arXiv 2026
+    conference: arXiv preprint, 2026.
+
   - title: "WildRayZer: Self-supervised Large View Synthesis in Dynamic Environments"
     authors: "Xuweiyi Chen, Wentao Zhou, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2601.10716
