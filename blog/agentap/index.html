@@ -64,9 +64,10 @@
       color: var(--ink); margin: 22px 0 18px;
     }
     .hero .subtitle { font: italic 400 clamp(1.2rem, 2.4vw, 1.45rem)/1.45 var(--serif); color: var(--muted); margin: 0 auto; max-width: 620px; }
-    .author { display: inline-flex; align-items: center; gap: 12px; margin: 34px 0 0; text-align: left; }
-    .author img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
+    .authors { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 48px; margin: 34px 0 0; }
+    .author { text-align: center; }
     .author .who { font: 500 15px/1.35 var(--sans); color: var(--ink); }
+    .author .who a { color: inherit; }
     .author .meta { font: 400 13.5px/1.35 var(--sans); color: var(--muted); }
     .buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 28px 0 0; }
     .btn {
@@ -267,11 +268,14 @@
     <div class="kicker">Essay &middot; November 2026</div>
     <h1>Correspondence Needs Reasoning</h1>
     <p class="subtitle">Why tracking a point is neither a semantic nor a geometric problem</p>
-    <div class="author">
-      <img src="../../assets/img/selfie.jpg" alt="Xuweiyi Chen">
-      <div>
-        <div class="who"><a href="../../" style="color: inherit">Xuweiyi Chen</a></div>
+    <div class="authors">
+      <div class="author">
+        <div class="who"><a href="../../">Xuweiyi Chen</a></div>
         <div class="meta">University of Virginia</div>
+      </div>
+      <div class="author">
+        <div class="who"><a href="https://linzhanmou.com/">Linzhan Mou</a></div>
+        <div class="meta">Princeton University</div>
       </div>
     </div>
     <div class="buttons">
