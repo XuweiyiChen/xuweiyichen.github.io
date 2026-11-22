@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Template holder. Every element with class "ph" is a placeholder for real text or a real figure. -->
   <style>
     :root {
       --bg: #ffffff; --ink: #1d1d22; --body: #33333b; --muted: #6b6b76; --faint: #9a9aa6;
@@ -58,10 +57,10 @@
     .nav .menu a.here { color: var(--ink); }
 
     /* Hero */
-    .hero { max-width: 820px; margin: 0 auto; padding: 88px 28px 0; text-align: center; }
+    .hero { max-width: 1040px; margin: 0 auto; padding: 88px 28px 0; text-align: center; }
     .kicker { font: 600 12.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
     .hero h1 {
-      font: 600 clamp(2.5rem, 6vw, 3.9rem)/1.06 var(--serif); letter-spacing: -0.022em;
+      font: 600 clamp(2.3rem, 5vw, 3.6rem)/1.08 var(--serif); letter-spacing: -0.022em; text-wrap: balance;
       color: var(--ink); margin: 22px 0 18px;
     }
     .hero .subtitle { font: italic 400 clamp(1.2rem, 2.4vw, 1.45rem)/1.45 var(--serif); color: var(--muted); margin: 0 auto; max-width: 620px; }
@@ -80,13 +79,6 @@
     a.btn:hover { border-color: var(--accent); text-decoration: none; }
     span.btn { cursor: default; }
 
-    /* Teaser */
-    .teaser { max-width: 816px; margin: 56px auto 0; padding: 0 28px; }
-    .teaser .card {
-      background: #fff; border: 1px solid var(--rule); border-radius: 16px; padding: clamp(12px, 2.4vw, 28px);
-      box-shadow: var(--shadow);
-    }
-    .teaser img { display: block; width: 100%; height: auto; }
 
     /* Body */
     .page {
@@ -123,6 +115,9 @@
 
     figure { margin: 2.2em 0; }
     figure.wide { margin-left: -40px; margin-right: -40px; }
+    figure.narrow { max-width: 460px; margin-left: auto; margin-right: auto; }
+    .figcard { display: block; background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 10px; }
+    .figcard img { display: block; width: 100%; height: auto; }
     figcaption { font-size: .9em; line-height: 1.55; color: var(--muted); margin-top: 14px; }
 
     pre { margin: 0; font: 400 14.5px/1.65 var(--mono); overflow-x: auto; }
@@ -133,11 +128,89 @@
     }
     .codeblock pre { padding: 18px 20px; color: var(--ink); }
     .codeblock .kw { color: var(--accent); font-weight: 500; }
+    .codeblock .cm { color: var(--faint); }
+    article code { font: 400 .8em var(--mono); background: var(--soft); border: 1px solid var(--rule); border-radius: 5px; padding: 1px 5px; }
+    sup.cite { font: 500 .62em/0 var(--sans); margin-left: 1px; }
+    sup.cite a { color: var(--accent); }
+    ol.refs li:target { background: var(--accent-soft); border-radius: 6px; }
     .copy {
       font: 500 12.5px/1 var(--sans); color: var(--muted); background: none; border: 1px solid var(--rule);
       border-radius: 6px; padding: 6px 10px; cursor: pointer;
     }
     .copy:hover { color: var(--ink); border-color: var(--accent); }
+
+    /* Ranking chart (dumbbell). Colors validated with the dataviz palette checker in both modes. */
+    .rank, .prec { --c-direct: #eb6834; --c-agent: #7654a5; }
+    @media (prefers-color-scheme: dark) { .rank, .prec { --c-direct: #d95926; --c-agent: #9085e9; } }
+    .rank { --name: 156px; --val: 44px; --gap: 14px;
+      position: relative; font: 400 14px/1.3 var(--sans); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 14px; background: var(--bg); }
+    .rank .legend { display: flex; gap: 20px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+    .rank .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .rank .row, .rank .head, .rank .axis { display: grid; grid-template-columns: var(--name) 1fr var(--val); column-gap: var(--gap); align-items: center; }
+    .rank .head { height: 40px; }
+    .rank .row { height: 34px; border-radius: 6px; cursor: default; outline: none; }
+    .rank .row:hover, .rank .row:focus-visible { background: var(--soft); }
+    .rank .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 4px; }
+    .rank .val { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; padding-right: 4px; }
+    .rank .track { position: relative; height: 100%; }
+    .rank .bar { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--c-agent); opacity: .35; }
+    .rank .dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; }
+    .rank .dot.direct { border: 2px solid var(--c-direct); background: var(--bg); }
+    .rank .dot.agent { background: var(--c-agent); box-shadow: 0 0 0 2px var(--bg); }
+    .rank .refs { position: absolute; pointer-events: none; }
+    .rank .ref { position: absolute; top: 0; bottom: 0; border-left: 1.5px dashed var(--muted); opacity: .55; }
+    .rank .reflabel { position: absolute; transform: translateX(-100%); padding-right: 6px; white-space: nowrap;
+      font-size: 12px; color: var(--muted); }
+    .rank .axis { margin-top: 6px; height: 20px; color: var(--faint); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .rank .axis .ticks { position: relative; height: 100%; border-top: 1px solid var(--rule); }
+    .rank .axis .ticks span { position: absolute; top: 3px; transform: translateX(-50%); }
+    .rank .axis .unit { text-align: right; padding-right: 4px; }
+    .rank .tip { position: absolute; z-index: 2; pointer-events: none; display: none; background: var(--ink); color: var(--bg);
+      font-size: 12.5px; padding: 7px 10px; border-radius: 8px; white-space: nowrap; }
+    .prec { position: relative; font: 400 14px/1.3 var(--sans); color: var(--ink); border: 1px solid var(--rule);
+      border-radius: 12px; padding: 18px 20px 12px; background: var(--bg); }
+    .prec .legend { display: flex; gap: 20px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin: 0 0 6px; }
+    .prec .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .prec .yname { color: var(--faint); font-size: 12px; margin: 10px 0 10px; }
+    .prec .plot { position: relative; height: 230px; margin-left: 30px; }
+    .prec .grid { position: absolute; left: 0; right: 0; border-top: 1px solid var(--rule); }
+    .prec .grid span { position: absolute; right: calc(100% + 8px); transform: translateY(-50%); color: var(--faint);
+      font-size: 12px; font-variant-numeric: tabular-nums; }
+    .prec svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .prec svg path { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+    .prec svg .band { fill: var(--c-agent); fill-opacity: .1; stroke: none; }
+    .prec .dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; }
+    .prec .dot.direct, .rank .legend .dot.direct { border: 2px solid var(--c-direct); background: var(--bg); }
+    .prec .dot.agent { background: var(--c-agent); box-shadow: 0 0 0 2px var(--bg); }
+    .prec .gain { position: absolute; transform: translate(-50%, -100%); margin-top: -10px; color: var(--c-agent);
+      font-weight: 600; font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .prec .guide { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--muted); opacity: 0; }
+    .prec .col { position: absolute; top: 0; bottom: 0; width: 20%; transform: translateX(-50%); outline: none; }
+    .prec .xrow { position: relative; height: 22px; margin-left: 30px; border-top: 1px solid var(--rule);
+      color: var(--faint); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .prec .xrow span { position: absolute; top: 5px; transform: translateX(-50%); }
+    .prec .xname { margin: 6px 0 0 30px; text-align: center; color: var(--faint); font-size: 12px; }
+    .prec .tip { position: absolute; z-index: 2; pointer-events: none; display: none; background: var(--ink);
+      color: var(--bg); font-size: 12.5px; padding: 7px 10px; border-radius: 8px; white-space: nowrap; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .stat { display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--rule); border-radius: 12px;
+      padding: 14px 18px; background: var(--bg); font-family: var(--sans); }
+    .stat .who { font: 600 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .stat .n { font: 600 32px/1.1 var(--sans); letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .stat .n .and { font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--muted); margin: 0 4px; }
+    .stat .sub { font-size: 13px; color: var(--muted); }
+    .stat.agent { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+    .stat.agent .who, .stat.agent .n { color: var(--accent); }
+    .bet.quote p { font-size: 1.7rem; line-height: 1.35; }
+    @media (max-width: 640px) {
+      .rank { --name: 112px; --val: 34px; --gap: 10px; padding: 14px 12px 12px; font-size: 12.5px; }
+      .bet.quote p { font-size: 1.4rem; }
+      .prec { padding: 14px 12px 10px; font-size: 12.5px; }
+      .prec .plot { height: 190px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat .n { font-size: 28px; }
+    }
 
     ol.refs { padding-left: 1.6em; margin: 0; }
     ol.refs li { margin: .5em 0; padding-left: .3em; }
@@ -170,10 +243,8 @@
     }
     @media (max-width: 640px) {
       body { font-size: 18.5px; }
-      .nav .inner, .hero, .teaser, .page, footer .inner { padding-left: 20px; padding-right: 20px; }
+      .nav .inner, .hero, .page, footer .inner { padding-left: 20px; padding-right: 20px; }
       .hero { padding-top: 56px; }
-      .teaser { margin-top: 44px; }
-      .teaser .card { border-radius: 12px; }
       .page { padding-top: 56px; }
       article h2 { font-size: 1.7rem; }
       .bet p { font-size: 1.3rem; }
@@ -210,16 +281,6 @@
     </div>
   </header>
 
-  <div class="teaser">
-    <div class="card">
-      <a href="img/teaser.jpg" aria-label="Open the figure at full size"><picture>
-        <source srcset="img/teaser.webp" type="image/webp">
-        <img src="img/teaser.jpg" width="2400" height="1454"
-             alt="AgenTAP overview: a VLM agent hypothesizes, inspects with visual tools and refines, and finds a reappearing point that AllTracker predicts as occluded">
-      </picture></a>
-    </div>
-  </div>
-
   <div class="page">
     <nav class="toc" aria-label="Contents">
       <div class="label">Contents</div>
@@ -228,8 +289,7 @@
         <li><a href="#not-geometry">Why Not Geometry</a></li>
         <li><a href="#reasoning">Why Reasoning</a></li>
         <li><a href="#agentap">AgenTAP</a></li>
-        <li><a href="#observations">Observations</a></li>
-        <li><a href="#data">From Benchmark to Data</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#remarks">Final Remarks</a></li>
         <li><a href="#references">References</a></li>
         <li><a href="#bibtex">BibTeX</a></li>
@@ -237,7 +297,19 @@
     </nav>
 
     <article>
-      <p class="lede ph">Opening paragraph placeholder: what point correspondence is and why it matters.</p>
+      <p class="lede">Today&rsquo;s vision-language models (VLMs) can describe almost any image. Ask one to point at the
+        exact same spot on an object in another frame, though, and it often lands a few pixels off.</p>
+      <p>Those few pixels matter. Grasping an object, building a 4D model of a scene, or learning from videos of
+        people&rsquo;s hands all need the exact point. Point correspondence is that task: given a point in one frame,
+        find the same physical point in another frame.</p>
+      <p>It is also a good test of whether a model really sees. Knowing that something is a mug is not enough. The
+        model has to find the exact same spot on the mug.</p>
+      <p>Here is an example. Mark a small chip on the rim of a mug. Someone picks the mug up, turns it, sets it down
+        behind a laptop, and brings it back a minute later. Where is the chip now? Can you even see it? The answer has
+        two parts: a pixel location, and whether the point is visible.</p>
+      <p>There are two common ways to approach this. One uses semantics, meaning what the object is and which part you
+        are looking at. The other uses geometry and appearance, meaning which pixels look alike and how surfaces move.
+        Our argument in this post is that neither is enough by itself, and that you need reasoning to combine them.</p>
 
       <div class="bet">
         <span class="tag">The bet</span>
@@ -246,59 +318,123 @@
 
       <div class="note">
         <span class="tag">Disclaimer</span>
-        <p>This blog is deliberately opinionated. It follows the thought process that led me to AgenTAP and is not a
-          definitive statement. Read its claims as my framing of what the work implies, not as established facts. The
-          blog is edited with help from an LLM.</p>
+        <p>This post is our personal view. It describes how we came to think about the problem while working on AgenTAP,
+          and some of it is opinion rather than established fact. We used an LLM to help edit the text.</p>
       </div>
 
       <h2 id="not-semantics">Why Not Semantics</h2>
-      <p class="ph">Placeholder: a model can know what an object is and still not know which point on it is the query
-        point.</p>
-      <figure class="wide">
-        <div class="ph-box">Figure</div>
-        <figcaption class="ph">Caption placeholder.</figcaption>
+      <p>VLMs are very good at semantics. They can name objects, describe their parts, and
+        tell you where things are in an image. So it is natural to ask whether they can also follow a point.</p>
+      <p>The problem is that semantics answers a different question. It tells you what something is. Correspondence
+        asks which exact point it is. Picture two identical mugs on a table. Their rims are the same part, but they are
+        in different places. Even on a single mug, &ldquo;the rim near the handle&rdquo; describes an area, not one
+        pixel.</p>
+      <p>We see this when we ask VLMs directly. Given only the two images, GPT-6 Astra puts 87.1% of visible points
+        within 16 pixels of the correct location, but only 23.8% within one pixel. In other words, it usually finds the
+        right area but not the exact spot. Some of its other mistakes pick the same part on a similar-looking object, a
+        known kind of VLM hallucination<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
+      <figure>
+        <div class="prec" id="prec" role="img" aria-label="Share of visible points GPT-6 Astra places within 1, 2, 4, 8 and 16 pixels: direct prediction 23.8, 42.1, 64.3, 79.5, 87.1 percent, AgenTAP 40.2, 60.9, 78.2, 86.6, 91.0 percent"></div>
+        <figcaption>How often GPT-6 Astra puts a visible point within a given distance of the true location on TrackingBench.
+          Answering directly, it gets 87.1% within 16 pixels but only 23.8% within one pixel. AgenTAP, described below,
+          helps most at one and two pixels.</figcaption>
       </figure>
 
       <h2 id="not-geometry">Why Not Geometry</h2>
-      <p class="ph">Placeholder: matching and tracking by appearance and geometry break under occlusion, reappearance
-        and large changes in appearance.</p>
+      <p>The other approach ignores what things are. Image matchers<sup class="cite"><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup> look for pixels that look alike in two
+        views. Point trackers<sup class="cite"><a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup> follow a surface from frame to frame using local appearance and smooth motion.
+        When the surface stays in view and looks about the same, these methods are fast and accurate.</p>
+      <p>They break in exactly the cases the mug example is about. If the appearance changes a lot, &ldquo;looks
+        alike&rdquo; stops working. If the point leaves the view, there is no smooth motion to follow. When the mug comes
+        back from behind the laptop, the tracker has no memory of what it was tracking. In our experiments, trackers
+        often mark a point that has come back as invisible, so the track is not reconnected.</p>
+      <p>Geometry has one more problem. To map a point from one view to another, you pick nearby landmarks and assume
+        they move together with the point. That only works if the landmarks are on the same surface. Deciding which
+        landmarks are on the same surface is a question about objects and parts. In other words, it needs semantics.</p>
       <figure class="wide">
-        <div class="ph-box">Figure</div>
-        <figcaption class="ph">Caption placeholder.</figcaption>
+        <a class="figcard" href="img/fig_reconnection.webp"><img src="img/fig_reconnection.webp" width="2000" height="975" loading="lazy" alt="Two egocentric recordings in which a box and a person leave the view and come back, with AgenTAP and AllTracker predictions after the return"></a>
+        <div class="stats">
+          <div class="stat"><span class="who">AllTracker</span><span class="n">0/10 <span class="and">and</span> 1/10</span>
+            <span class="sub">points found after they come back</span></div>
+          <div class="stat agent"><span class="who">AgenTAP</span><span class="n">10/10 <span class="and">and</span> 9/10</span>
+            <span class="sub">points found after they come back</span></div>
+        </div>
+        <figcaption>Two recordings from a head-mounted camera. An object or a person leaves the view and comes back 76.4
+          and 25.3 seconds later. Colors mark the ten points being tracked.</figcaption>
       </figure>
 
       <h2 id="reasoning">Why Reasoning</h2>
-      <p class="ph">Placeholder: what a person does when asked where a point went. Look, zoom in, compare candidates,
-        check the answer.</p>
+      <p>Think about how a person finds the chip. They look at the mug and make a guess: the chip should be a little to
+        the left of the handle, just under the rim. They zoom in on that spot and compare it with the first frame. Maybe
+        the guess is off by the width of a painted stripe, so they move it. If the handle is now facing away, they
+        decide the chip is on the hidden side and say it is not visible.</p>
+      <p>This is what we mean by reasoning. You decide what to look at next based on what you have seen so far, and you
+        change your answer when the evidence does not fit. Semantics tells you where to look and which landmarks to
+        trust. Geometry turns those landmarks into an exact location. Reasoning is the step that puts the two together
+        and checks the result.</p>
+      <p>A model that answers in one shot cannot do this. It sees two full images and cannot zoom in or test a guess. So
+        if correspondence needs reasoning, the model needs tools to look, compare and measure, and it needs to decide
+        for itself when to use them. That is the idea behind AgenTAP.</p>
 
       <h2 id="agentap">AgenTAP</h2>
-      <p class="ph">Placeholder: the agent, its tools and one recorded session step by step.</p>
-      <div class="codeblock">
-        <div class="head"><span>Algorithm placeholder &middot; the AgenTAP loop</span></div>
-<pre><span class="kw">def</span> agentap(reference, target, query):
-    ...</pre>
+      <p>AgenTAP gives a VLM these tools. We do not train the model for correspondence. We use it as it is. It gets the
+        two images, the marked point, and a small set of tools: <code>view</code> to zoom in and adjust contrast,
+        <code>check</code> to compare two crops side by side, <code>fit</code> and <code>match</code> to compute a
+        location from landmarks, and <code>frame</code> to look at the frames in between. The model first gives its own
+        answer. After that, it can see suggestions from existing trackers. It treats them as guesses that still need
+        checking, and it keeps checking and adjusting until the evidence agrees.</p>
+      <figure class="wide">
+        <a class="figcard" href="img/fig_agent.webp"><img src="img/fig_agent.webp" width="2200" height="932" loading="lazy" alt="The AgenTAP procedure: initial prediction, optional expert proposals, and iterative visual verification with tools"></a>
+        <figcaption>One AgenTAP session. The model makes a first guess, can look at tracker suggestions, and then uses tools to
+          check and correct the location.</figcaption>
+      </figure>
+
+      <h2 id="results">Results</h2>
+      <p>We tested this on TrackingBench, a set of 2,000 queries from 272 real videos across six domains. The chart below
+        ranks eight VLMs. Every one of them gets better with AgenTAP. On the chart's measure, APD, seven of the eight end up ahead of every
+        expert model that sees the same two images. GPT-6 Astra, using only two frames, also beats every tracker that sees the
+        whole video, both in how close its points are (APD) and in judging visibility (OA). Given the same input as the
+        trackers, it beats all of them on all four metrics we report.</p>
+      <figure class="wide">
+        <div class="rank" id="rank" role="img" aria-label="APD of eight VLMs on TrackingBench with two images, direct prediction and AgenTAP, against the best two-image expert model (57.3) and the best full-video tracker (67.9)"></div>
+        <figcaption>APD for each VLM with two input images, answering directly in one call and with AgenTAP. APD is the share of
+          visible points within 1, 2, 4, 8 and 16 pixels of the truth, averaged over the five distances, as in
+          TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup>. The dashed lines show the best expert model with two images (AllTracker) and the best
+          tracker with the full video (AllTracker at high resolution).</figcaption>
+      </figure>
+      <p>Most of the gain is in the last few pixels. At 16 pixels, AgenTAP adds only 3.9 points, because direct answers
+        are already close. At one and two pixels it adds 16.4 and 18.9. Tools also help weaker models more. The gap
+        between GPT-6 Astra and Inkling 2 Small drops from 26.0 to 7.3 APD.</p>
+      <div class="bet quote">
+        <span class="tag">From the paper</span>
+        <p>VLM reasoning has advanced from objects to individual pixels.</p>
       </div>
-      <figure class="wide">
-        <div class="ph-box">Figure: one recorded session, step by step</div>
-        <figcaption class="ph">Caption placeholder.</figcaption>
-      </figure>
-
-      <h2 id="observations">Observations</h2>
-      <p class="ph">Placeholder: what the recorded sessions show.</p>
-
-      <h2 id="data">From Benchmark to Data</h2>
-      <p class="ph">Placeholder: EgoTAP-4D, where the agent reconnects points after they return to view.</p>
-      <figure class="wide">
-        <div class="ph-box">Figure: the EgoTAP-4D annotation pipeline</div>
-        <figcaption class="ph">Caption placeholder.</figcaption>
-      </figure>
+      <p>It is not perfect. When two parts look alike, like the two halves of a broken eggshell, the agent can still
+        pick the wrong one, because zooming in shows nothing that tells them apart.</p>
 
       <h2 id="remarks">Final Remarks</h2>
-      <p class="ph">Placeholder.</p>
+      <p>We started with a question that sounds almost too simple: where did this point go? Our answer is that it needs
+        both semantics and geometry, and something to connect them. Semantics finds the right area but not the exact
+        pixel. Geometry can find the exact pixel, but only if it knows which surface to trust. Guessing, looking closer
+        and checking is what connects the two, and VLMs can now do this when they have the right tools.</p>
+      <p>This is not cheap. Each query uses 141K to 184K input tokens. Sharing one session across 16 points cuts that by
+        56 to 70% with similar accuracy. We think this is the direction to push: share the work across points and frames,
+        and later distill it into smaller models that run as fast as a tracker.</p>
+      <p>What excites us most is being able to find a point again after it comes back into view. That gives long 3D
+        trajectories in everyday video, which can be used to train vision models and robots that learn from people. If
+        this view is right, future progress in correspondence will come from better reasoning as much as from better
+        features.</p>
 
       <h2 id="references">References</h2>
       <ol class="refs">
-        <li class="ph">Reference placeholder.</li>
+        <li id="ref-1">Xuweiyi Chen et al. Multi-Object Hallucination in Vision Language Models. <em>NeurIPS</em>, 2024.</li>
+        <li id="ref-2">David G. Lowe. Distinctive Image Features from Scale-Invariant Keypoints. <em>IJCV</em>, 2004.</li>
+        <li id="ref-3">Johan Edstedt et al. RoMa v2: Harder Better Faster Denser Feature Matching. <em>ECCV</em>, 2026.</li>
+        <li id="ref-4">Adam W. Harley et al. AllTracker: Efficient Dense Point Tracking at High Resolution. <em>ICCV</em>, 2025.</li>
+        <li id="ref-5">Nikita Karaev et al. CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos.
+          <em>ICCV</em>, 2025.</li>
+        <li id="ref-6">Carl Doersch et al. TAP-Vid: A Benchmark for Tracking Any Point in a Video. <em>NeurIPS Datasets and
+          Benchmarks</em>, 2022.</li>
       </ol>
 
       <h2 id="bibtex">BibTeX</h2>
@@ -306,7 +442,8 @@
         <div class="head"><span>BibTeX</span><button class="copy" id="copy" type="button">Copy</button></div>
 <pre id="bibtex-text">@article{chen2026agentap,
   title   = {Tracking Any Point with Agentic Visual Reasoning},
-  author  = {TBD},
+  author  = {Chen, Xuweiyi and Yao, Jin and Mou, Linzhan and Gong, Lei and Liu, Di and Zhang, Cheng
+             and Ma, Ziqiao and Xu, Sihan and Harley, Adam W. and Qian, Shengyi and Cheng, Zezhou},
   journal = {arXiv preprint},
   year    = {2026}
 }</pre>
@@ -336,6 +473,108 @@
     document.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     update();
+
+    // Localization precision: GPT-6 Astra on TrackingBench, 1,579 visible queries
+    // (paper figures/data/analysis_d_localization_precision.csv).
+    (function () {
+      const el = document.getElementById("prec");
+      if (!el) return;
+      const T = [1, 2, 4, 8, 16];
+      const DIRECT = [23.81, 42.05, 64.34, 79.48, 87.14], AGENT = [40.22, 60.92, 78.21, 86.64, 91.01];
+      const X = i => 10 + 20 * i, Y = v => 100 - v;     // percent of the plot box
+      const h = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html) n.innerHTML = html; return n; };
+      el.appendChild(h("div", "legend",
+        '<span><i class="dot direct" style="position:static;margin:0"></i>Direct, one call</span>' +
+        '<span><i class="dot agent" style="position:static;margin:0"></i>AgenTAP</span>'));
+      el.appendChild(h("div", "yname", "Visible points found (%)"));
+      const plot = h("div", "plot"); el.appendChild(plot);
+      [0, 25, 50, 75, 100].forEach(v => { const g = h("div", "grid", `<span>${v}</span>`); g.style.top = Y(v) + "%"; plot.appendChild(g); });
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(NS, "svg"); svg.setAttribute("viewBox", "0 0 100 100"); svg.setAttribute("preserveAspectRatio", "none");
+      const pts = a => a.map((v, i) => `${X(i)},${Y(v)}`);
+      const band = document.createElementNS(NS, "path"); band.setAttribute("class", "band");
+      band.setAttribute("d", "M" + pts(AGENT).join("L") + "L" + pts(DIRECT).reverse().join("L") + "Z"); svg.appendChild(band);
+      [[DIRECT, "var(--c-direct)"], [AGENT, "var(--c-agent)"]].forEach(([a, c]) => {
+        const path = document.createElementNS(NS, "path"); path.setAttribute("d", "M" + pts(a).join("L")); path.style.stroke = c; svg.appendChild(path);
+      });
+      plot.appendChild(svg);
+      const guide = h("div", "guide"); plot.appendChild(guide);
+      const tip = h("div", "tip"); el.appendChild(tip);
+      T.forEach((t, i) => {
+        [[DIRECT[i], "direct"], [AGENT[i], "agent"]].forEach(([v, c]) => { const d = h("div", "dot " + c); d.style.left = X(i) + "%"; d.style.top = Y(v) + "%"; plot.appendChild(d); });
+        const g = h("div", "gain", "+" + (AGENT[i] - DIRECT[i]).toFixed(1)); g.style.left = X(i) + "%"; g.style.top = Y(AGENT[i]) + "%"; plot.appendChild(g);
+        const col = h("div", "col"); col.style.left = X(i) + "%"; col.tabIndex = 0;
+        col.setAttribute("aria-label", `Within ${t} pixel${t > 1 ? "s" : ""}: direct ${DIRECT[i].toFixed(1)}%, AgenTAP ${AGENT[i].toFixed(1)}%`);
+        const show = () => {
+          guide.style.left = X(i) + "%"; guide.style.opacity = ".35";
+          tip.innerHTML = `<b>Within ${t} px</b> &nbsp;Direct ${DIRECT[i].toFixed(1)}% &rarr; AgenTAP ${AGENT[i].toFixed(1)}%`;
+          tip.style.display = "block";
+          const r = el.getBoundingClientRect(), pr = plot.getBoundingClientRect();
+          const cx = pr.left - r.left + pr.width * X(i) / 100;
+          tip.style.left = Math.min(Math.max(cx - tip.offsetWidth / 2, 8), r.width - tip.offsetWidth - 8) + "px";
+          tip.style.top = (pr.bottom - r.top - tip.offsetHeight - 8) + "px";   // the empty band above the axis
+        };
+        const hide = () => { guide.style.opacity = "0"; tip.style.display = "none"; };
+        col.addEventListener("mouseenter", show); col.addEventListener("focus", show);
+        col.addEventListener("mouseleave", hide); col.addEventListener("blur", hide);
+        plot.appendChild(col);
+      });
+      const xrow = h("div", "xrow"); T.forEach((t, i) => { const sp = h("span", "", String(t)); sp.style.left = X(i) + "%"; xrow.appendChild(sp); });
+      el.appendChild(xrow);
+      el.appendChild(h("div", "xname", "Distance to the true location (pixels)"));
+    })();
+
+    // Ranking chart: APD on TrackingBench, two input images (paper Table 1, Overall APD).
+    (function () {
+      const el = document.getElementById("rank");
+      if (!el) return;
+      const DATA = [["Claude Fable 5.2", 52.7, 71.7], ["GPT-6 Astra", 59.4, 71.4], ["GPT-6.1 Sol", 56.8, 70.8],
+        ["Muse Wonder Full", 42.7, 69.2], ["Claude Opus 5.5", 49.8, 68.2], ["Inkling 2 Small", 33.4, 64.1],
+        ["Qwen3.8-27B", 26.0, 57.5], ["Gemma-4-31B-it", 28.5, 50.8]];
+      const REFS = [[57.3, "Best two-image expert"], [67.9, "Best full-video tracker"]];
+      const LO = 20, HI = 80, x = v => (100 * (v - LO) / (HI - LO)) + "%";
+      const h = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html) n.innerHTML = html; return n; };
+      el.appendChild(h("div", "legend",
+        '<span><i class="dot direct" style="position:static;margin:0"></i>Direct, one call</span>' +
+        '<span><i class="dot agent" style="position:static;margin:0"></i>AgenTAP</span>'));
+      const head = h("div", "head"); head.appendChild(h("div")); const ht = h("div", "track"); head.appendChild(ht); head.appendChild(h("div"));
+      REFS.forEach(([v, label], i) => { const l = h("div", "reflabel", label + " " + v.toFixed(1)); l.style.left = x(v); l.style.top = (i * 18 + 2) + "px"; ht.appendChild(l); });
+      el.appendChild(head);
+      const body = h("div"); body.style.position = "relative"; el.appendChild(body);
+      const tip = h("div", "tip"); el.appendChild(tip);
+      DATA.forEach(([name, d, a]) => {
+        const row = h("div", "row"); row.tabIndex = 0;
+        row.setAttribute("aria-label", `${name}: direct ${d.toFixed(1)}, AgenTAP ${a.toFixed(1)} APD`);
+        row.appendChild(h("div", "name", name));
+        const t = h("div", "track");
+        const bar = h("div", "bar"); bar.style.left = x(d); bar.style.width = (100 * (a - d) / (HI - LO)) + "%"; t.appendChild(bar);
+        const dd = h("div", "dot direct"); dd.style.left = x(d); t.appendChild(dd);
+        const da = h("div", "dot agent"); da.style.left = x(a); t.appendChild(da);
+        row.appendChild(t); row.appendChild(h("div", "val", a.toFixed(1)));
+        const show = () => {
+          tip.innerHTML = `<b>${name}</b> &nbsp;Direct ${d.toFixed(1)} &rarr; AgenTAP ${a.toFixed(1)} (+${(a - d).toFixed(1)})`;
+          tip.style.display = "block";
+          const r = el.getBoundingClientRect(), dr = da.getBoundingClientRect();
+          const left = Math.min(Math.max(dr.left - r.left - tip.offsetWidth / 2, 8), r.width - tip.offsetWidth - 8);
+          tip.style.left = left + "px"; tip.style.top = (dr.top - r.top - tip.offsetHeight - 10) + "px";
+        };
+        const hide = () => { tip.style.display = "none"; };
+        row.addEventListener("mouseenter", show); row.addEventListener("focus", show);
+        row.addEventListener("mouseleave", hide); row.addEventListener("blur", hide);
+        body.appendChild(row);
+      });
+      const refs = h("div", "refs"); body.appendChild(refs);
+      const place = () => {
+        const first = body.querySelector(".track"); if (!first) return;
+        const b = body.getBoundingClientRect(), f = first.getBoundingClientRect();
+        refs.style.left = (f.left - b.left) + "px"; refs.style.width = f.width + "px"; refs.style.top = "0"; refs.style.bottom = "0";
+      };
+      REFS.forEach(([v]) => { const r = h("div", "ref"); r.style.left = x(v); refs.appendChild(r); });
+      const axis = h("div", "axis"); axis.appendChild(h("div")); const ticks = h("div", "ticks");
+      for (let v = LO; v <= HI; v += 10) { const s = h("span", "", String(v)); s.style.left = x(v); ticks.appendChild(s); }
+      axis.appendChild(ticks); axis.appendChild(h("div", "unit", "APD")); el.appendChild(axis);
+      place(); window.addEventListener("resize", place);
+    })();
 
     document.getElementById("copy").addEventListener("click", e => {
       navigator.clipboard.writeText(document.getElementById("bibtex-text").textContent).then(() => {
