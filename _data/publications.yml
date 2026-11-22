@@ -14,6 +14,14 @@ main:
     conference_short: arXiv 2026
     conference: arXiv preprint, 2026.
 
+  - title: "PoinTTT: Recurrent Point Transformer via Test-Time Training"
+    authors: "Wentao Zhou, Xuweiyi Chen, Charles Saunders, Aruni RoyChowdhury, Zezhou Cheng"
+    pdf_soon: true
+    code: https://github.com/UVA-Computer-Vision-Lab/pointtt
+    image: ./assets/img/teaser_pointttt.jpg
+    conference_short: arXiv 2026
+    conference: arXiv preprint, 2026.
+
   - title: "WildRayZer: Self-supervised Large View Synthesis in Dynamic Environments"
     authors: "Xuweiyi Chen, Wentao Zhou, Zezhou Cheng"
     pdf: https://arxiv.org/abs/2601.10716
