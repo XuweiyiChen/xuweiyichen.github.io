@@ -16,7 +16,8 @@
     {% endif %}
   </div>
   <div class="col-sm-9" style="position: relative;padding-right: 15px;padding-left: 20px;">
-      <div class="title"><a href="{{ link.pdf | default: link.blog }}">{{ link.title }}</a></div>
+      {% capture title_href %}{% if link.pdf %}{{ link.pdf }}{% elsif link.blog and site.show_blog %}{{ link.blog }}{% endif %}{% endcapture %}
+      <div class="title"><a{% if title_href != "" %} href="{{ title_href }}"{% endif %}>{{ link.title }}</a></div>
       <div class="author">{{ link.authors }}</div>
       <div class="periodical"><em>{{ link.conference }}</em>
       </div>
@@ -33,7 +34,7 @@
         {% if link.page %} 
         <a href="{{ link.page }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Project Page</a>
         {% endif %}
-        {% if link.blog %}
+        {% if link.blog and site.show_blog %}
         <a href="{{ link.blog }}" class="btn btn-sm z-depth-0" role="button" style="font-size:12px;">Blog</a>
         {% endif %}
         {% if link.video %} 

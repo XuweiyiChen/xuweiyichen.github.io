@@ -72,7 +72,9 @@ I currently focus on two themes:
 - **[Aug. 2022]** Joined the SLED lab at the University of Michigan.
 
 
+{% if site.show_blog %}
 {% include_relative _includes/blog.md %}
+{% endif %}
 
 {% include_relative _includes/publications.md %}
 
