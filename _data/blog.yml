@@ -1,7 +1,7 @@
 # Blog posts shown in the Blog section of the homepage (_includes/blog.md), newest first.
 posts:
   - title: "Correspondence Needs Reasoning"
-    subtitle: "Why tracking a point is neither a semantic nor a geometric problem"
+    subtitle: "Why tracking a point takes more than semantics or geometry"
     date: "Nov. 2026"
     link: ./blog/agentap/
     image: ./assets/img/teaser_agentap.jpg

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Correspondence Needs Reasoning | Xuweiyi Chen</title>
-  <meta name="description" content="Why tracking a point is neither a semantic nor a geometric problem.">
+  <meta name="description" content="Why tracking a point takes more than semantics or geometry.">
   <meta property="og:title" content="Correspondence Needs Reasoning">
-  <meta property="og:description" content="Why tracking a point is neither a semantic nor a geometric problem.">
+  <meta property="og:description" content="Why tracking a point takes more than semantics or geometry.">
   <meta property="og:image" content="https://xuweiyichen.github.io/blog/agentap/img/teaser.jpg">
   <link rel="icon" media="(prefers-color-scheme:light)" href="../../assets/img/favicon.png" type="image/png">
   <link rel="icon" media="(prefers-color-scheme:dark)" href="../../assets/img/favicon-dark.png" type="image/png">
@@ -84,7 +84,7 @@
     /* Body */
     .page {
       max-width: 1240px; margin: 0 auto; padding: 88px 28px 120px;
-      display: grid; grid-template-columns: 1fr minmax(0, var(--text)) 1fr; column-gap: 72px;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, var(--text)) minmax(0, 1fr); column-gap: 72px;
     }
     nav.toc { grid-column: 1; position: sticky; top: 96px; align-self: start; }
     nav.toc .label { font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin: 0 0 16px; }
@@ -267,7 +267,7 @@
   <header class="hero">
     <div class="kicker">Essay &middot; November 2026</div>
     <h1>Correspondence Needs Reasoning</h1>
-    <p class="subtitle">Why tracking a point is neither a semantic nor a geometric problem</p>
+    <p class="subtitle">Why tracking a point takes more than semantics or geometry</p>
     <div class="authors">
       <div class="author">
         <div class="who"><a href="../../">Xuweiyi Chen</a></div>
@@ -289,8 +289,8 @@
     <nav class="toc" aria-label="Contents">
       <div class="label">Contents</div>
       <ol>
-        <li><a href="#not-semantics">Why Not Semantics</a></li>
-        <li><a href="#not-geometry">Why Not Geometry</a></li>
+        <li><a href="#not-semantics">Why Semantics Is Not Enough</a></li>
+        <li><a href="#not-geometry">Why Geometry Is Not Enough</a></li>
         <li><a href="#reasoning">Why Reasoning</a></li>
         <li><a href="#agentap">AgenTAP</a></li>
         <li><a href="#results">Results</a></li>
@@ -317,7 +317,8 @@
 
       <div class="bet">
         <span class="tag">The bet</span>
-        <p>Point correspondence is neither a semantic problem nor a geometric one. Solving it takes reasoning.</p>
+        <p>Point correspondence is not only a semantic problem or only a geometric one. Solving it takes reasoning that
+          uses both.</p>
       </div>
 
       <div class="note">
@@ -326,7 +327,7 @@
           and some of it is opinion rather than established fact. We used an LLM to help edit the text.</p>
       </div>
 
-      <h2 id="not-semantics">Why Not Semantics</h2>
+      <h2 id="not-semantics">Why Semantics Is Not Enough</h2>
       <p>VLMs are very good at semantics. They can name objects, describe their parts, and
         tell you where things are in an image. So it is natural to ask whether they can also follow a point.</p>
       <p>The problem is that semantics answers a different question. It tells you what something is. Correspondence
@@ -334,8 +335,9 @@
         in different places. Even on a single mug, &ldquo;the rim near the handle&rdquo; describes an area, not one
         pixel.</p>
       <p>We see this when we ask VLMs directly. Given only the two images, GPT-6 Astra puts 87.1% of visible points
-        within 16 pixels of the correct location, but only 23.8% within one pixel. In other words, it usually finds the
-        right area but not the exact spot. Some of its other mistakes pick the same part on a similar-looking object, a
+        within 16 pixels of the correct location, but only 23.8% within one pixel. It usually finds the right area but not the exact spot. Part of the reason is that it looks at each image once, as a whole,
+        and cannot zoom in on the spot it has in mind. Understanding the scene gets it close. Getting the exact pixel takes a
+        closer look. Some of its other mistakes pick the same part on a similar-looking object, a
         known kind of VLM hallucination<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
       <figure>
         <div class="prec" id="prec" role="img" aria-label="Share of visible points GPT-6 Astra places within 1, 2, 4, 8 and 16 pixels: direct prediction 23.8, 42.1, 64.3, 79.5, 87.1 percent, AgenTAP 40.2, 60.9, 78.2, 86.6, 91.0 percent"></div>
@@ -344,7 +346,7 @@
           helps most at one and two pixels.</figcaption>
       </figure>
 
-      <h2 id="not-geometry">Why Not Geometry</h2>
+      <h2 id="not-geometry">Why Geometry Is Not Enough</h2>
       <p>The other approach ignores what things are. Image matchers<sup class="cite"><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup> look for pixels that look alike in two
         views. Point trackers<sup class="cite"><a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup> follow a surface from frame to frame using local appearance and smooth motion.
         When the surface stays in view and looks about the same, these methods are fast and accurate.</p>
@@ -424,14 +426,15 @@
       <p>This is not cheap. Each query uses 141K to 184K input tokens. Sharing one session across 16 points cuts that by
         56 to 70% with similar accuracy. We think this is the direction to push: share the work across points and frames,
         and later distill it into smaller models that run as fast as a tracker.</p>
-      <p>What excites us most is being able to find a point again after it comes back into view. That gives long 3D
-        trajectories in everyday video, which can be used to train vision models and robots that learn from people. If
-        this view is right, future progress in correspondence will come from better reasoning as much as from better
+      <p>What excites us most is being able to find a point again after it comes back into view. We used AgenTAP this way
+        to build EgoTAP-4D, a dataset of 3D point tracks over 297.2 hours of video from head-mounted cameras. Adding it to
+        the training data of a 3D point tracker improves that tracker on average. Long trajectories like these could also
+        help robots learn from people. If this view is right, future progress in correspondence will come from better reasoning as much as from better
         features.</p>
 
       <h2 id="references">References</h2>
       <ol class="refs">
-        <li id="ref-1">Xuweiyi Chen et al. Multi-Object Hallucination in Vision Language Models. <em>NeurIPS</em>, 2024.</li>
+        <li id="ref-1">Yifan Li et al. Evaluating Object Hallucination in Large Vision-Language Models. <em>EMNLP</em>, 2023.</li>
         <li id="ref-2">David G. Lowe. Distinctive Image Features from Scale-Invariant Keypoints. <em>IJCV</em>, 2004.</li>
         <li id="ref-3">Johan Edstedt et al. RoMa v2: Harder Better Faster Denser Feature Matching. <em>ECCV</em>, 2026.</li>
         <li id="ref-4">Adam W. Harley et al. AllTracker: Efficient Dense Point Tracking at High Resolution. <em>ICCV</em>, 2025.</li>
