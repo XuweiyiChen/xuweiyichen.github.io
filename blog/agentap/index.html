@@ -202,8 +202,11 @@
     .stat .n .and { font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--muted); margin: 0 4px; }
     .stat .sub { font-size: 13px; color: var(--muted); }
     .stat.agent { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
-    .stat.agent .who, .stat.agent .n { color: var(--accent); }
-    .bet.quote p { font-size: 1.7rem; line-height: 1.35; }
+    .stat.agent .who, .stat.agent .n { color: var(--accent); }    .bet.quote p { font-size: 1.7rem; line-height: 1.35; }
+    .said { margin: 0 0 14px; padding: 14px 18px; border-radius: 12px; background: var(--soft); border: 1px solid var(--rule); }
+    .said .tag { display: inline-block; font: 600 11.5px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); margin: 0 0 8px; }
+    .said p { margin: 0; font: italic 400 1.02em/1.6 var(--serif); color: var(--ink); }
     @media (max-width: 640px) {
       .rank { --name: 112px; --val: 34px; --gap: 10px; padding: 14px 12px 12px; font-size: 12.5px; }
       .bet.quote p { font-size: 1.4rem; }
@@ -389,6 +392,16 @@
         location from landmarks, and <code>frame</code> to look at the frames in between. The model first gives its own
         answer. After that, it can see suggestions from existing trackers. It treats them as guesses that still need
         checking, and it keeps checking and adjusting until the evidence agrees.</p>
+      <p>Here is what this looks like in two recorded sessions. In the first, the suggestion from an expert model lands on
+        the wrong surface. In the second, it is a few pixels off.</p>
+      <div class="said">
+        <span class="tag">AgenTAP</span>
+        <p>The marked point is on the plate, just behind and to the left of the doughnut. The automatic match lands on the table, so I&rsquo;m using the plate&rsquo;s rim details to refine the position.</p>
+      </div>
+      <div class="said">
+        <span class="tag">AgenTAP</span>
+        <p>The point is visible on the shorts. The nearby yellow stripe places it slightly left of the matcher&rsquo;s suggestion.</p>
+      </div>
       <figure class="wide">
         <a class="figcard" href="img/fig_agent.webp"><img src="img/fig_agent.webp" width="2200" height="932" loading="lazy" alt="The AgenTAP procedure: initial prediction, optional expert proposals, and iterative visual verification with tools"></a>
         <figcaption>One AgenTAP session. The model makes a first guess, can look at tracker suggestions, and then uses tools to
@@ -396,11 +409,10 @@
       </figure>
 
       <h2 id="results">Results</h2>
-      <p>We tested this on TrackingBench, a set of 2,000 queries from 272 real videos across six domains. The chart below
-        ranks eight VLMs. Every one of them gets better with AgenTAP. On the chart's measure, APD, seven of the eight end up ahead of every
-        expert model that sees the same two images. GPT-6 Astra, using only two frames, also beats every tracker that sees the
-        whole video, both in how close its points are (APD) and in judging visibility (OA). Given the same input as the
-        trackers, it beats all of them on all four metrics we report.</p>
+      <p>We tested this on TrackingBench, 2,000 queries from 272 real videos. The chart ranks eight VLMs. Every one of them
+        gets better with AgenTAP, and seven of the eight end up to the right of the best expert model that sees the same two
+        images. With GPT-6 Astra, AgenTAP beats every expert model we tested when both get the same input, whether that is
+        two frames or the whole video.</p>
       <figure class="wide">
         <div class="rank" id="rank" role="img" aria-label="APD of eight VLMs on TrackingBench with two images, direct prediction and AgenTAP, against the best two-image expert model (57.3) and the best full-video tracker (67.9)"></div>
         <figcaption>APD for each VLM with two input images, answering directly in one call and with AgenTAP. APD is the share of
@@ -408,9 +420,8 @@
           TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup>. The dashed lines show the best expert model with two images (AllTracker) and the best
           tracker with the full video (AllTracker at high resolution).</figcaption>
       </figure>
-      <p>Most of the gain is in the last few pixels. At 16 pixels, AgenTAP adds only 3.9 points, because direct answers
-        are already close. At one and two pixels it adds 16.4 and 18.9. Tools also help weaker models more. The gap
-        between GPT-6 Astra and Inkling 2 Small drops from 26.0 to 7.3 APD.</p>
+      <p>Most of the gain comes from the last few pixels, and weaker models gain the most. The gap between GPT-6 Astra and
+        Inkling 2 Small shrinks from 26.0 to 7.3 APD.</p>
       <div class="bet quote">
         <span class="tag">From the paper</span>
         <p>VLM reasoning has advanced from objects to individual pixels.</p>
