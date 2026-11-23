@@ -59,6 +59,7 @@ html[lang="zh"] .toc a{font-family:var(--zh);font-size:13.5px;letter-spacing:.02
 .toc a:hover{color:var(--ink);text-decoration:none}
 .toc .bar{position:relative;background:var(--rule);border-radius:2px;overflow:hidden}
 .toc .bar i{position:absolute;left:0;right:0;top:0;height:0;background:var(--accent);border-radius:2px}
+.toc .pt{position:absolute;left:-5px;top:0;width:13px;height:13px;margin-top:-6.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--paper);transition:top .14s linear}
 .toc .n{padding-top:5px;font:700 18px/1 var(--hand-en);color:var(--faint)}
 .toc .t{padding:5px 0}
 .toc a.cur{color:var(--ink);font-weight:600} .toc a.cur .n,.toc a.done .n{color:var(--accent)}
@@ -122,7 +123,8 @@ html[lang="zh"] .essay h2{font:900 clamp(27px,2.8vw,38px)/1.3 var(--zh);letter-s
 .essay h2.go .w{transform:none;transition:transform .8s cubic-bezier(.16,1,.3,1) calc(var(--i) * 55ms)}
 .essay code{font:400 .8em var(--mono);background:var(--wash);border-radius:5px;padding:1px 5px;letter-spacing:0}
 ul.tools{list-style:none;margin:0 0 1.3em;padding:0}
-ul.tools li{display:grid;grid-template-columns:7.5em 1fr;column-gap:14px;align-items:baseline;padding:.42em 0;border-top:1px solid var(--rule)}
+ul.tools li{display:grid;grid-template-columns:112px 6.6em 1fr;column-gap:14px;align-items:center;padding:.3em 0;border-top:1px solid var(--rule)}
+ul.tools svg{display:block;width:112px;height:60px;overflow:visible}
 ul.tools li:last-child{border-bottom:1px solid var(--rule)}
 sup.cite{font:600 .6em/0 var(--en);margin-left:1px}
 .bet{margin:2.3em 0 2.1em;font:600 italic clamp(25px,2.6vw,34px)/1.3 var(--en);letter-spacing:-.01em;color:var(--ink)}
@@ -167,7 +169,95 @@ html[lang="zh"] .tally .n i{font-size:.34em}
 .said .caret{display:inline-block;width:.5em;height:1em;margin-left:2px;vertical-align:-.12em;background:var(--accent);animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 
+/* small hand-drawn scenes inside the essay */
+.scene .stage{position:relative}
+.scene svg{display:block;width:100%;height:auto;overflow:visible}
+.scap{position:absolute;left:2%;bottom:1%;margin:0;font:900 clamp(17px,2.3vw,30px)/1.1 var(--en);letter-spacing:-.015em;color:var(--ink);pointer-events:none;white-space:nowrap}
+html[lang="zh"] .scap{font:900 clamp(16px,2.1vw,27px)/1.2 var(--zh);letter-spacing:.02em}
+.scap .u{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .02em .14em;margin:-.08em 0 -.14em}
+.scap .i{display:inline-block}
+.snote{position:absolute;transform:translate(-50%,-50%);font:700 clamp(15px,1.9vw,24px)/1.05 var(--hand-en);color:var(--ink);white-space:nowrap;pointer-events:none;opacity:0}
+html[lang="zh"] .snote{font:400 clamp(13px,1.6vw,20px)/1.2 var(--hand-zh)}
+.snote.big{font:900 clamp(24px,3.4vw,44px)/1 var(--en) !important;color:var(--soft)}
+.snote .tick{color:var(--green)}
+.sreplay{position:absolute;right:1%;top:0;background:none;border:0;padding:4px;font:700 20px/1 var(--hand-en);color:var(--soft);cursor:pointer}
+html[lang="zh"] .sreplay{font:400 17px/1 var(--hand-zh)}
+.sreplay:hover{color:var(--ink)}
+
+/* findings and counters */
+.find{margin:2.5em 0 .7em;font:600 clamp(23px,2.3vw,29px)/1.25 var(--en);letter-spacing:-.012em;color:var(--ink)}
+html[lang="zh"] .find{font:900 clamp(21px,2vw,26px)/1.5 var(--zh);letter-spacing:.03em}
+.find .lab{display:block;margin-bottom:.2em;font:700 23px/1 var(--hand-en);color:var(--accent);letter-spacing:0}
+html[lang="zh"] .find .lab{font:400 20px/1.2 var(--hand-zh)}
+.find + figure{margin-top:1.2em}
+.strip{display:grid;grid-template-columns:1.25fr repeat(4,1fr);gap:10px 24px;margin:1.6em 0 .4em;color:var(--ink)}
+.strip b{display:block;font:900 clamp(32px,3.6vw,46px)/1 var(--en);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.strip div > span{display:block;margin-top:5px;font:700 21px/1.1 var(--hand-en);color:var(--soft)}
+html[lang="zh"] .strip div > span{font:400 16px/1.3 var(--hand-zh)}
+.tally .n i{font-style:normal}
+
 /* charts */
+.still, .still *{transition:none !important}
+.switch{display:flex;gap:8px 26px;flex-wrap:wrap;align-items:center;margin:0 0 12px;font:700 22px/1 var(--hand-en);color:var(--soft)}
+html[lang="zh"] .switch{font:400 18px/1.1 var(--hand-zh)}
+.switch .grp{display:flex;gap:14px}
+.switch button{background:none;border:0;padding:3px 0;font:inherit;color:inherit;cursor:pointer}
+.switch button.m{font:700 22px/1 var(--hand-en)}
+.switch button:hover{color:var(--ink)}
+.switch button.on{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.board{--name:230px;position:relative;font:400 15px/1.3 var(--en);color:var(--ink)}
+html[lang="zh"] .board, html[lang="zh"] .dv, html[lang="zh"] .sc{font-family:var(--zh)}
+.board .legend,.dv .legend,.sc .legend{display:flex;gap:6px 20px;flex-wrap:wrap;color:var(--soft);font-size:15px;margin:0 0 10px}
+.board .legend span,.dv .legend span,.sc .legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{display:inline-block;width:22px;height:11px;border-radius:0 3px 3px 0}
+.sw.agent{background:var(--c-agent)} .sw.spec{background:var(--soft)} .sw.human{background:var(--ink)}
+.sw.direct{border:2px solid var(--c-direct);border-left:0} .sw.zoom{background:var(--c-agent);opacity:.45}
+.board .rows{position:relative}
+.board .row{position:absolute;left:0;right:0;height:30px;display:grid;grid-template-columns:var(--name) 1fr 46px;column-gap:12px;align-items:center;
+  transition:top .85s cubic-bezier(.16,1,.3,1)}
+.board .row.head{font:700 22px/1 var(--hand-en);color:var(--accent);align-items:end;padding-bottom:3px}
+.board .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board .name small{color:var(--soft);font-size:.87em;margin-left:.25em}
+.board .row.agent .name,.board .row.human .name{font-weight:600}
+.board .track{position:relative;height:14px}
+.board .b{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:0 4px 4px 0;transition:width .95s cubic-bezier(.16,1,.3,1)}
+.board.go .b{width:var(--w)}
+.b.agent{background:var(--c-agent)} .b.zoom{background:var(--c-agent);opacity:.45} .b.spec{background:var(--soft)} .b.human{background:var(--ink)}
+.b.direct{border:2px solid var(--c-direct);border-left:0}
+.board .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.board .axis{display:grid;grid-template-columns:var(--name) 1fr 46px;column-gap:12px;margin-top:6px;height:20px;color:var(--faint);font-size:13px;font-variant-numeric:tabular-nums}
+.board .axis .ticks{position:relative;border-top:1px solid var(--rule)}
+.board .axis .ticks span{position:absolute;top:3px;transform:translateX(-50%)}
+.board .axis .unit{text-align:right}
+.lc .legend i.ln{display:inline-block;width:24px;height:0;border-top:3px solid}
+.lc .plot .dot.hollow{background:var(--paper);border:2px solid}
+.lc .endlab{position:absolute;left:calc(100% + 0px);transform:translate(8px,-50%);white-space:nowrap;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;opacity:0}
+.lc.go .endlab{opacity:1;transition:opacity .4s 1.3s}
+.lc .plot{margin-right:44px} .lc .xrow{margin-right:44px} .lc .xname{margin-right:44px}
+.dv{font:400 15px/1.3 var(--en);color:var(--ink)}
+.dv .r{display:grid;grid-template-columns:54px 110fr 420fr;align-items:center;height:34px}
+.dv .lab{color:var(--soft);font-variant-numeric:tabular-nums}
+.dv .l,.dv .rt{position:relative;height:16px;display:flex;align-items:center}
+.dv .l{justify-content:flex-end;border-right:1.5px solid var(--ink)}
+.dv .r i{display:block;height:100%;width:0;transition:width .95s cubic-bezier(.16,1,.3,1);transition-delay:var(--d)}
+.dv .l i{background:var(--soft);border-radius:4px 0 0 4px} .dv .rt i{background:var(--c-agent);border-radius:0 4px 4px 0}
+.dv.go .r i{width:var(--w)}
+.dv b{font-weight:600;font-variant-numeric:tabular-nums;margin:0 8px}
+.sc{font:400 15px/1.3 var(--en);color:var(--ink)}
+.sc .wrap{position:relative;width:min(100%,500px);margin:0 auto;padding:0 0 54px 62px}
+.sc .plot{position:relative;aspect-ratio:1;border-left:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sc .plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sc .g{position:absolute;color:var(--faint);font-size:13px;font-variant-numeric:tabular-nums}
+.sc .gx{top:calc(100% + 6px);transform:translateX(-50%)} .sc .gy{right:calc(100% + 8px);transform:translateY(50%)}
+.sc .pt{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;border:2px solid var(--c-direct);background:var(--paper);
+  opacity:0;transform:scale(.2);outline:none;cursor:default}
+.sc.go .pt{opacity:1;transform:none;transition:opacity .2s,transform .55s cubic-bezier(.34,1.7,.64,1);transition-delay:var(--d)}
+.sc .pt:hover,.sc .pt:focus-visible{background:var(--c-direct)}
+.sc .pl{position:absolute;transform:translate(10px,-50%);white-space:nowrap;font-size:13px;color:var(--soft)}
+.sc .pl.left{transform:translate(calc(-100% - 10px),-50%)}
+.sc .ax{position:absolute;color:var(--soft);font-size:14px;white-space:nowrap}
+.sc .axx{left:62px;right:0;bottom:0;text-align:center} .sc .axy{left:0;top:0;bottom:54px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg)}
+
 .prec,.rank{position:relative;font:400 15px/1.3 var(--en);color:var(--ink)}
 html[lang="zh"] .prec,html[lang="zh"] .rank{font-family:var(--zh)}
 .prec .legend,.rank .legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--soft);font-size:15px;margin:0 0 8px}
@@ -195,6 +285,7 @@ html[lang="zh"] .prec,html[lang="zh"] .rank{font-family:var(--zh)}
 .prec .xname{margin:6px 0 0 30px;text-align:center;color:var(--soft);font-size:14px}
 .tip{position:absolute;z-index:2;pointer-events:none;display:none;background:var(--ink);color:var(--paper);font-size:12.5px;padding:7px 10px;border-radius:8px;white-space:nowrap}
 .rank{--name:156px;--val:44px;--gap:14px}
+#domains{--name:236px}
 .rank .row,.rank .head,.rank .axis{display:grid;grid-template-columns:var(--name) 1fr var(--val);column-gap:var(--gap);align-items:center}
 .rank .head{height:40px}
 .rank .row{height:36px;border-radius:6px;outline:none}
@@ -204,8 +295,11 @@ html[lang="zh"] .prec,html[lang="zh"] .rank{font-family:var(--zh)}
 .rank .track{position:relative;height:100%}
 .rank .track .dot{top:50%}
 .rank .bar{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--c-agent);opacity:.4;width:0}
-.rank .row .dot.agent{transition:left .95s cubic-bezier(.34,1.45,.64,1);transition-delay:var(--d)}
+.rank .row .dot.agent{left:var(--from);transition:left .95s cubic-bezier(.34,1.45,.64,1);transition-delay:var(--d)}
 .rank .row .bar{transition:width .95s cubic-bezier(.34,1.45,.64,1);transition-delay:var(--d)}
+.rank.go .row .dot.agent{left:var(--to)} .rank.go .row .bar{width:var(--bw)}
+.rank .dot.spec{border:2px solid var(--soft);background:var(--paper)}
+.rank .name small{color:var(--soft);font-size:.87em}
 .rank.go .val{opacity:1;transition:opacity .4s;transition-delay:calc(var(--d) + .6s)}
 .rank .refs{position:absolute;pointer-events:none}
 .rank .ref{position:absolute;top:0;bottom:0;border-left:1.5px dashed var(--soft);opacity:.55}
@@ -243,8 +337,13 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
 @media (max-width:640px){
   .essay{font-size:18.5px;padding-top:9vh} html[lang="zh"] .essay{font-size:17px}
   .rank{--name:112px;--val:34px;--gap:10px;font-size:12.5px}
+  #domains{--name:150px}
+  .board{--name:128px;font-size:12.5px} .board .row{height:28px} .board .name small{display:none}
+  .strip{grid-template-columns:repeat(3,1fr)}
+  .lc .plot,.lc .xrow,.lc .xname{margin-right:40px}
   .prec .plot{height:200px}
   .tally{gap:14px;grid-template-columns:1fr}
+  ul.tools li{grid-template-columns:84px 5.6em 1fr;column-gap:10px} ul.tools svg{width:84px;height:45px}
   .said{padding-left:36px} .said::before{font-size:58px}
   footer{flex-direction:column;gap:6px}
 }
@@ -258,7 +357,7 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
 <div class="progress" id="progress"></div>
 <div class="langfix"><button class="langbtn" data-lang="en">EN</button><button class="langbtn lb-zh" data-lang="zh">中文</button></div>
 
-<nav class="toc" aria-label="Sections">
+<nav class="toc" aria-label="Sections"><i class="pt"></i>
   <a href="#intro"><span class="bar"><i></i></span><span class="n">00</span><span class="t"><span class="en">The question</span><span class="zh">问题</span></span></a>
   <a href="#not-semantics"><span class="bar"><i></i></span><span class="n">01</span><span class="t"><span class="en">Why Semantics Is Not Enough</span><span class="zh">为什么光有语义不够</span></span></a>
   <a href="#not-geometry"><span class="bar"><i></i></span><span class="n">02</span><span class="t"><span class="en">Why Geometry Is Not Enough</span><span class="zh">为什么光有几何不够</span></span></a>
@@ -307,8 +406,8 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
   <p class="zh">这个任务叫点对应（point correspondence）：给定一帧里的一个点，在另一帧里找到物体表面上的同一个点。听上去是件小事，可很多事情都靠它。抓取一个物体，重建一个场景的 4D 模型，从人手操作的视频里学习，都要用到那个精确的点。差几个像素，可能就落到了物体的另一个部位上。</p>
   <p class="en">It is also a good test of whether a model really sees. Knowing that something is a mug is not enough. The model has to find the exact same spot on the mug.</p>
   <p class="zh">这也是检验模型是不是真的“看懂了”的好办法。知道这是一个杯子还不够，模型得在杯子上找到完全相同的那个位置。</p>
-  <p class="en">Here is the example we use throughout. A mug has painted stripes, a small chip in its rim, and a star painted just under the chip. Mark the chip. Someone moves the mug behind a laptop. A minute later the laptop is taken away, and the mug has been turned. Where is the chip now? Can you even see it? The answer has two parts: a pixel location, and whether the point is visible.</p>
-  <p class="zh">下面这个例子会贯穿全文。一个杯子，杯身画着条纹，杯口有一个小缺口，缺口正下方画着一颗小星星。在缺口上做个标记。有人把杯子挪到了笔记本电脑后面。一分钟后电脑被拿开，杯子已经转了个方向。缺口现在在哪？还看得见吗？答案有两部分：一个像素位置，以及这个点是否可见。</p>
+  <p class="en">Here is the example we use throughout. A mug has painted stripes, a small chip in its rim, and a star painted just under the chip. Mark the chip. Someone moves the mug behind a laptop and, while it is hidden, turns it. Then the laptop is taken away. Where is the chip now? Can you even see it? The answer has two parts: a pixel location, and whether the point is visible.</p>
+  <p class="zh">下面这个例子会贯穿全文。一个杯子，杯身画着条纹，杯口有一个小缺口，缺口正下方画着一颗小星星。在缺口上做个标记。有人把杯子挪到笔记本电脑后面，趁它被挡住，把它转了个方向。然后电脑被拿开。缺口现在在哪？还看得见吗？答案有两部分：一个像素位置，以及这个点是否可见。</p>
   <p class="en">There are two common ways to answer. One uses semantics: what the object is and which part you are looking at. The other uses geometry and appearance: which pixels look alike and how surfaces move. We argue that neither is enough alone, and that it takes reasoning to combine them.</p>
   <p class="zh">常见的回答思路有两种。一种靠语义：物体是什么，你看的是哪个部位。另一种靠几何和外观：哪些像素长得像，表面怎么运动。我们想说的是，两者单独用都不够，要靠推理把它们结合起来。</p>
 
@@ -320,6 +419,16 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
   <p class="zh">VLM 很擅长语义。它们能叫出物体的名字，描述物体的各个部位，也能告诉你东西在图里的什么地方。所以很自然会想问：它们能不能也跟住一个点？</p>
   <p class="en">The trouble is that semantics answers a different question. It tells you what something is. Correspondence asks which exact point it is. For our mug, semantics says “on the rim, near the star.” That is an area. The chip is one small spot inside it.</p>
   <p class="zh">麻烦在于，语义回答的是另一个问题。它告诉你这是什么，而点对应问的是：究竟是哪一个点。对我们的杯子，语义会说“在杯口上，靠近星星”。这是一片区域，缺口只是其中很小的一处。</p>
+  <figure class="scene wide" id="scene01">
+    <div class="stage">
+      <svg viewBox="0 0 900 440" aria-hidden="true"><defs></defs></svg>
+      <div class="scap"></div>
+      <div class="snote" data-k="says"></div><div class="snote" data-k="n1"></div><div class="snote" data-k="n2"></div>
+      <button class="sreplay" type="button"><span class="en">replay</span><span class="zh">再看一遍</span></button>
+    </div>
+    <figcaption class="en">Asked in words, a VLM describes an area. Asked for a point, it lands inside that area, a few pixels from the chip.</figcaption>
+    <figcaption class="zh">用语言问，VLM 描述的是一片区域。让它给出一个点，它会落在这片区域里，离缺口差几个像素。</figcaption>
+  </figure>
   <p class="en">We see this when we ask VLMs directly. Given only the two images, GPT-6 Astra puts 87.1% of visible points within 16 pixels of the correct location, but only 23.8% within one pixel. It finds the right area and misses the exact spot.</p>
   <p class="zh">直接问 VLM 就能看到这一点。只给两张图时，GPT-6 Astra 能把 87.1% 的可见点放在离正确位置 16 像素以内，但 1 像素以内的只有 23.8%。它找得到大致区域，却找不准那个位置。</p>
   <p class="en">Part of the reason is how it looks at images. It sees each image once, as a whole, and cannot zoom in on the spot it has in mind. Some of its other mistakes land on the same part of a similar-looking object, a known kind of VLM hallucination<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
@@ -333,15 +442,25 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
   <h2 id="not-geometry"><span class="num">02</span><span class="en">Why Geometry Is Not Enough</span><span class="zh">为什么光有几何不够</span></h2>
   <p class="en">The other approach ignores what things are. Image matchers<sup class="cite"><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup> look for pixels that look alike in two views. Point trackers<sup class="cite"><a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup> follow a surface from frame to frame using local appearance and smooth motion. When the surface stays in view and looks about the same, these methods are fast and accurate.</p>
   <p class="zh">另一种思路不管东西是什么。图像匹配方法<sup class="cite"><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup>在两个视角里找长得像的像素。点追踪器<sup class="cite"><a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup>靠局部外观和平滑的运动，一帧一帧地跟住表面。只要表面一直在画面里、样子变化不大，这些方法又快又准。</p>
-  <p class="en">They break in exactly the cases our mug is about. The stripes all look alike, so “looks alike” can land one stripe over. Once the mug is behind the laptop, there is no motion to follow. When it comes back, the tracker has no memory of what it was tracking. In our experiments, trackers often mark a point that has come back as invisible, so the track is never reconnected.</p>
-  <p class="zh">可它们恰恰会在杯子这个例子里失效。条纹一条条长得都一样，光看“长得像”，很可能错到隔壁那条上。杯子到了电脑后面，就没有运动可以跟了。等它再出现，追踪器已经不记得自己在跟什么。在我们的实验里，追踪器经常把重新出现的点标成不可见，轨迹就再也接不上。</p>
+  <p class="en">They break when something changes while it is out of sight. If the mug is hidden for a moment and nobody touches it, a tracker can pick the point up again where it left it. If someone moves the mug while it is hidden, there was no motion to watch. The tracker has no memory of what it was tracking, and the stripes all look alike, so “looks alike” is no help either.</p>
+  <p class="zh">可一旦东西在视线之外发生了变化，它们就不行了。杯子被挡住一会儿，没人碰它，追踪器还能在原来的地方把点接上。可如果有人在它被挡住时挪动了它，就没有运动可以看了。追踪器不记得自己在跟什么，条纹又一条条长得都一样，“长得像”也帮不上忙。</p>
+  <figure class="scene wide" id="scene02">
+    <div class="stage">
+      <svg viewBox="0 0 900 440" aria-hidden="true"><defs><filter id="sb02" x="-60%" y="-20%" width="220%" height="140%"><feGaussianBlur stdDeviation="0 0"/></filter></defs></svg>
+      <div class="scap"></div>
+      <div class="snote" data-k="trk"></div><div class="snote" data-k="a"></div><div class="snote" data-k="b"></div><div class="snote" data-k="c"></div><div class="snote big" data-k="q"></div>
+      <button class="sreplay" type="button"><span class="en">replay</span><span class="zh">再看一遍</span></button>
+    </div>
+    <figcaption class="en">A tracker follows a point as long as it can watch it move. If the mug is hidden and left alone, the point is still right when it comes back. If the mug is moved while hidden, the tracker keeps pointing at the old place.</figcaption>
+    <figcaption class="zh">只要能看着点运动，追踪器就能跟住它。杯子被挡住但没人动它，再露出来时点还是对的。杯子在被挡住时被挪动了，追踪器就还指着原来的地方。</figcaption>
+  </figure>
   <p class="en">Geometry has one more problem. To carry a point from one view to another, you pick nearby landmarks and assume they move together with the point. That only works if the landmarks are on the same surface. The star is on the mug. The sticker on the laptop is not. Telling those apart is a question about objects and parts, so it needs semantics.</p>
   <p class="zh">几何还有一个问题。要把一个点从一个视角带到另一个视角，你会挑附近的参照点，假设它们和这个点一起运动。这只在参照点和它位于同一个表面上时才成立。星星在杯子上，电脑上的贴纸不在。分清这两者，是关于物体和部位的问题，所以需要语义。</p>
-  <p class="en">The same thing happens in real video. Here are two recordings.</p>
-  <p class="zh">真实视频里也是这样。下面是两段实际录制的例子。</p>
+  <p class="en">The same thing happens in real video. In our experiments, trackers often mark a point that has come back as invisible, so the track is never reconnected. On points that come back in real recordings, the best specialist reaches 79.3 APD when the point is on something that stayed put, and 23.6 when it is on something that moved. AgenTAP with GPT-6 Astra reaches 84.7 and 73.6. Here are two of those recordings.</p>
+  <p class="zh">真实视频里也是这样。在我们的实验里，追踪器经常把重新出现的点标成不可见，轨迹就再也接不上。在真实录像里重新出现的点上，点在没动过的东西上时，最好的专用模型能到 79.3 APD。点在被挪动过的东西上时，只有 23.6。使用 GPT-6 Astra 的 AgenTAP 分别是 84.7 和 73.6。下面是其中两段录像。</p>
   <figure class="wide reveal">
     <a class="photo" href="img/fig_reconnection.webp"><img src="img/fig_reconnection.webp" width="2000" height="975" loading="lazy" alt="Two egocentric recordings in which a box and a person leave the view and come back, with AgenTAP and AllTracker predictions after the return"></a>
-    <div class="tally" id="tally">
+    <div class="tally count" id="tally">
       <div><span class="who">AllTracker</span><span class="n"><b data-to="0">0</b>/10<i><span class="en">and</span><span class="zh">和</span></i><b data-to="1">1</b>/10</span></div>
       <div class="agent"><span class="who">AgenTAP</span><span class="n"><b data-to="10">10</b>/10<i><span class="en">and</span><span class="zh">和</span></i><b data-to="9">9</b>/10</span></div>
       <span class="sub"><span class="en">points found after they come back</span><span class="zh">重新出现后找回的点</span></span>
@@ -353,6 +472,16 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
   <h2 id="reasoning"><span class="num">03</span><span class="en">Why Reasoning</span><span class="zh">为什么需要推理</span></h2>
   <p class="en">Think about how a person finds the chip. They look for something nearby that is easy to find again, like the star. Then they guess: the chip should be right above the star, on the rim. They zoom in on that spot and compare it with the first frame. Maybe the guess is off by the width of a stripe, so they move it. If the star has turned to the far side, they decide the chip is hidden too and say it is not visible.</p>
   <p class="zh">想想人是怎么找到那个缺口的。先找附近一个容易再认出来的东西，比如那颗星星。然后猜：缺口应该就在星星正上方的杯口上。再凑近这个位置，和第一帧比一比。也许猜偏了一条条纹的宽度，那就挪过去。如果星星已经转到了背面，就判断缺口也被挡住了，回答不可见。</p>
+  <figure class="scene wide" id="scene03">
+    <div class="stage">
+      <svg viewBox="0 0 900 440" aria-hidden="true"><defs></defs></svg>
+      <div class="scap"></div>
+      <div class="snote" data-k="la"></div><div class="snote" data-k="lb"></div><div class="snote big" data-k="sign"></div>
+      <button class="sreplay" type="button"><span class="en">replay</span><span class="zh">再看一遍</span></button>
+    </div>
+    <figcaption class="en">Find a landmark, guess from it, compare the two close-ups, and move the guess until they agree.</figcaption>
+    <figcaption class="zh">找一个参照物，从它出发猜一个位置，把两张特写放在一起比，再把猜测挪到两边一致为止。</figcaption>
+  </figure>
   <p class="en">This is what we mean by reasoning. You decide what to look at next based on what you have seen so far, and you change your answer when the evidence does not fit. Semantics tells you where to look and which landmarks to trust. Geometry turns those landmarks into an exact location. Reasoning puts the two together and checks the result.</p>
   <p class="zh">这就是我们说的推理：根据已经看到的东西决定下一步看哪里，证据对不上时就改答案。语义告诉你该看哪里、该信哪些参照点，几何把这些参照点变成精确的位置，推理负责把两者放在一起，并检查结果。</p>
   <p class="en">A model that answers in one shot cannot do this. It sees two full images and cannot zoom in or test a guess. So the model needs tools to look, compare and measure, and it needs to decide for itself when to use them. That is the idea behind AgenTAP.</p>
@@ -386,17 +515,85 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
   </figure>
 
   <h2 id="results"><span class="num">05</span><span class="en">Results</span><span class="zh">结果</span></h2>
-  <p class="en">We tested this on TrackingBench, 2,000 queries from 272 real videos. With GPT-6 Astra, AgenTAP beats every specialist model we tested when both get the same input, whether that is two frames or the whole video.</p>
-  <p class="zh">我们在 TrackingBench 上做了测试，它包含来自 272 段真实视频的 2,000 个查询。用 GPT-6 Astra 时，只要输入相同，不论是两帧还是整段视频，AgenTAP 都超过了我们测试的所有专用模型。</p>
-  <p class="en">Other models gain too. The chart ranks eight VLMs. Every one of them gets better with AgenTAP, and seven of the eight end up ahead of the best specialist model that sees the same two images.</p>
-  <p class="zh">其他模型也受益。下图给八个 VLM 排了名。每一个用上 AgenTAP 都变好了，八个里有七个超过了看同样两张图的最好的专用模型。</p>
+  <p class="en">We tested this on TrackingBench. With GPT-6 Astra, AgenTAP beats every specialist model we tested when both get the same input, whether that is two frames or the whole video.</p>
+  <p class="zh">我们在 TrackingBench 上做了测试。用 GPT-6 Astra 时，只要输入相同，不论是两帧还是整段视频，AgenTAP 都超过了我们测试的所有专用模型。</p>
+  <div class="strip count">
+    <div><b data-to="2000">2,000</b><span><span class="en">queries</span><span class="zh">个查询</span></span></div>
+    <div><b data-to="272">272</b><span><span class="en">real videos</span><span class="zh">段真实视频</span></span></div>
+    <div><b data-to="6">6</b><span><span class="en">domains</span><span class="zh">个领域</span></span></div>
+    <div><b data-to="8">8</b><span><span class="en">VLMs with AgenTAP</span><span class="zh">个用上 AgenTAP 的 VLM</span></span></div>
+    <div><b data-to="5">5</b><span><span class="en">specialist models</span><span class="zh">个专用模型</span></span></div>
+  </div>
+
+  <h3 class="find"><span class="lab"><span class="en">leaderboard</span><span class="zh">排行榜</span></span><span class="en">On the same input, GPT-6 Astra with AgenTAP is ahead of every specialist model.</span><span class="zh">输入相同时，用上 AgenTAP 的 GPT-6 Astra 排在所有专用模型前面。</span></h3>
+  <figure class="wide">
+    <div id="lb" role="img" aria-label="Leaderboard on TrackingBench for two images and for the full video, by APD, AJ and OA"></div>
+    <figcaption class="en">All 2,000 queries. APD is the share of visible points within 1, 2, 4, 8 and 16 pixels of the truth, averaged over the five distances, as in TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup>. OA is how often a model is right about whether the point is visible. AJ counts both. With two images, AgenTAP can see suggestions from RoMa v2 and AllTracker. With the full video, it can see suggestions from AllTracker at high resolution and the frames in between.</figcaption>
+    <figcaption class="zh">全部 2,000 个查询。APD 是可见点落在真实位置 1、2、4、8、16 像素以内的比例在五个距离上的平均，与 TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup> 相同。OA 是模型判断点是否可见的正确率。AJ 把两者合在一起。两张图时，AgenTAP 可以参考 RoMa v2 和 AllTracker 的建议。整段视频时，它可以参考高分辨率 AllTracker 的建议和中间的帧。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">every backbone</span><span class="zh">每个模型</span></span><span class="en">Every VLM gets better, and the weaker ones gain the most.</span><span class="zh">每个 VLM 都变好了，弱的模型提升最多。</span></h3>
   <figure class="wide">
     <div class="rank" id="rank" role="img" aria-label="APD of eight VLMs on TrackingBench with two images, direct prediction and AgenTAP, against the best two-image specialist model (57.3) and the best full-video tracker (67.9)"></div>
-    <figcaption class="en">APD for each VLM with two input images, answering directly in one call and with AgenTAP. APD is the share of visible points within 1, 2, 4, 8 and 16 pixels of the truth, averaged over the five distances, as in TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup>. The dashed lines show the best specialist model with two images (AllTracker) and the best tracker with the full video (AllTracker at high resolution).</figcaption>
-    <figcaption class="zh">每个 VLM 在两张输入图上的 APD，分别是一次调用直接回答和使用 AgenTAP 的结果。APD 是可见点落在真实位置 1、2、4、8、16 像素以内的比例在五个距离上的平均，与 TAP-Vid<sup class="cite"><a href="#ref-6">6</a></sup> 相同。两条虚线分别是两张图条件下最好的专用模型（AllTracker）和使用整段视频时最好的追踪器（高分辨率的 AllTracker）。</figcaption>
+    <figcaption class="en">APD with two input images, answering directly in one call and with AgenTAP. Seven of the eight end up ahead of the best specialist that sees the same two images. The gap between GPT-6 Astra and Inkling 2 Small shrinks from 26.0 to 7.3 APD.</figcaption>
+    <figcaption class="zh">两张输入图上的 APD，分别是一次调用直接回答和使用 AgenTAP 的结果。八个里有七个超过了看同样两张图的最好的专用模型。GPT-6 Astra 和 Inkling 2 Small 之间的差距从 26.0 APD 缩小到 7.3 APD。</figcaption>
   </figure>
-  <p class="en">Most of the gain comes from the last few pixels, and weaker models gain the most. The gap between GPT-6 Astra and Inkling 2 Small shrinks from 26.0 to 7.3 APD.</p>
-  <p class="zh">提升主要来自最后那几个像素，较弱的模型提升最多。GPT-6 Astra 和 Inkling 2 Small 之间的差距从 26.0 APD 缩小到 7.3 APD。</p>
+
+  <h3 class="find"><span class="lab"><span class="en">ablation</span><span class="zh">拆开看</span></span><span class="en">Tools the model picks for itself do most of the work.</span><span class="zh">让模型自己选工具，贡献最大。</span></h3>
+  <figure>
+    <div id="ladder" role="img" aria-label="What each part of AgenTAP adds for GPT-6 Astra and Inkling 2 Small"></div>
+    <figcaption class="en">Fixed zoom-ins show the model preset close-ups around its first answer, and barely help. Picking the better of the two specialists’ suggestions for every point would reach 59.7 APD with two images. GPT-6 Astra passes that with tools alone. Suggestions help the weaker model more.</figcaption>
+    <figcaption class="zh">固定放大是在模型第一次回答的位置周围给它几张预设的特写，几乎没有帮助。两张图时，如果每个点都挑两个专用模型里更准的那个建议，能到 59.7 APD。GPT-6 Astra 只靠工具就超过了它。专用模型的建议对较弱的模型帮助更大。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">frame gap</span><span class="zh">帧间隔</span></span><span class="en">The further apart the two frames, the bigger the lead.</span><span class="zh">两帧隔得越远，领先越多。</span></h3>
+  <figure>
+    <div id="gap" role="img" aria-label="APD by frame gap for AgenTAP with full video and two images, AllTracker at high resolution, and direct prediction"></div>
+    <figcaption class="en">APD on visible targets, by the number of frames between the two images (552, 527, 378 and 122 queries). GPT-6 Astra everywhere except the tracker.</figcaption>
+    <figcaption class="zh">可见目标上的 APD，按两张图之间相隔的帧数分组（分别有 552、527、378、122 个查询）。除追踪器外都使用 GPT-6 Astra。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">reappearance</span><span class="zh">重新出现</span></span><span class="en">When a point comes back, trackers often say it is gone.</span><span class="zh">点重新出现时，追踪器常常说它不见了。</span></h3>
+  <figure>
+    <div class="tally count">
+      <div><span class="who">AllTracker, HR</span><span class="n"><b data-to="124">124</b><i>/ 456</i></span></div>
+      <div class="agent"><span class="who">AgenTAP</span><span class="n"><b data-to="38">38</b><i>/ 456</i></span></div>
+      <span class="sub"><span class="en">reappearing points called invisible, with the full video</span><span class="zh">重新出现却被判成不可见的点（整段视频）</span></span>
+    </div>
+    <figcaption class="en">456 of the visible targets were hidden at some point between the two frames. On them, AgenTAP with GPT-6 Astra reaches 67.4 APD and the tracker 57.5.</figcaption>
+    <figcaption class="zh">可见目标里有 456 个在两帧之间被遮挡过。在这些点上，使用 GPT-6 Astra 的 AgenTAP 达到 67.4 APD，追踪器是 57.5。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">against people</span><span class="zh">和人比</span></span><span class="en">On points that come back, AgenTAP is close to how well two people agree.</span><span class="zh">在重新出现的点上，AgenTAP 接近两个人之间的一致程度。</span></h3>
+  <figure>
+    <div id="audit" role="img" aria-label="Reappearing points labelled by two people: agreement between the two people, AgenTAP and specialist models"></div>
+    <figcaption class="en">Reappearing points in long recordings from head-mounted cameras, labelled by two people who saw no model output (582 point and frame pairs from 49 events). The top bar scores one person against the other.</figcaption>
+    <figcaption class="zh">长时间头戴相机录像里重新出现的点，由两个人在看不到任何模型输出的情况下标注（49 个事件，582 个点和帧的组合）。最上面一条是用一个人的标注去评另一个人。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">checking</span><span class="zh">检查</span></span><span class="en">Checking fixes far more answers than it breaks.</span><span class="zh">检查改对的答案，远多于改错的。</span></h3>
+  <figure>
+    <div id="verify" role="img" aria-label="Answers fixed and broken between the first guess and the final answer at 1, 2, 4, 8 and 16 pixels"></div>
+    <figcaption class="en">Queries that go from wrong to right, and from right to wrong, between the model’s first guess and its final answer, at each distance. GPT-6 Astra, 2,000 queries.</figcaption>
+    <figcaption class="zh">从模型的第一次猜测到最终答案，在每个距离阈值下由错变对和由对变错的查询数。GPT-6 Astra，2,000 个查询。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">domains</span><span class="zh">各个领域</span></span><span class="en">The lead holds in every kind of video.</span><span class="zh">在每一类视频上都领先。</span></h3>
+  <figure class="wide">
+    <div class="rank" id="domains" role="img" aria-label="APD with the full video in six domains: the best tracker in each domain against AgenTAP with GPT-6 Astra"></div>
+    <figcaption class="en">APD with the full video. In each domain, the best of the five trackers against AgenTAP with GPT-6 Astra. The number of queries is in parentheses.</figcaption>
+    <figcaption class="zh">使用整段视频时的 APD。每个领域里，五个追踪器中最好的一个，对比使用 GPT-6 Astra 的 AgenTAP。括号里是查询数。</figcaption>
+  </figure>
+
+  <h3 class="find"><span class="lab"><span class="en">new videos</span><span class="zh">新视频</span></span><span class="en">Models rank the same way on new videos we labelled ourselves.</span><span class="zh">在我们自己标注的新视频上，模型的排名不变。</span></h3>
+  <p class="en">Public videos may have been seen in training. So we labelled 1,814 more queries on 15 new videos.</p>
+  <p class="zh">公开视频可能出现在训练数据里。所以我们又在 15 段新视频上标注了 1,814 个查询。</p>
+  <figure>
+    <div id="heldout" role="img" aria-label="Direct prediction by eleven VLMs: APD on TrackingBench against APD on held-out videos"></div>
+    <figcaption class="en">Direct prediction by eleven VLMs. Each dot is one model. Nine of the eleven score lower on TrackingBench than on the new videos.</figcaption>
+    <figcaption class="zh">十一个 VLM 的直接回答。每个点是一个模型。十一个里有九个在 TrackingBench 上的得分比在新视频上低。</figcaption>
+  </figure>
+
   <p class="bet en"><span class="tag">from the paper</span>VLM reasoning has advanced from objects to <span class="mark">individual pixels.</span></p>
   <p class="bet zh"><span class="tag">论文里的一句话</span>VLM 的推理，已经从物体推进到了<span class="mark">单个像素。</span></p>
   <p class="en">It still makes mistakes. When two parts look alike, like the two halves of a broken eggshell, the agent can pick the wrong one, because zooming in shows nothing that tells them apart.</p>
@@ -470,13 +667,13 @@ let lang = "en";
 // ================================================================== the opening: timeline (seconds)
 const T = {
   draw: [0.05, 0.95], drop: [0.8, 1.12], ripple: [1.12, 1.8],
-  cap1: [0.9, 2.75], cap2: [2.9, 4.75], cap3: [5.0, 6.35],
-  wind: [3.05, 3.35], toss: [3.35, 4.55], lapIn: [3.78, 4.38], land: 4.55, swap: 5.2, lapOut: [6.0, 6.45],
-  q: [6.6, 12.9],
-  sem: [7.5, 8.0], geo: [8.4, 8.75],
-  lens: [9.3, 9.7], lead: [9.45, 9.75], ring: [9.9, 10.45], rea: [9.9, 10.35],
-  drop2: [10.6, 10.82], line: [10.95, 11.4], fix: [11.55, 11.95], cross: [12.05, 12.35],
-  move: [13.0, 13.85], legend: [13.0, 13.8], title: 13.15, sub: 13.7, by: 13.9, cue: 14.4, END: 14.7
+  cap1: [0.9, 2.75], cap2: [2.9, 4.75], cap3: [5.0, 7.1],
+  wind: [3.05, 3.35], toss: [3.35, 4.55], lapIn: [3.78, 4.38], land: 4.55, xrayOn: [5.05, 5.35], turn: [5.45, 6.45], xrayOff: [6.5, 6.7], lapOut: [6.75, 7.2],
+  q: [7.35, 13.65],
+  sem: [8.25, 8.75], geo: [9.15, 9.5],
+  lens: [10.05, 10.45], lead: [10.2, 10.5], ring: [10.65, 11.2], rea: [10.65, 11.1],
+  drop2: [11.35, 11.57], line: [11.7, 12.15], fix: [12.3, 12.7], cross: [12.8, 13.1],
+  move: [13.75, 14.6], legend: [13.75, 14.55], title: 13.9, sub: 14.45, by: 14.65, cue: 15.15, END: 15.45
 };
 
 // the mug: a cylinder with painted stripes, a chip in the rim and a gold star painted just under the chip
@@ -498,11 +695,14 @@ function mugState(t) {
   const f = P(t, T.toss);
   if (f > 0) {
     const e = E.inOut(f), st = Math.sin(Math.PI * f);
-    m.x = lerp(XS - 16, XL, e); m.y = -118 * Math.sin(Math.PI * clamp(f * 1.05)); m.th = 1.3 * e;
+    m.x = lerp(XS - 16, XL - 50, e); m.y = -118 * Math.sin(Math.PI * clamp(f * 1.05)); m.th = 0.2 * e;
     m.rot = lerp(4, 0, clamp(f * 3)) - 11 * st;
     m.sy = lerp(0.93, 1, clamp(f * 4)) + 0.07 * st; m.sx = 1 / m.sy;
   }
-  if (t >= T.swap) { m.x = XL; m.y = 0; m.th = TH1; m.rot = 0; m.sx = 1; m.sy = 1; }
+  if (t >= T.turn[0]) {                      // behind the laptop, someone slides it a little and turns it
+    const h = E.inOut(P(t, T.turn));
+    m.x = lerp(XL - 50, XL, h); m.y = 0; m.th = lerp(0.2, TH1, h); m.rot = -5 * Math.sin(Math.PI * h); m.sx = 1; m.sy = 1;
+  }
   return m;
 }
 function laptopX(t, offR) {
@@ -574,11 +774,11 @@ const mbM = $("#mbMg"), mbL = $("#mbLg"), lensClipC = $("#lensClipC");
 
 // text of the opening
 const STR = {
-  en: { cap: ["Mark a chip on the rim.", "Now move the mug.", "A minute later."],
+  en: { cap: ["Mark a chip on the rim.", "Now hide the mug.", "While it is hidden, someone turns it."],
         q: ["Where", "is", "that", "<span class='hl'>point</span>", "now?"],
         sem: "semantics: somewhere near the rim", geo: "geometry: lost it", rea: "reasoning: find a landmark, look closer, fix",
         title: ["Correspondence", "Needs", "<span class='acc'>Reasoning</span>"] },
-  zh: { cap: ["在杯口的小缺口上，标一个点。", "然后，把杯子挪走。", "一分钟后。"],
+  zh: { cap: ["在杯口的小缺口上，标一个点。", "然后，把杯子挡住。", "挡住的时候，有人把它转了一下。"],
         sem: "语义：大概在杯口附近", geo: "几何：跟丢了", rea: "推理：找参照物，凑近看，再修正" }
 };
 const cap = $("#cap"), q = $("#q"), title = $("#title"), h1 = title.querySelector("h1"),
@@ -761,7 +961,7 @@ function frame(t) {
   });
   G.shadow.setAttribute("cx", m.x); G.shadow.setAttribute("cy", TABLE + 2);
   G.shadow.setAttribute("rx", (108 * (1 + m.y / 400)).toFixed(1)); G.shadow.setAttribute("ry", (11 * (1 + m.y / 400)).toFixed(1));
-  G.shadow.style.opacity = fillIn * (t < T.toss[1] || t > T.lapOut[0] + 0.15 ? 1 : 0);
+  G.shadow.style.opacity = fillIn;
 
   const lx = laptopX(t, offR);
   G.lap.setAttribute("transform", `translate(${lx.toFixed(2)} ${TABLE})`);
@@ -769,6 +969,9 @@ function frame(t) {
   G.hinge.setAttribute("d", smooth(jit([[-150, -24], [150, -24], [154, -15], [-154, -15]], seed, .5, 480), true));
   const st5 = []; for (let i = 0; i < 10; i++) { const rr = i % 2 ? 9 : 22, a = -Math.PI / 2 + i * Math.PI / 5; st5.push([rr * Math.cos(a), rr * Math.sin(a)]); }
   G.lstar.setAttribute("d", smooth(jit(st5, seed, .7, 520), true));
+  const xray = E.outQ(P(t, T.xrayOn)) * (1 - E.outQ(P(t, T.xrayOff)));
+  G.lid.style.fillOpacity = G.base.style.fillOpacity = G.hinge.style.fillOpacity = (1 - 0.86 * xray).toFixed(3);
+  G.lid.style.strokeDasharray = xray > 0.5 ? "9 9" : "";
   const lv = (laptopX(t + 1 / 120, offR) - laptopX(t - 1 / 120, offR)) * 60;
   mbL.setAttribute("stdDeviation", `${clamp(Math.abs(lv) * 0.004, 0, 16).toFixed(2)} 0`);
 
@@ -873,6 +1076,304 @@ new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe($("#
 addEventListener("resize", () => { layout(); frame(tNow); });
 $("#replay").addEventListener("click", () => { start = performance.now(); });
 
+// ================================================================== small scenes inside the essay
+function mugNode(parent) {
+  const g = mk("g", {}, parent), n = { g };
+  n.hB = mk("g", {}, g); n.hBo = mk("path", { class: "ink", "stroke-width": 17 }, n.hB);
+  n.hBi = mk("path", { fill: "none", stroke: "var(--paper)", "stroke-width": 9, "stroke-linecap": "round" }, n.hB);
+  n.body = mk("path", { fill: "var(--paper)" }, g);
+  n.stripes = [...Array(9)].map(() => mk("path", { fill: "var(--stripe)" }, g));
+  n.star = mk("path", { fill: "var(--gold)", stroke: "var(--ink)", "stroke-width": 1.3, "stroke-linejoin": "round" }, g);
+  n.inside = mk("path", { fill: "var(--inside)", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round" }, g);
+  n.outline = mk("path", { class: "ink", "stroke-width": 3 }, g); n.rim = mk("path", { class: "ink", "stroke-width": 3 }, g);
+  n.chip = mk("path", { fill: "var(--paper)", stroke: "var(--ink)", "stroke-width": 2.2, "stroke-linejoin": "round" }, g);
+  n.hF = mk("g", {}, g); n.hFo = mk("path", { class: "ink", "stroke-width": 17 }, n.hF);
+  n.hFi = mk("path", { fill: "none", stroke: "var(--paper)", "stroke-width": 9, "stroke-linecap": "round" }, n.hF);
+  return n;
+}
+function drawMug(n, m, seed) {
+  const S = mugShapes(m, seed);
+  n.g.setAttribute("transform", `translate(${m.x.toFixed(2)} ${(m.y + BOT).toFixed(2)}) rotate(${(m.rot || 0).toFixed(2)}) scale(${m.sx || 1} ${m.sy || 1}) translate(0 ${-BOT})`);
+  n.body.setAttribute("d", S.body); n.rim.setAttribute("d", S.rim); n.outline.setAttribute("d", S.outline); n.inside.setAttribute("d", S.inner);
+  S.stripes.forEach((d, i) => n.stripes[i].setAttribute("d", d));
+  n.hB.style.display = S.handleFront ? "none" : ""; n.hF.style.display = S.handleFront ? "" : "none";
+  for (const q of S.handleFront ? [n.hFo, n.hFi] : [n.hBo, n.hBi]) q.setAttribute("d", S.handle);
+  n.chip.setAttribute("d", S.chip); n.star.setAttribute("d", S.star);
+}
+function laptopNode(parent) {
+  const g = mk("g", {}, parent), n = { g };
+  n.lid = mk("path", { class: "ink", "stroke-width": 3, style: "fill:var(--paper)" }, g);
+  n.base = mk("path", { class: "ink", "stroke-width": 3, style: "fill:var(--paper)" }, g);
+  n.hinge = mk("path", { class: "ink", "stroke-width": 2.4, style: "fill:var(--paper)" }, g);
+  const stk = mk("g", { transform: "translate(70 -238) rotate(-9)" }, g);
+  mk("rect", { x: -46, y: -22, width: 92, height: 44, rx: 9, fill: "var(--stripe)", stroke: "var(--ink)", "stroke-width": 2 }, stk);
+  mk("text", { x: 0, y: 10, "text-anchor": "middle", fill: "var(--ink)", style: "font:700 30px var(--hand-en)" }, stk).textContent = "TAP";
+  return n;
+}
+function drawLaptop(n, x, seed) {
+  n.g.setAttribute("transform", `translate(${x.toFixed(2)} ${TABLE})`);
+  n.lid.setAttribute("d", lidPath(seed)); n.base.setAttribute("d", basePath(seed));
+  n.hinge.setAttribute("d", smooth(jit([[-150, -24], [150, -24], [154, -15], [-154, -15]], seed, .5, 480), true));
+}
+function trackerMark(parent, color) { const g = mk("g", {}, parent); mk("circle", { r: 14, fill: "var(--paper)" }, g); mk("circle", { r: 13, fill: "none", stroke: color, "stroke-width": 3 }, g); mk("circle", { r: 5.5, fill: color }, g); return g; }
+// A scene plays once when it scrolls into view, keeps its lines moving, and replays on request.
+function miniScene(sel, END, build) {
+  const fig = $(sel), svg = fig.querySelector("svg"), stage = fig.querySelector(".stage");
+  const draw = build(svg, stage);
+  let t0 = null, vis = false, last = -1, tPrev = -1;
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && es[0].intersectionRatio >= 0.55 && t0 == null) t0 = performance.now(); }, { threshold: [0, 0.55] }).observe(stage);
+  fig.querySelector(".sreplay").addEventListener("click", () => { t0 = performance.now(); });
+  const fixed = params.has("st") ? parseFloat(params.get("st")) : null;
+  const loop = now => {
+    const t = fixed != null ? fixed : reduce ? END : t0 == null ? 0 : Math.min((now - t0) / 1000, END);
+    const boil = reduce || fixed != null ? 3 : Math.floor(now / 125);
+    if (vis && (t !== tPrev || boil !== last)) { draw(t, boil); tPrev = t; last = boil; }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+}
+const SC = {
+  en: { cap: ["A tracker follows a point by watching it move.", "Hide the mug and leave it alone.", "Now hide it and move it."],
+        trk: "tracker", a: "still right", b: "lost: it still points here", c: "the chip is here" },
+  zh: { cap: ["追踪器靠盯着点的运动来跟住它。", "把杯子挡住，不去动它。", "这次挡住之后，把它挪一下。"],
+        trk: "追踪器", a: "还是对的", b: "跟丢了：它还指着这里", c: "缺口其实在这里" }
+};
+miniScene("#scene02", 12.4, (svg, stage) => {
+  const K = 0.7, OX = 430, OY = 250, XA = -250, XB = 40, XC = 205, LAPX = 110, OFF = 980;
+  const world = mk("g", {}, svg);
+  const table = mk("path", { class: "ink", "stroke-width": 2.6 }, world);
+  const ghost = mk("path", { fill: "none", stroke: "var(--soft)", "stroke-width": 2.6, "stroke-dasharray": "7 8", "stroke-linecap": "round" }, world);
+  const mwrap = mk("g", { filter: "url(#sb02)" }, world), mug = mugNode(mwrap), mblur = svg.querySelector("feGaussianBlur");
+  const lap = laptopNode(world);
+  const trail = mk("path", { fill: "none", stroke: "var(--ink)", "stroke-width": 2.6, "stroke-linecap": "round", "stroke-dasharray": "2 8" }, world);
+  const ring = trackerMark(world, "var(--ink)");
+  const ok = mk("circle", { r: 24, fill: "none", stroke: "var(--green)", "stroke-width": 3.5 }, world);
+  const xm = mk("g", {}, world); mk("circle", { r: 20, fill: "var(--paper)" }, xm);
+  mk("path", { d: "M-11 -11 L11 11 M11 -11 L-11 11", fill: "none", stroke: "var(--soft)", "stroke-width": 5, "stroke-linecap": "round" }, xm);
+  const cross = mk("g", {}, world); mk("path", { d: "M-22 0 L-7 0 M7 0 L22 0 M0 -22 L0 -7 M0 7 L0 22", fill: "none", stroke: "var(--green)", "stroke-width": 3.6, "stroke-linecap": "round" }, cross);
+  const capEl = stage.querySelector(".scap"), notes = {}; stage.querySelectorAll(".snote").forEach(n => notes[n.dataset.k] = n);
+  let capK = -2, capLang = "", units = [];
+  const place = (el, x, y) => { el.style.left = (x / 900 * 100) + "%"; el.style.top = (y / 440 * 100) + "%"; };
+  const toS = p => [OX + p[0] * K, OY + p[1] * K];
+  const mugAt = t => {                       // slides in view, then slides and turns behind the laptop
+    const a = E.inOut(P(t, 1.3, 2.5)), b = E.inOut(P(t, 8.0, 9.3));
+    return { x: lerp(lerp(XA, XB, a), XC, b), y: 0, th: 1.2 * b, rot: -4 * Math.sin(Math.PI * P(t, 1.3, 2.5)), sx: 1, sy: 1 };
+  };
+  const visit = (t, a, b) => lerp(OFF, LAPX, E.outBack(P(t, a, a + 0.6), 1.1)) + (OFF - LAPX) * E.inBack(P(t, b, b + 0.45), 1.4);   // slide in at a, out at b
+  const lapAt = t => t < 5.8 ? visit(t, 3.5, 4.75) : visit(t, 6.6, 9.7);
+  return (t, seed) => {
+    const L = SC[lang];
+    world.setAttribute("transform", `translate(${OX} ${OY}) scale(${K})`); world.style.opacity = E.outQ(P(t, 0, 0.45));
+    table.setAttribute("d", tablePath(seed));
+    const m = mugAt(t); drawMug(mug, m, seed);
+    mblur.setAttribute("stdDeviation", `${clamp(Math.abs(mugAt(t + 0.01).x - m.x) * 100 * 0.0065, 0, 8).toFixed(2)} 0`);
+    // the laptop: solid when it hides the mug, see-through while we watch what happens behind it
+    drawLaptop(lap, lapAt(t), seed);
+    const xray = E.outQ(P(t, 7.4, 7.8)) * (1 - E.outQ(P(t, 9.4, 9.7)));
+    lap.lid.style.fillOpacity = lap.base.style.fillOpacity = lap.hinge.style.fillOpacity = (1 - 0.86 * xray).toFixed(3);
+    lap.lid.style.strokeDasharray = xray > 0.5 ? "9 9" : "";
+    // the tracker's point: glued to the chip while it can watch it, left behind once the mug moves unseen
+    const mB = { x: XB, y: 0, th: 0, rot: 0, sx: 1, sy: 1 }, held = mugLocal(mB, chipLocal(mB));
+    const seen = mugLocal(m, chipLocal(m)), pos = t < 8.0 ? seen : held;
+    const drop = P(t, 0.55, 0.85);
+    ring.setAttribute("transform", `translate(${pos[0].toFixed(1)} ${(pos[1] - 240 * (1 - E.inQ(drop))).toFixed(1)})`);
+    ring.style.opacity = t < 0.55 || t >= 10.75 ? 0 : 1;
+    const pts = []; for (let u = 1.3; u <= Math.min(t, 2.5) + 1e-6; u += 1 / 40) { const mm = mugAt(u); pts.push(mugLocal(mm, chipLocal(mm))); }
+    trail.setAttribute("d", pts.length > 2 ? smooth(pts, false) : ""); trail.style.opacity = (0.8 * (1 - P(t, 2.9, 3.4))).toFixed(3);
+    const o1 = P(t, 5.35, 5.75);
+    ok.setAttribute("cx", held[0]); ok.setAttribute("cy", held[1]); ok.setAttribute("r", lerp(48, 25, E.outBack(o1, 2)).toFixed(1));
+    ok.style.opacity = (E.outQ(o1) * (1 - P(t, 6.3, 6.6))).toFixed(3);
+    const gS = mugShapes(mB, seed);
+    ghost.setAttribute("d", gS.outline + " " + gS.rim); ghost.setAttribute("transform", `translate(${XB} 0)`);
+    ghost.style.opacity = (0.75 * E.outQ(P(t, 10.25, 10.6))).toFixed(3);
+    const x2 = P(t, 10.75, 11.05);
+    xm.setAttribute("transform", `translate(${held[0].toFixed(1)} ${held[1].toFixed(1)}) rotate(${lerp(50, 0, E.outBack(x2)).toFixed(1)}) scale(${lerp(2.2, 1, E.outBack(x2)).toFixed(3)})`); xm.style.opacity = t >= 10.75 ? 1 : 0;
+    const mC = { x: XC, y: 0, th: 1.2, rot: 0, sx: 1, sy: 1 }, truth = mugLocal(mC, chipLocal(mC));
+    const c3 = P(t, 11.4, 11.7);
+    cross.setAttribute("transform", `translate(${truth[0].toFixed(1)} ${truth[1].toFixed(1)}) scale(${lerp(2.2, 1, E.outBack(c3)).toFixed(3)})`); cross.style.opacity = E.outQ(c3);
+    // notes
+    const sp = toS(pos), sh = toS(held), st = toS(truth);
+    notes.trk.textContent = L.trk; place(notes.trk, sp[0] - 6, sp[1] - 34); notes.trk.style.opacity = t >= 0.85 && t < 10.75 ? (1 - 0.999 * E.outQ(P(t, 5.3, 5.5)) * (1 - P(t, 6.3, 6.6))).toFixed(3) : 0;
+    notes.a.innerHTML = `<span class="tick">✓</span> ${L.a}`; place(notes.a, sh[0] + 30, sh[1] - 64); notes.a.style.opacity = (E.outQ(P(t, 5.45, 5.75)) * (1 - P(t, 6.3, 6.6))).toFixed(3);
+    notes.q.textContent = "?"; place(notes.q, sh[0] - 34, sh[1] + 2); notes.q.style.opacity = (E.outQ(P(t, 8.6, 8.9)) * (1 - P(t, 10.7, 10.8))).toFixed(3);
+    notes.b.textContent = L.b; place(notes.b, sh[0] - 70, sh[1] - 46); notes.b.style.opacity = E.outQ(P(t, 10.85, 11.15));
+    notes.c.textContent = L.c; place(notes.c, st[0] + 30, st[1] - 44); notes.c.style.opacity = E.outQ(P(t, 11.55, 11.85));
+    // captions, as subtitles
+    const k = t < 0.25 ? -1 : t < 3.3 ? 0 : t < 6.4 ? 1 : t < 10.4 ? 2 : -1;
+    if (k !== capK || lang !== capLang) { capK = k; capLang = lang; capEl.innerHTML = ""; units = k < 0 ? [] : lang === "zh" ? split(capEl, [L.cap[k]], true) : split(capEl, L.cap[k].split(" "), false); }
+    if (k >= 0) { const w = [[0.25, 3.1], [3.35, 6.2], [6.45, 10.2]][k]; words(units, t, w[0], 0.045, 0.5, w[1], 0.18); }
+  };
+});
+
+function lensNode(svg, clipId, hrefs) {
+  const cp = mk("clipPath", { id: clipId }, svg.querySelector("defs")), cc = mk("circle", {}, cp);
+  const g = mk("g", {}, svg), inner = mk("g", { "clip-path": `url(#${clipId})` }, g), bg = mk("circle", { fill: "var(--paper)" }, inner), zoom = mk("g", {}, inner);
+  hrefs.forEach(h => mk("use", { href: h }, zoom));
+  const r1 = mk("circle", { fill: "none", stroke: "var(--ink)", "stroke-width": 3.5 }, g), r2 = mk("circle", { fill: "none", stroke: "var(--accent)", "stroke-width": 2 }, g);
+  return { g, cc, bg, zoom, r1, r2 };
+}
+function setLens(n, c, r, pop, Z, f) {
+  n.g.style.display = pop > 0.001 ? "" : "none";
+  n.g.setAttribute("transform", `translate(${c[0]} ${c[1]}) scale(${pop.toFixed(3)}) translate(${-c[0]} ${-c[1]})`);
+  for (const e of [n.cc, n.bg, n.r1, n.r2]) { e.setAttribute("cx", c[0]); e.setAttribute("cy", c[1]); }
+  n.cc.setAttribute("r", r); n.bg.setAttribute("r", r); n.r1.setAttribute("r", r); n.r2.setAttribute("r", r - 6);
+  n.zoom.setAttribute("transform", `translate(${c[0]} ${c[1]}) scale(${Z}) translate(${-f[0].toFixed(2)} ${-f[1].toFixed(2)})`);
+}
+function subtitles(stage) {
+  const el = stage.querySelector(".scap"); let K0 = -2, LG = "", units = [];
+  return (k, caps, t, wins) => {
+    if (k !== K0 || lang !== LG) { K0 = k; LG = lang; el.innerHTML = ""; units = k < 0 ? [] : lang === "zh" ? split(el, [caps[k]], true) : split(el, caps[k].split(" "), false); }
+    if (k >= 0) words(units, t, wins[k][0], 0.045, 0.5, wins[k][1], 0.18);
+  };
+}
+const noteMap = stage => { const o = {}; stage.querySelectorAll(".snote").forEach(n => o[n.dataset.k] = n); return o; };
+const placeNote = (el, x, y) => { el.style.left = (x / 900 * 100) + "%"; el.style.top = (y / 440 * 100) + "%"; };
+const POSE = th => ({ x: 0, y: 0, th, rot: 0, sx: 1, sy: 1 });
+
+// ---- 01: semantics gives an area
+const S1 = {
+  en: { cap: ["Ask a VLM where the chip is.", "That describes an area.", "Asked for a point, it lands a few pixels off."],
+        says: "VLM: “on the rim, near the star”", n1: "the chip is this small notch", n2: "a few pixels off" },
+  zh: { cap: ["问 VLM：缺口在哪？", "它说的是一片区域。", "让它给一个点，它会偏几个像素。"],
+        says: "VLM：“在杯口上，靠近星星”", n1: "缺口只是这个小豁口", n2: "差几个像素" }
+};
+miniScene("#scene01", 10.2, (svg, stage) => {
+  const K = 0.7, OX = 450, OY = 250, MX = -290, LC = [668, 190], LR = 150, Z = 2.9;
+  const world = mk("g", { id: "w01" }, svg);
+  const table = mk("path", { class: "ink", "stroke-width": 2.6 }, world), mug = mugNode(world);
+  const blob = mk("ellipse", { rx: 66, ry: 26, fill: "var(--orange)", "fill-opacity": .2, stroke: "var(--orange)", "stroke-width": 2.6, "stroke-dasharray": "7 6" }, world);
+  const cross = mk("g", {}, world); mk("path", { d: "M-15 0 L-5 0 M5 0 L15 0 M0 -15 L0 -5 M0 5 L0 15", fill: "none", stroke: "var(--green)", "stroke-width": 2.6, "stroke-linecap": "round" }, cross);
+  const ans = mk("g", {}, world); mk("circle", { r: 6.5, fill: "var(--paper)", stroke: "var(--orange)", "stroke-width": 3 }, ans);
+  const lead = mk("path", { fill: "none", stroke: "var(--orange)", "stroke-width": 2.4, "stroke-dasharray": "2 7", "stroke-linecap": "round" }, svg);
+  const lens = lensNode(svg, "lc01", ["#w01"]);
+  const gap = mk("path", { fill: "none", stroke: "var(--ink)", "stroke-width": 2.6, "stroke-linecap": "round", pathLength: 1 }, svg);
+  const notes = noteMap(stage), sub = subtitles(stage);
+  const m = Object.assign(POSE(0.05), { x: MX }), toS = q => [OX + q[0] * K, OY + q[1] * K];
+  const chip = mugLocal(m, chipLocal(m)), star = mugLocal(m, starLocal(m));
+  const aB = chipA(m) + 0.3, blobC = mugLocal(m, [R * Math.sin(aB), TOP + EE * Math.cos(aB) + 2]), slope = Math.atan2(-EE * Math.sin(aB), R * Math.cos(aB)) * 180 / Math.PI;
+  const aG = chipA(m) + 0.17, guess = mugLocal(m, [R * Math.sin(aG), TOP + EE * Math.cos(aG) + 4]);
+  const focus = toS([chip[0] * 0.5 + star[0] * 0.5 + 12, chip[1] * 0.62 + star[1] * 0.38]);
+  const inLens = q => { const sq = toS(q); return [LC[0] + Z * (sq[0] - focus[0]), LC[1] + Z * (sq[1] - focus[1])]; };
+  return (t, seed) => {
+    const L = S1[lang];
+    world.setAttribute("transform", `translate(${OX} ${OY}) scale(${K})`); world.style.opacity = E.outQ(P(t, 0, 0.45));
+    table.setAttribute("d", tablePath(seed)); drawMug(mug, m, seed);
+    const b = P(t, 1.5, 2.0);
+    blob.setAttribute("transform", `translate(${blobC[0].toFixed(1)} ${blobC[1].toFixed(1)}) rotate(${slope.toFixed(1)}) scale(${lerp(2.3, 1, E.outExpo(b)).toFixed(3)})`); blob.style.opacity = E.outQ(b);
+    const pop = E.outBack(P(t, 3.6, 4.0), 2.2);
+    setLens(lens, LC, LR, pop, Z, focus);
+    const sb = toS(blobC), lp = E.outExpo(P(t, 3.5, 3.9));
+    lead.setAttribute("d", `M${(sb[0] + 46).toFixed(1)} ${sb[1].toFixed(1)} L${lerp(sb[0] + 46, LC[0] - LR, lp).toFixed(1)} ${lerp(sb[1], LC[1] - 20, lp).toFixed(1)}`); lead.style.opacity = t >= 3.5 ? 1 : 0;
+    const c1 = P(t, 4.7, 5.0);
+    cross.setAttribute("transform", `translate(${chip[0].toFixed(1)} ${chip[1].toFixed(1)}) scale(${lerp(2, 1, E.outBack(c1)).toFixed(3)})`); cross.style.opacity = E.outQ(c1);
+    const d = P(t, 6.7, 6.95);
+    ans.setAttribute("transform", `translate(${guess[0].toFixed(1)} ${(guess[1] - 120 * (1 - E.inQ(d))).toFixed(1)})`); ans.style.opacity = t >= 6.7 ? 1 : 0;
+    const g1 = inLens(guess), g0 = inLens(chip), gy = Math.min(g0[1], g1[1]) - 34;
+    gap.setAttribute("d", `M${g0[0].toFixed(1)} ${(gy + 9).toFixed(1)} L${g0[0].toFixed(1)} ${(gy - 9).toFixed(1)} M${g0[0].toFixed(1)} ${gy.toFixed(1)} L${g1[0].toFixed(1)} ${gy.toFixed(1)} M${g1[0].toFixed(1)} ${(gy + 9).toFixed(1)} L${g1[0].toFixed(1)} ${(gy - 9).toFixed(1)}`);
+    gap.style.strokeDasharray = 1; gap.style.strokeDashoffset = (1 - E.outExpo(P(t, 7.4, 7.8))).toFixed(3); gap.style.opacity = t >= 7.4 ? 1 : 0;
+    notes.says.textContent = L.says; placeNote(notes.says, toS(chip)[0] + 60, 62); notes.says.style.opacity = E.outQ(P(t, 0.9, 1.3));
+    notes.n1.textContent = L.n1; placeNote(notes.n1, LC[0], LC[1] + LR + 24); notes.n1.style.opacity = (E.outQ(P(t, 4.9, 5.2)) * (1 - P(t, 7.3, 7.5))).toFixed(3);
+    notes.n2.textContent = L.n2; placeNote(notes.n2, LC[0], LC[1] + LR + 24); notes.n2.style.opacity = E.outQ(P(t, 7.6, 7.9));
+    sub(t < 0.25 ? -1 : t < 3.3 ? 0 : t < 6.4 ? 1 : 2, L.cap, t, [[0.25, 3.1], [3.35, 6.2], [6.45, null]]);
+  };
+});
+
+// ---- 03: guess, look closer, compare, fix
+const S3 = {
+  en: { cap: ["Find a landmark in both frames.", "Guess from it.", "Look closer and compare.", "Fix the guess, then check again."], la: "first frame", lb: "now" },
+  zh: { cap: ["在两帧里找到同一个参照物。", "从它出发，猜一个位置。", "凑近看，两边比一比。", "修正猜测，再检查一遍。"], la: "第一帧", lb: "现在" }
+};
+miniScene("#scene03", 12.4, (svg, stage) => {
+  const K = 0.5, OY = 306, AX = 150, BX = 750, LA = [315, 122], LB = [585, 122], LR = 102, Z = 3.5;
+  const table = mk("path", { class: "ink", "stroke-width": 2.2 }, svg);
+  const wA = mk("g", { id: "w03a", transform: `translate(${AX} ${OY}) scale(${K})` }, svg), wB = mk("g", { id: "w03b", transform: `translate(${BX} ${OY}) scale(${K})` }, svg);
+  const mugA = mugNode(wA), mugB = mugNode(wB);
+  const ringP = { fill: "none", stroke: "var(--accent)", "stroke-width": 2.6, "stroke-linecap": "round", pathLength: 1 }, lineP = { fill: "none", stroke: "var(--accent)", "stroke-width": 2.2, "stroke-linecap": "round", "stroke-dasharray": "3 5" };
+  const ringA = mk("path", ringP, wA), lineA = mk("path", lineP, wA), markA = mk("g", {}, wA); mk("circle", { r: 10, fill: "var(--paper)" }, markA); mk("circle", { r: 7, fill: "var(--accent)" }, markA);
+  const ringB = mk("path", ringP, wB), lineB = mk("path", lineP, wB);
+  const cross = mk("g", {}, wB); mk("path", { d: "M-15 0 L-5 0 M5 0 L15 0 M0 -15 L0 -5 M0 5 L0 15", fill: "none", stroke: "var(--green)", "stroke-width": 2.6, "stroke-linecap": "round" }, cross);
+  const guess = mk("g", {}, wB); mk("circle", { r: 9.5, fill: "var(--paper)" }, guess); mk("circle", { r: 6.5, fill: "var(--accent)" }, guess);
+  const leadA = mk("path", lineP, svg), leadB = mk("path", lineP, svg);
+  const lensA = lensNode(svg, "lc03a", ["#w03a"]), lensB = lensNode(svg, "lc03b", ["#w03b"]);
+  const notes = noteMap(stage), sub = subtitles(stage);
+  const mA = POSE(0.05), mB = POSE(1.2);
+  const chipA0 = mugLocal(mA, chipLocal(mA)), starA = mugLocal(mA, starLocal(mA)), chipB = mugLocal(mB, chipLocal(mB)), starB = mugLocal(mB, starLocal(mB));
+  const aG = chipA(mB) + 0.19, g0 = mugLocal(mB, [R * Math.sin(aG), TOP + EE * Math.cos(aG) + 4]);
+  const sA = q => [AX + q[0] * K, OY + q[1] * K], sB = q => [BX + q[0] * K, OY + q[1] * K];
+  const fA = sA([chipA0[0] * .5 + starA[0] * .5, chipA0[1] * .58 + starA[1] * .42]), fB = sB([chipB[0] * .5 + starB[0] * .5 + 6, chipB[1] * .58 + starB[1] * .42]);
+  return (t, seed) => {
+    const L = S3[lang], fade = E.outQ(P(t, 0, 0.45));
+    table.setAttribute("d", tablePath(seed)); table.setAttribute("transform", `translate(450 ${OY}) scale(${K})`); table.style.opacity = fade;
+    wA.style.opacity = wB.style.opacity = fade;
+    drawMug(mugA, mA, seed); drawMug(mugB, mB, seed);
+    markA.setAttribute("transform", `translate(${chipA0[0].toFixed(1)} ${chipA0[1].toFixed(1)})`);
+    // 1: the same landmark in both
+    ringA.setAttribute("d", circlePath(starA, 20, seed)); ringA.style.strokeDasharray = 1; ringA.style.strokeDashoffset = (1 - E.outExpo(P(t, 0.9, 1.45))).toFixed(3); ringA.style.opacity = t >= 0.9 ? 1 : 0;
+    ringB.setAttribute("d", circlePath(starB, 20, seed + 5)); ringB.style.strokeDasharray = 1; ringB.style.strokeDashoffset = (1 - E.outExpo(P(t, 1.4, 1.95))).toFixed(3); ringB.style.opacity = t >= 1.4 ? 1 : 0;
+    // 2: a guess, one stripe off
+    const d = P(t, 3.5, 3.75), fix = E.outBack(P(t, 9.3, 9.7), 2.2);
+    guess.setAttribute("transform", `translate(${lerp(g0[0], chipB[0], fix).toFixed(2)} ${lerp(g0[1] - 150 * (1 - E.inQ(d)), chipB[1], fix).toFixed(2)})`); guess.style.opacity = t >= 3.5 ? 1 : 0;
+    // 3: two close-ups side by side
+    setLens(lensA, LA, LR, E.outBack(P(t, 5.8, 6.2), 2.2), Z, fA); setLens(lensB, LB, LR, E.outBack(P(t, 6.0, 6.4), 2.2), Z, fB);
+    const la = E.outExpo(P(t, 5.7, 6.0)), lb = E.outExpo(P(t, 5.9, 6.2)), ca = sA(chipA0), cb = sB(chipB);
+    leadA.setAttribute("d", `M${ca[0].toFixed(1)} ${(ca[1] - 10).toFixed(1)} L${lerp(ca[0], LA[0] - 62, la).toFixed(1)} ${lerp(ca[1] - 10, LA[1] + 80, la).toFixed(1)}`); leadA.style.opacity = t >= 5.7 ? 1 : 0;
+    leadB.setAttribute("d", `M${cb[0].toFixed(1)} ${(cb[1] - 10).toFixed(1)} L${lerp(cb[0], LB[0] + 62, lb).toFixed(1)} ${lerp(cb[1] - 10, LB[1] + 80, lb).toFixed(1)}`); leadB.style.opacity = t >= 5.9 ? 1 : 0;
+    const va = E.outExpo(P(t, 6.8, 7.2)), vb = E.outExpo(P(t, 7.1, 7.5));
+    lineA.setAttribute("d", `M${starA[0].toFixed(1)} ${(starA[1] - 16).toFixed(1)} L${starA[0].toFixed(1)} ${lerp(starA[1] - 16, chipA0[1] + 10, va).toFixed(1)}`); lineA.style.opacity = t >= 6.8 ? 1 : 0;
+    lineB.setAttribute("d", `M${starB[0].toFixed(1)} ${(starB[1] - 16).toFixed(1)} L${starB[0].toFixed(1)} ${lerp(starB[1] - 16, chipB[1] - 14, vb).toFixed(1)}`); lineB.style.opacity = t >= 7.1 ? 1 : 0;
+    // 4: fixed
+    const c4 = P(t, 10.3, 10.6);
+    cross.setAttribute("transform", `translate(${chipB[0].toFixed(1)} ${chipB[1].toFixed(1)}) scale(${lerp(2, 1, E.outBack(c4)).toFixed(3)})`); cross.style.opacity = E.outQ(c4);
+    notes.la.textContent = L.la; placeNote(notes.la, AX - 26, 214); notes.la.style.opacity = E.outQ(P(t, 0.3, 0.7));
+    notes.lb.textContent = L.lb; placeNote(notes.lb, BX + 26, 214); notes.lb.style.opacity = E.outQ(P(t, 0.5, 0.9));
+    const same = t >= 9.9; notes.sign.textContent = same ? "=" : "≠"; notes.sign.style.color = same ? "var(--green)" : "var(--orange)";
+    placeNote(notes.sign, 450, 122); const sp = same ? P(t, 9.9, 10.2) : P(t, 7.7, 8.0);
+    notes.sign.style.opacity = E.outQ(sp); notes.sign.style.transform = `translate(-50%,-50%) scale(${lerp(2.2, 1, E.outBack(sp)).toFixed(3)})`;
+    sub(t < 0.25 ? -1 : t < 3.1 ? 0 : t < 5.5 ? 1 : t < 8.8 ? 2 : 3, L.cap, t, [[0.25, 2.9], [3.15, 5.3], [5.55, 8.6], [8.85, null]]);
+  };
+});
+
+// ---- the four tools, each with a small drawing that plays when the list scrolls in and again on hover
+(() => {
+  const ink = { fill: "none", stroke: "var(--ink)", "stroke-width": 2.2, "stroke-linecap": "round", "stroke-linejoin": "round" };
+  const acc = { fill: "none", stroke: "var(--accent)", "stroke-width": 2.4, "stroke-linecap": "round", "stroke-linejoin": "round" };
+  const box = (svg, x, y, w, h, a) => mk("rect", Object.assign({ x, y, width: w, height: h, rx: 4 }, a || ink), svg);
+  const draws = [
+    svg => {                                            // view: zoom in
+      box(svg, 6, 6, 62, 48); mk("path", Object.assign({ d: "M14 40 C24 26 34 44 44 30 S58 34 62 24" }, ink), svg); const dot = mk("circle", { cx: 40, cy: 32, r: 2.2, fill: "var(--accent)" }, svg);
+      const g = mk("g", {}, svg), c = mk("circle", Object.assign({ cx: 0, cy: 0, r: 16, style: "fill:var(--paper)" }, ink), g); mk("path", Object.assign({ d: "M11 12 L22 24" }, ink), g); const big = mk("circle", { cx: 0, cy: 0, r: 5, fill: "var(--accent)" }, g);
+      return q => { const e = E.outBack(P(q, 0.1, 0.55), 2); g.setAttribute("transform", `translate(${lerp(40, 84, E.outExpo(P(q, 0.1, 0.6)))} ${lerp(32, 28, e)}) scale(${lerp(0.15, 1, e)})`); g.style.opacity = q > 0.08 ? 1 : 0; big.setAttribute("r", lerp(1, 5.5, E.outBack(P(q, 0.5, 0.85), 2))); dot.style.opacity = 1; };
+    },
+    svg => {                                            // check: two crops side by side
+      const a = mk("g", {}, svg), b = mk("g", {}, svg); box(a, 0, 0, 34, 34); mk("circle", { cx: 14, cy: 15, r: 4, fill: "var(--accent)" }, a); box(b, 0, 0, 34, 34); mk("circle", { cx: 20, cy: 15, r: 4, fill: "var(--accent)" }, b);
+      const eq = mk("path", Object.assign({ d: "M50 26 L62 26 M50 34 L62 34 M60 20 L52 40" }, { fill: "none", stroke: "var(--orange)", "stroke-width": 2.6, "stroke-linecap": "round" }), svg);
+      return q => { const e = E.outBack(P(q, 0.05, 0.5), 1.4); a.setAttribute("transform", `translate(${lerp(-30, 10, e)} 13)`); b.setAttribute("transform", `translate(${lerp(110, 68, e)} 13)`); const s = E.outBack(P(q, 0.6, 0.85), 2.4); eq.style.opacity = s > 0 ? 1 : 0; eq.setAttribute("transform", `translate(56 30) scale(${lerp(0.2, 1, s)}) translate(-56 -30)`); };
+    },
+    svg => {                                            // fit, match: a location from landmarks
+      box(svg, 4, 8, 44, 44); box(svg, 64, 8, 44, 44);
+      const L0 = [[14, 20], [36, 18], [22, 42]], R0 = [[76, 24], [98, 20], [84, 44]];
+      L0.concat(R0).forEach(([x, y]) => mk("circle", { cx: x, cy: y, r: 2.6, fill: "var(--ink)" }, svg));
+      const ls = L0.map((a, i) => mk("path", Object.assign({ d: `M${a[0]} ${a[1]} L${R0[i][0]} ${R0[i][1]}`, pathLength: 1 }, { fill: "none", stroke: "var(--soft)", "stroke-width": 1.8, "stroke-dasharray": "1" }), svg));
+      mk("circle", { cx: 25, cy: 29, r: 3.6, fill: "var(--accent)" }, svg); const out = mk("circle", { cx: 87, cy: 31, r: 3.6, fill: "var(--accent)" }, svg);
+      return q => { ls.forEach((l, i) => { l.style.strokeDasharray = 1; l.style.strokeDashoffset = 1 - E.outExpo(P(q, 0.08 + i * 0.14, 0.45 + i * 0.14)); }); const s = E.outBack(P(q, 0.68, 0.92), 2.4); out.setAttribute("r", 3.6 * s); };
+    },
+    svg => {                                            // frame: the frames in between
+      const strip = mk("g", {}, svg); for (let i = 0; i < 7; i++) { box(strip, i * 34, 14, 28, 32); mk("circle", { cx: i * 34 + 8 + i * 2, cy: 30, r: 2.4, fill: "var(--ink)" }, strip); }
+      box(svg, 40, 9, 34, 42, acc);
+      return q => { strip.setAttribute("transform", `translate(${lerp(43, -93, E.inOut(P(q, 0.08, 0.9)))} 0)`); };
+    }
+  ];
+  const items = [...document.querySelectorAll("ul.tools li")];
+  items.forEach((li, i) => {
+    const svg = document.createElementNS(NS, "svg"); svg.setAttribute("viewBox", "0 0 112 60"); svg.setAttribute("aria-hidden", "true"); li.insertBefore(svg, li.firstChild);
+    const clipId = "tc" + i; mk("clipPath", { id: clipId }, svg).appendChild(mk("rect", { x: 0, y: 0, width: 112, height: 60 }, svg));
+    const g = mk("g", { "clip-path": `url(#${clipId})` }, svg), f = draws[i](g); f(reduce ? 1 : 0);
+    li._play = delay => { if (reduce) return; const t0 = performance.now() + delay; const step = now => { const q = clamp((now - t0) / 1700); f(q); if (q < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); };
+    li.addEventListener("mouseenter", () => li._play(0));
+  });
+  if (items.length) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { items.forEach((li, i) => li._play(i * 550)); io.disconnect(); } }, { threshold: 0.6 }); io.observe(items[0].parentNode); }
+})();
+
 // ================================================================== the essay: motion on scroll
 document.querySelectorAll(".essay h2").forEach(h => {
   h.querySelectorAll(".en, .zh, :scope").forEach(node => {
@@ -896,19 +1397,18 @@ const onSeen = (el, fn, th = 0.3) => {
   io.observe(el);
 };
 document.querySelectorAll(".essay h2, .reveal").forEach(el => onSeen(el, () => el.classList.add("go"), 0.15));
-// the tally counts up
-onSeen($("#tally"), instant => {
-  const bs = [...document.querySelectorAll("#tally b")];
+// numbers count up
+document.querySelectorAll(".count").forEach(box => onSeen(box, instant => {
+  const bs = [...box.querySelectorAll("b[data-to]")];
   if (instant) return;
   const t0 = performance.now();
-  bs.forEach(b => b.textContent = "0");
   const step = now => {
     const k = E.outExpo(clamp((now - t0) / 1400));
-    bs.forEach(b => b.textContent = Math.round(k * +b.dataset.to));
+    bs.forEach(b => b.textContent = Math.round(k * +b.dataset.to).toLocaleString("en-US"));
     if (k < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
-}, 0.5);
+}, 0.5));
 // the agent's words are typed out
 document.querySelectorAll(".said p.type").forEach(p => {
   const full = p.textContent.trim();
@@ -926,100 +1426,231 @@ document.querySelectorAll(".said p.type").forEach(p => {
 });
 
 // ================================================================== charts (rebuilt when the language changes)
+// Every number below is from the paper: Table 1 (main results), the ablation and reappearance tables, and the data
+// files of the analysis figure (figures/data/analysis_*.csv).
 const CT = {
-  en: { direct: "Direct, one call", agent: "AgenTAP", y: "Visible points found (%)", x: "Distance to the true location (pixels)",
-        within: t => `Within ${t} px`, d: "Direct", refs: ["Best two-image specialist", "Best full-video tracker"] },
-  zh: { direct: "直接回答（一次调用）", agent: "AgenTAP", y: "找到的可见点（%）", x: "与真实位置的距离（像素）",
-        within: t => `${t} 像素以内`, d: "直接", refs: ["两张图下最好的专用模型", "整段视频下最好的追踪器"] }
+  en: { direct: "Direct, one call", agent: "AgenTAP", spec: "Specialist model", human: "Two people", zoom: "Fixed zoom-ins",
+        y: "Visible points found (%)", x: "Distance to the true location (pixels)", within: t => `Within ${t} px`, d: "Direct",
+        refs: ["Best two-image specialist", "Best full-video tracker"], two: "two images", video: "full video",
+        plus: "+ AgenTAP", dsm: "direct", fixed: "fixed", broken: "broken", best: "Best tracker" },
+  zh: { direct: "直接回答（一次调用）", agent: "AgenTAP", spec: "专用模型", human: "两个人之间", zoom: "固定放大",
+        y: "找到的可见点（%）", x: "与真实位置的距离（像素）", within: t => `${t} 像素以内`, d: "直接",
+        refs: ["两张图下最好的专用模型", "整段视频下最好的追踪器"], two: "两张图", video: "整段视频",
+        plus: "+ AgenTAP", dsm: "直接回答", fixed: "改对", broken: "改错", best: "最好的追踪器" }
 };
 const hEl = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
-const legendHTML = L => `<span><i class="dot direct"></i>${L.direct}</span><span><i class="dot agent"></i>${L.agent}</span>`;
-let precSeen = false, rankSeen = false;
-// Localization precision: GPT-6 Astra on TrackingBench, 1,579 visible queries (paper figures/data/analysis_d_localization_precision.csv)
-function buildPrec() {
-  const el = $("#prec"), L = CT[lang]; el.innerHTML = "";
-  const Tpx = [1, 2, 4, 8, 16], DIRECT = [23.81, 42.05, 64.34, 79.48, 87.14], AGENT = [40.22, 60.92, 78.21, 86.64, 91.01];
-  const X = i => 10 + 20 * i, Y = v => 100 - v;
-  el.appendChild(hEl("div", "legend", legendHTML(L)));
-  el.appendChild(hEl("div", "yname", L.y));
+const charts = [];
+function mount(sel, build, th = 0.3) {
+  const c = { el: $(sel), build, seen: false, state: null };
+  charts.push(c);
+  onSeen(c.el, () => { c.seen = true; requestAnimationFrame(() => requestAnimationFrame(() => c.el.classList.add("go"))); }, th);
+}
+function settle(c) {                         // rebuilt after it has been seen: show the end state without replaying
+  if (!c.seen) return;
+  c.el.classList.add("still", "go"); void c.el.offsetWidth;
+  requestAnimationFrame(() => requestAnimationFrame(() => c.el.classList.remove("still")));
+}
+function replay(c) { c.el.classList.remove("go"); void c.el.offsetWidth; requestAnimationFrame(() => requestAnimationFrame(() => c.el.classList.add("go"))); }
+const renderCharts = () => charts.forEach(c => { c.build(c); settle(c); });
+function tipFor(el) { const tip = hEl("div", "tip"); el.appendChild(tip);
+  return { show(html, x, y) { tip.innerHTML = html; tip.style.display = "block"; const r = el.getBoundingClientRect();
+      tip.style.left = Math.min(Math.max(x - r.left - tip.offsetWidth / 2, 8), r.width - tip.offsetWidth - 8) + "px"; tip.style.top = (y - r.top - tip.offsetHeight - 10) + "px"; },
+    hide() { tip.style.display = "none"; } }; }
+const hover = (node, show, hide) => { node.addEventListener("mouseenter", show); node.addEventListener("focus", show); node.addEventListener("mouseleave", hide); node.addEventListener("blur", hide); };
+
+// ---- line charts (percent-positioned dots over a stretched SVG)
+function linechart(c, cfg) {
+  const el = c.el, L = lang; el.innerHTML = ""; el.className = "prec lc" + (cfg.cls ? " " + cfg.cls : "");
+  const n = cfg.x.length, X = i => (i + 0.5) / n * 100, Y = v => 100 - (v - cfg.lo) / (cfg.hi - cfg.lo) * 100;
+  el.appendChild(hEl("div", "legend", cfg.series.map(s => s.hollow
+    ? `<span><i class="dot direct"></i>${s.name[L]}</span>`
+    : `<span><i class="ln" style="border-top-color:${s.color};border-top-style:${s.dash ? "dashed" : "solid"}"></i>${s.name[L]}</span>`).join("")));
+  el.appendChild(hEl("div", "yname", cfg.y[L]));
   const plot = hEl("div", "plot"); el.appendChild(plot);
-  [0, 25, 50, 75, 100].forEach(v => { const g = hEl("div", "grid", `<span>${v}</span>`); g.style.top = Y(v) + "%"; plot.appendChild(g); });
+  cfg.ticks.forEach(v => { const g = hEl("div", "grid", `<span>${v}</span>`); g.style.top = Y(v) + "%"; plot.appendChild(g); });
   const svg = document.createElementNS(NS, "svg"); svg.setAttribute("viewBox", "0 0 100 100"); svg.setAttribute("preserveAspectRatio", "none");
-  const pts = a => a.map((v, i) => `${X(i)},${Y(v)}`);
-  mk("path", { class: "band", d: "M" + pts(AGENT).join("L") + "L" + pts(DIRECT).reverse().join("L") + "Z" }, svg);
-  [[DIRECT, "var(--c-direct)"], [AGENT, "var(--c-agent)"]].forEach(([a, c]) => mk("path", { d: "M" + pts(a).join("L"), style: `stroke:${c}` }, svg));
+  if (cfg.band) { const [A, B] = cfg.band.map(k => cfg.series[k].vals);
+    mk("path", { class: "band", d: "M" + A.map((v, i) => `${X(i)},${Y(v)}`).join("L") + "L" + B.map((v, i) => `${X(i)},${Y(v)}`).reverse().join("L") + "Z" }, svg); }
+  cfg.series.forEach(s => mk("path", { d: "M" + s.vals.map((v, i) => `${X(i)},${Y(v)}`).join("L"), style: `stroke:${s.color}` + (s.dash ? ";stroke-dasharray:6 5" : "") }, svg));
   plot.appendChild(svg);
   const guide = hEl("div", "guide"); plot.appendChild(guide);
-  const tip = hEl("div", "tip"); el.appendChild(tip);
-  Tpx.forEach((t, i) => {
-    const delay = (0.15 + i * 0.27) + "s";
-    [[DIRECT[i], "direct"], [AGENT[i], "agent"]].forEach(([v, c]) => { const d = hEl("div", "dot " + c); d.style.left = X(i) + "%"; d.style.top = Y(v) + "%"; d.style.setProperty("--d", delay); plot.appendChild(d); });
-    const g = hEl("div", "gain", "+" + (AGENT[i] - DIRECT[i]).toFixed(1)); g.style.left = X(i) + "%"; g.style.top = Y(AGENT[i]) + "%"; g.style.setProperty("--d", delay); plot.appendChild(g);
-    const col = hEl("div", "col"); col.style.left = X(i) + "%"; col.tabIndex = 0;
-    col.setAttribute("aria-label", `${L.within(t)}: ${L.d} ${DIRECT[i].toFixed(1)}%, AgenTAP ${AGENT[i].toFixed(1)}%`);
-    const showTip = () => {
-      guide.style.left = X(i) + "%"; guide.style.opacity = ".35";
-      tip.innerHTML = `<b>${L.within(t)}</b> &nbsp;${L.d} ${DIRECT[i].toFixed(1)}% &rarr; AgenTAP ${AGENT[i].toFixed(1)}%`; tip.style.display = "block";
-      const r = el.getBoundingClientRect(), pr = plot.getBoundingClientRect(), cx = pr.left - r.left + pr.width * X(i) / 100;
-      tip.style.left = Math.min(Math.max(cx - tip.offsetWidth / 2, 8), r.width - tip.offsetWidth - 8) + "px";
-      tip.style.top = (pr.bottom - r.top - tip.offsetHeight - 8) + "px";
-    };
-    const hide = () => { guide.style.opacity = "0"; tip.style.display = "none"; };
-    col.addEventListener("mouseenter", showTip); col.addEventListener("focus", showTip); col.addEventListener("mouseleave", hide); col.addEventListener("blur", hide);
+  const tip = tipFor(el);
+  cfg.x.forEach((xl, i) => {
+    const delay = (0.15 + i * 1.1 / n) + "s";
+    cfg.series.forEach(s => { const d = hEl("div", "dot" + (s.hollow ? " hollow" : "")); d.style.left = X(i) + "%"; d.style.top = Y(s.vals[i]) + "%";
+      d.style.setProperty("--d", delay); if (s.hollow) d.style.borderColor = s.color; else { d.style.background = s.color; d.style.boxShadow = "0 0 0 2px var(--paper)"; } plot.appendChild(d); });
+    if (cfg.gain) { const [A, B] = cfg.gain.map(k => cfg.series[k].vals); const g = hEl("div", "gain", "+" + (A[i] - B[i]).toFixed(1));
+      g.style.left = X(i) + "%"; g.style.top = Y(A[i]) + "%"; g.style.setProperty("--d", delay); plot.appendChild(g); }
+    const col = hEl("div", "col"); col.style.left = X(i) + "%"; col.style.width = (100 / n) + "%"; col.tabIndex = 0;
+    const text = `<b>${cfg.tipHead(xl, L)}</b> &nbsp;` + cfg.series.map(s => `${s.short ? s.short[L] : s.name[L]} ${s.vals[i].toFixed(1)}`).join(" &nbsp;·&nbsp; ");
+    col.setAttribute("aria-label", text.replace(/<[^>]+>|&nbsp;/g, " "));
+    hover(col, () => { guide.style.left = X(i) + "%"; guide.style.opacity = ".35"; const pr = plot.getBoundingClientRect();
+      tip.show(text, pr.left + pr.width * X(i) / 100, pr.bottom + 2); }, () => { guide.style.opacity = "0"; tip.hide(); });
     plot.appendChild(col);
   });
-  const xrow = hEl("div", "xrow"); Tpx.forEach((t, i) => { const s = hEl("span", "", String(t)); s.style.left = X(i) + "%"; xrow.appendChild(s); });
-  el.appendChild(xrow); el.appendChild(hEl("div", "xname", L.x));
-  if (precSeen) { el.classList.add("go"); el.querySelectorAll("*").forEach(n => n.style.transition = "none"); svg.style.transition = "none"; }
+  if (cfg.endLabels) cfg.series.forEach(s => { const e = hEl("div", "endlab", s.vals[n - 1].toFixed(1)); e.style.top = Y(s.vals[n - 1]) + (s.nudge || 0) + "%"; e.style.color = s.color; plot.appendChild(e); });
+  const xrow = hEl("div", "xrow"); cfg.x.forEach((t, i) => { const sp = hEl("span", "", String(t)); sp.style.left = X(i) + "%"; xrow.appendChild(sp); });
+  el.appendChild(xrow); el.appendChild(hEl("div", "xname", cfg.xname[L]));
 }
-// Ranking: APD on TrackingBench with two input images (paper Table 1, Overall APD)
-function buildRank() {
-  const el = $("#rank"), L = CT[lang]; el.innerHTML = "";
-  const DATA = [["Claude Fable 5.2", 52.7, 71.7], ["GPT-6 Astra", 59.4, 71.4], ["GPT-6.1 Sol", 56.8, 70.8], ["Muse Wonder Full", 42.7, 69.2],
-    ["Claude Opus 5.5", 49.8, 68.2], ["Inkling 2 Small", 33.4, 64.1], ["Qwen3.8-27B", 26.0, 57.5], ["Gemma-4-31B-it", 28.5, 50.8]];
-  const REFS = [[57.3, L.refs[0]], [67.9, L.refs[1]]];
-  const LO = 20, HI = 80, x = v => (100 * (v - LO) / (HI - LO)) + "%";
-  el.appendChild(hEl("div", "legend", legendHTML(L)));
+const DIRECT_PX = [23.81, 42.05, 64.34, 79.48, 87.14], AGENT_PX = [40.22, 60.92, 78.21, 86.64, 91.01];
+mount("#prec", c => linechart(c, { x: [1, 2, 4, 8, 16], lo: 0, hi: 100, ticks: [0, 25, 50, 75, 100], band: [1, 0], gain: [1, 0],
+  y: { en: CT.en.y, zh: CT.zh.y }, xname: { en: CT.en.x, zh: CT.zh.x }, tipHead: (t, L) => CT[L].within(t),
+  series: [{ name: { en: CT.en.direct, zh: CT.zh.direct }, short: { en: "Direct", zh: "直接" }, color: "var(--c-direct)", hollow: true, vals: DIRECT_PX },
+           { name: { en: "AgenTAP", zh: "AgenTAP" }, color: "var(--c-agent)", vals: AGENT_PX }] }), 0.45);
+mount("#gap", c => linechart(c, { x: ["1–16", "17–64", "65–256", "257+"], lo: 45, hi: 85, ticks: [45, 55, 65, 75, 85], endLabels: true,
+  y: { en: "APD on visible targets", zh: "可见目标上的 APD" }, xname: { en: "Frames between the two images", zh: "两张图之间相隔的帧数" },
+  tipHead: (t, L) => L === "zh" ? `相隔 ${t} 帧` : `${t} frames apart`,
+  series: [{ name: { en: "AgenTAP, full video", zh: "AgenTAP，整段视频" }, short: { en: "AgenTAP video", zh: "AgenTAP 视频" }, color: "var(--c-agent)", vals: [81.4, 72.4, 68.0, 64.3], nudge: -3 },
+           { name: { en: "AgenTAP, two images", zh: "AgenTAP，两张图" }, short: { en: "two images", zh: "两张图" }, color: "var(--c-agent)", dash: true, vals: [78.4, 69.0, 66.8, 64.3], nudge: 3 },
+           { name: { en: "AllTracker HR, full video", zh: "AllTracker HR，整段视频" }, short: { en: "AllTracker HR", zh: "AllTracker HR" }, color: "var(--soft)", vals: [77.6, 66.7, 59.4, 55.4] },
+           { name: { en: CT.en.direct, zh: CT.zh.direct }, short: { en: "Direct", zh: "直接" }, color: "var(--c-direct)", hollow: true, vals: [67.1, 57.6, 52.8, 52.3] }] }), 0.45);
+
+// ---- dumbbells: from one value to another, per row
+function dumbbell(c, cfg) {
+  const el = c.el, L = lang; el.innerHTML = "";
+  const LO = cfg.lo, HI = cfg.hi, x = v => (100 * (v - LO) / (HI - LO)) + "%";
+  el.appendChild(hEl("div", "legend", `<span><i class="dot ${cfg.fromCls}"></i>${cfg.fromName[L]}</span><span><i class="dot agent"></i>${cfg.toName[L]}</span>`));
   const head = hEl("div", "head"); head.appendChild(hEl("div")); const ht = hEl("div", "track"); head.appendChild(ht); head.appendChild(hEl("div"));
-  REFS.forEach(([v, label], i) => { const l = hEl("div", "reflabel", label + " " + v.toFixed(1)); l.style.left = x(v); l.style.top = (i * 18 + 2) + "px"; ht.appendChild(l); });
-  el.appendChild(head);
+  (cfg.refs || []).forEach(([v, label], i) => { const l = hEl("div", "reflabel", label[L] + " " + v.toFixed(1)); l.style.left = x(v); l.style.top = (i * 18 + 2) + "px"; ht.appendChild(l); });
+  if (cfg.refs) el.appendChild(head);
   const body = hEl("div"); body.style.position = "relative"; el.appendChild(body);
-  const tip = hEl("div", "tip"); el.appendChild(tip);
-  const moves = [];
-  DATA.forEach(([name, d, a], k) => {
+  const tip = tipFor(el);
+  cfg.rows.forEach((r, k) => {
     const row = hEl("div", "row"); row.tabIndex = 0; row.style.setProperty("--d", (k * 0.09) + "s");
-    row.setAttribute("aria-label", `${name}: ${L.d} ${d.toFixed(1)}, AgenTAP ${a.toFixed(1)} APD`);
-    row.appendChild(hEl("div", "name", name));
+    const name = typeof r.name === "string" ? r.name : r.name[L];
+    row.appendChild(hEl("div", "name", name + (r.n ? ` <small>(${r.n})</small>` : "")));
     const t = hEl("div", "track");
-    const bar = hEl("div", "bar"); bar.style.left = x(d); t.appendChild(bar);
-    const dd = hEl("div", "dot direct"); dd.style.left = x(d); t.appendChild(dd);
-    const da = hEl("div", "dot agent"); da.style.left = x(d); t.appendChild(da);
-    moves.push(() => { da.style.left = x(a); bar.style.width = (100 * (a - d) / (HI - LO)) + "%"; });
-    row.appendChild(t); row.appendChild(hEl("div", "val", a.toFixed(1)));
-    const showTip = () => {
-      tip.innerHTML = `<b>${name}</b> &nbsp;${L.d} ${d.toFixed(1)} &rarr; AgenTAP ${a.toFixed(1)} (+${(a - d).toFixed(1)})`; tip.style.display = "block";
-      const r = el.getBoundingClientRect(), dr = da.getBoundingClientRect();
-      tip.style.left = Math.min(Math.max(dr.left - r.left - tip.offsetWidth / 2, 8), r.width - tip.offsetWidth - 8) + "px";
-      tip.style.top = (dr.top - r.top - tip.offsetHeight - 10) + "px";
-    };
-    const hide = () => { tip.style.display = "none"; };
-    row.addEventListener("mouseenter", showTip); row.addEventListener("focus", showTip); row.addEventListener("mouseleave", hide); row.addEventListener("blur", hide);
+    const bar = hEl("div", "bar"); bar.style.left = x(r.from); bar.style.setProperty("--bw", (100 * (r.to - r.from) / (HI - LO)) + "%"); t.appendChild(bar);
+    const dd = hEl("div", "dot " + cfg.fromCls); dd.style.left = x(r.from); t.appendChild(dd);
+    const da = hEl("div", "dot agent"); da.style.setProperty("--from", x(r.from)); da.style.setProperty("--to", x(r.to)); t.appendChild(da);
+    row.appendChild(t); row.appendChild(hEl("div", "val", r.to.toFixed(1)));
+    const text = `<b>${name}</b> &nbsp;${r.fromLabel ? r.fromLabel : cfg.fromShort[L]} ${r.from.toFixed(1)} &rarr; AgenTAP ${r.to.toFixed(1)} (+${(r.to - r.from).toFixed(1)})`;
+    row.setAttribute("aria-label", text.replace(/<[^>]+>|&nbsp;|&rarr;/g, " "));
+    hover(row, () => { const dr = da.getBoundingClientRect(); tip.show(text, dr.left, dr.top); }, () => tip.hide());
     body.appendChild(row);
   });
   const refs = hEl("div", "refs"); body.appendChild(refs);
-  REFS.forEach(([v]) => { const r = hEl("div", "ref"); r.style.left = x(v); refs.appendChild(r); });
+  (cfg.refs || []).forEach(([v]) => { const r = hEl("div", "ref"); r.style.left = x(v); refs.appendChild(r); });
   const place = () => { const f = body.querySelector(".track"); if (!f) return; const b = body.getBoundingClientRect(), fr = f.getBoundingClientRect();
     refs.style.left = (fr.left - b.left) + "px"; refs.style.width = fr.width + "px"; refs.style.top = "0"; refs.style.bottom = "0"; };
   const axis = hEl("div", "axis"); axis.appendChild(hEl("div")); const ticks = hEl("div", "ticks");
-  for (let v = LO; v <= HI; v += 10) { const s = hEl("span", "", String(v)); s.style.left = x(v); ticks.appendChild(s); }
+  for (let v = LO; v <= HI; v += 10) { const sp = hEl("span", "", String(v)); sp.style.left = x(v); ticks.appendChild(sp); }
   axis.appendChild(ticks); axis.appendChild(hEl("div", "unit", "APD")); el.appendChild(axis);
   place(); el._place = place;
-  el._go = () => { el.classList.add("go"); moves.forEach(f => f()); };
-  if (rankSeen) { el.querySelectorAll("*").forEach(n => n.style.transition = "none"); el._go(); }
 }
-addEventListener("resize", () => { const r = $("#rank"); if (r._place) r._place(); });
-onSeen($("#prec"), () => { precSeen = true; requestAnimationFrame(() => $("#prec").classList.add("go")); }, 0.45);
-onSeen($("#rank"), () => { rankSeen = true; requestAnimationFrame(() => $("#rank")._go()); }, 0.35);
+addEventListener("resize", () => document.querySelectorAll(".rank").forEach(r => r._place && r._place()));
+mount("#rank", c => dumbbell(c, { lo: 20, hi: 80, fromCls: "direct", fromName: { en: CT.en.direct, zh: CT.zh.direct }, toName: { en: "AgenTAP", zh: "AgenTAP" },
+  fromShort: { en: "Direct", zh: "直接" }, refs: [[57.3, { en: CT.en.refs[0], zh: CT.zh.refs[0] }], [67.9, { en: CT.en.refs[1], zh: CT.zh.refs[1] }]],
+  rows: [["Claude Fable 5.2", 52.7, 71.7], ["GPT-6 Astra", 59.4, 71.4], ["GPT-6.1 Sol", 56.8, 70.8], ["Muse Wonder Full", 42.7, 69.2], ["Claude Opus 5.5", 49.8, 68.2],
+         ["Inkling 2 Small", 33.4, 64.1], ["Qwen3.8-27B", 26.0, 57.5], ["Gemma-4-31B-it", 28.5, 50.8]].map(([name, from, to]) => ({ name, from, to })) }), 0.35);
+mount("#domains", c => dumbbell(c, { lo: 50, hi: 80, fromCls: "spec", fromName: { en: "Best full-video tracker in the domain", zh: "该领域最好的整段视频追踪器" },
+  toName: { en: "AgenTAP, GPT-6 Astra", zh: "AgenTAP，GPT-6 Astra" }, fromShort: { en: "tracker", zh: "追踪器" },
+  rows: [[{ en: "Everyday activities", zh: "日常活动" }, 759, "AllTracker HR", 67.3, 73.3], [{ en: "Robotic manipulation", zh: "机器人操作" }, 302, "AllTracker", 74.2, 78.7],
+         [{ en: "Sports and performances", zh: "体育和表演" }, 381, "AllTracker HR", 69.5, 74.2], [{ en: "Driving and street scenes", zh: "驾驶和街景" }, 300, "CoTracker3", 73.5, 76.8],
+         [{ en: "Animals and nature", zh: "动物和自然" }, 208, "AllTracker HR", 58.9, 66.6], [{ en: "Biomedical scenes", zh: "生物医学" }, 50, "AllTracker HR", 61.4, 68.6]]
+    .map(([name, n, fromLabel, from, to]) => ({ name, n, fromLabel, from, to })) }), 0.35);
+
+// ---- boards: ranked bars with switches
+function board(c, cfg) {
+  const el = c.el, L = lang; el.innerHTML = ""; el.classList.add("board");
+  const st = c.state || (c.state = { tab: cfg.tabs ? cfg.tabs[0].key : null, metric: cfg.metrics[0] });
+  const rows = cfg.rows(st.tab), RH = matchMedia("(max-width:640px)").matches ? 28 : 30;
+  const sw = hEl("div", "switch"), btns = [];
+  if (cfg.tabs) { const g = hEl("div", "grp"); cfg.tabs.forEach(t => { const b = hEl("button", st.tab === t.key ? "on" : "", CT[L][t.key]); b.type = "button";
+      b.onclick = () => { if (st.tab === t.key) return; st.tab = t.key; board(c, cfg); if (c.seen) replay(c); }; g.appendChild(b); }); sw.appendChild(g); }
+  if (cfg.metrics.length > 1) { const g = hEl("div", "grp"); cfg.metrics.forEach(m => { const b = hEl("button", "m" + (st.metric === m ? " on" : ""), m); b.type = "button";
+      b.onclick = () => { st.metric = m; btns.forEach(x => x.classList.toggle("on", x.textContent === m)); update(); }; btns.push(b); g.appendChild(b); }); sw.appendChild(g); }
+  if (sw.children.length) el.appendChild(sw);
+  const kinds = [...new Set(rows.filter(r => r.kind !== "head").map(r => r.kind))];
+  el.appendChild(hEl("div", "legend", ["human", "agent", "zoom", "direct", "spec"].filter(k => kinds.includes(k)).map(k => `<span><i class="sw ${k}"></i>${CT[L][k]}</span>`).join("")));
+  const box = hEl("div", "rows"); box.style.height = (rows.length * RH) + "px"; el.appendChild(box);
+  const els = rows.map(r => {
+    const row = hEl("div", "row " + r.kind); const nm = typeof r.name === "string" ? r.name : r.name[L];
+    if (r.kind === "head") { row.appendChild(hEl("div", "name", nm)); box.appendChild(row); return row; }
+    const tag = r.tag ? ` <small>${CT[L][r.tag] || r.tag}</small>` : "";
+    row.appendChild(hEl("div", "name", nm + tag));
+    const t = hEl("div", "track"); t.appendChild(hEl("i", "b " + r.kind)); row.appendChild(t); row.appendChild(hEl("div", "v"));
+    box.appendChild(row); return row;
+  });
+  function update() {
+    const m = st.metric;
+    const order = cfg.sort === false ? rows.map((_, i) => i) : rows.map((_, i) => i).sort((a, b) => rows[b].vals[m] - rows[a].vals[m]);
+    order.forEach((ri, pos) => { const row = els[ri], r = rows[ri]; row.style.top = (pos * RH) + "px"; if (r.kind === "head") return;
+      row.querySelector(".b").style.setProperty("--w", r.vals[m] + "%"); row.querySelector(".v").textContent = r.vals[m].toFixed(1);
+      row.setAttribute("aria-label", `${row.querySelector(".name").textContent}: ${m} ${r.vals[m].toFixed(1)}`); });
+    unit.textContent = m;
+  }
+  const axis = hEl("div", "axis"); axis.appendChild(hEl("div")); const ticks = hEl("div", "ticks");
+  [0, 25, 50, 75, 100].forEach(v => { const sp = hEl("span", "", String(v)); sp.style.left = v + "%"; ticks.appendChild(sp); });
+  axis.appendChild(ticks); const unit = hEl("div", "unit"); axis.appendChild(unit); el.appendChild(axis);
+  update();
+}
+const V = (AJ, APD, OA) => ({ AJ, APD, OA });
+const TWO = [["RoMa v2", "spec", V(33.9, 51.0, 77.6)], ["AllTracker", "spec", V(46.1, 57.3, 73.3)], ["AllTracker, HR", "spec", V(47.9, 56.6, 70.8)]];
+const VLM2 = [["Qwen3.8-27B", V(14.9, 26.0, 80.1), V(38.6, 57.5, 79.6)], ["Gemma-4-31B-it", V(17.6, 28.5, 76.6), V(32.3, 50.8, 79.0)],
+  ["Inkling 2 Small", V(20.9, 33.4, 79.1), V(43.8, 64.1, 81.5)], ["Muse Wonder Full", V(29.5, 42.7, 83.0), V(51.4, 69.2, 85.4)],
+  ["Claude Opus 5.5", V(33.0, 49.8, 82.2), V(49.3, 68.2, 84.2)], ["Claude Fable 5.2", V(35.6, 52.7, 83.3), V(52.7, 71.7, 86.0)],
+  ["GPT-6.1 Sol", V(40.6, 56.8, 83.7), V(53.6, 70.8, 86.1)], ["GPT-6 Astra", V(43.2, 59.4, 85.5), V(54.9, 71.4, 86.3)]];
+const VID = [["CoTracker3", "spec", V(49.4, 64.0, 81.3)], ["BootsTAPIR", "spec", V(47.8, 59.6, 76.3)], ["TAPNext++", "spec", V(48.1, 63.3, 83.6)],
+  ["AllTracker", "spec", V(53.3, 66.8, 81.5)], ["AllTracker, HR", "spec", V(56.1, 67.9, 80.2)],
+  ["Inkling 2 Small", "agent", V(48.5, 68.5, 83.2)], ["Muse Wonder Full", "agent", V(55.5, 72.8, 86.6)], ["Claude Opus 5.5", "agent", V(53.2, 72.0, 84.3)],
+  ["Claude Fable 5.2", "agent", V(56.1, 74.4, 86.7)], ["GPT-6 Astra", "agent", V(58.5, 73.9, 88.2)]];
+mount("#lb", c => board(c, { tabs: [{ key: "video" }, { key: "two" }], metrics: ["APD", "AJ", "OA"],
+  rows: tab => tab === "video" ? VID.map(([name, kind, vals]) => ({ name, kind, vals, tag: kind === "agent" ? "plus" : null }))
+    : [...TWO.map(([name, kind, vals]) => ({ name, kind, vals })), ...VLM2.map(([name, d, a]) => ({ name, kind: "agent", vals: a, tag: "plus" })),
+       ...VLM2.map(([name, d]) => ({ name, kind: "direct", vals: d, tag: "dsm" }))] }), 0.2);
+mount("#ladder", c => board(c, { metrics: ["APD", "AJ", "OA"], sort: false, rows: () => [
+  { kind: "head", name: "GPT-6 Astra" },
+  { kind: "direct", name: { en: "Direct, one call", zh: "直接回答" }, vals: V(43.2, 59.4, 85.5) },
+  { kind: "zoom", name: { en: "Fixed zoom-ins", zh: "固定放大" }, vals: V(43.0, 60.9, 85.1) },
+  { kind: "agent", name: { en: "AgenTAP, tools only", zh: "AgenTAP，只用工具" }, vals: V(51.0, 67.4, 86.5) },
+  { kind: "agent", name: { en: "with suggestions", zh: "加上专用模型的建议" }, vals: V(54.9, 71.4, 86.3) },
+  { kind: "agent", name: { en: "with the full video", zh: "再加上整段视频" }, vals: V(58.5, 73.9, 88.2) },
+  { kind: "head", name: "Inkling 2 Small" },
+  { kind: "direct", name: { en: "Direct, one call", zh: "直接回答" }, vals: V(20.9, 33.4, 79.1) },
+  { kind: "agent", name: { en: "AgenTAP, tools only", zh: "AgenTAP，只用工具" }, vals: V(32.0, 48.5, 80.4) },
+  { kind: "agent", name: { en: "with suggestions", zh: "加上专用模型的建议" }, vals: V(43.8, 64.1, 81.5) },
+  { kind: "agent", name: { en: "with the full video", zh: "再加上整段视频" }, vals: V(48.5, 68.5, 83.2) }] }), 0.3);
+mount("#audit", c => board(c, { metrics: ["APD", "AJ", "OA"], rows: () => [
+  { kind: "human", name: { en: "Two people", zh: "两个人之间" }, vals: V(68.7, 79.3, 92.4) },
+  { kind: "agent", name: "GPT-6 Astra", tag: "plus", vals: V(64.4, 76.9, 92.6) }, { kind: "agent", name: "Inkling 2 Small", tag: "plus", vals: V(42.5, 59.7, 86.0) },
+  { kind: "spec", name: "RoMa v2", vals: V(24.2, 37.4, 73.2) }, { kind: "spec", name: "CoTracker3", vals: V(30.1, 33.1, 55.3) }, { kind: "spec", name: "BootsTAPIR", vals: V(36.4, 39.4, 58.2) },
+  { kind: "spec", name: "TAPNext++", vals: V(13.8, 14.1, 33.7) }, { kind: "spec", name: "AllTracker", vals: V(34.8, 40.1, 60.1) }, { kind: "spec", name: "AllTracker, HR", vals: V(26.7, 28.4, 47.4) }] }), 0.3);
+
+// ---- fixed against broken, per distance
+mount("#verify", c => { const el = c.el, L = lang; el.innerHTML = ""; el.className = "dv";
+  el.appendChild(hEl("div", "legend", `<span><i class="sw spec" style="border-radius:3px 0 0 3px"></i>${CT[L].broken}</span><span><i class="sw agent"></i>${CT[L].fixed}</span>`));
+  [[1, 392, 87], [2, 395, 73], [4, 276, 53], [8, 158, 45], [16, 94, 39]].forEach(([px, fixed, broken], k) => {
+    const r = hEl("div", "r"); r.style.setProperty("--d", (k * 0.08) + "s");
+    r.appendChild(hEl("span", "lab", px + " px"));
+    const l = hEl("div", "l", `<b>${broken}</b><i style="--w:${broken / 110 * 100}%"></i>`), rt = hEl("div", "rt", `<i style="--w:${fixed / 420 * 100}%"></i><b>${fixed}</b>`);
+    r.appendChild(l); r.appendChild(rt); r.setAttribute("aria-label", `${CT[L].within(px)}: ${fixed} ${CT[L].fixed}, ${broken} ${CT[L].broken}`);
+    el.appendChild(r);
+  }); }, 0.4);
+
+// ---- held-out videos against the benchmark
+mount("#heldout", c => { const el = c.el, L = lang; el.innerHTML = ""; el.className = "sc";
+  const P0 = [["Qwen3.5-27B", 10.8, 8.2], ["Qwen3.5-122B-A10B", 18.7, 23.3], ["Qwen3.8-27B", 26.0, 44.7], ["Qwen3.8-Flash-Next", 24.6, 41.3], ["Gemma-4-31B-it", 28.5, 40.0],
+    ["Muse Glimmer", 13.4, 24.1], ["Molmo2-8B", 21.2, 17.7, 1], ["Claude Opus 5.5", 48.9, 67.5, 1], ["GPT-6 Astra", 59.4, 80.3, 2], ["Inkling 2 Small", 33.4, 42.3, 1], ["Muse Wonder Full", 42.7, 57.3, 1]];
+  const HI = 90, X = v => v / HI * 100, Y = v => 100 - v / HI * 100;
+  const wrap = hEl("div", "wrap"), plot = hEl("div", "plot"); wrap.appendChild(plot); el.appendChild(wrap);
+  const svg = document.createElementNS(NS, "svg"); svg.setAttribute("viewBox", "0 0 100 100"); svg.setAttribute("preserveAspectRatio", "none");
+  [30, 60].forEach(v => { mk("line", { x1: X(v), x2: X(v), y1: 0, y2: 100, stroke: "var(--rule)", "vector-effect": "non-scaling-stroke" }, svg); mk("line", { y1: Y(v), y2: Y(v), x1: 0, x2: 100, stroke: "var(--rule)", "vector-effect": "non-scaling-stroke" }, svg); });
+  mk("line", { x1: 0, y1: 100, x2: 100, y2: 0, stroke: "var(--soft)", "stroke-dasharray": "5 5", "vector-effect": "non-scaling-stroke", opacity: .6 }, svg);
+  plot.appendChild(svg);
+  [0, 30, 60, 90].forEach(v => { const gx = hEl("span", "g gx", String(v)); gx.style.left = X(v) + "%"; plot.appendChild(gx); const gy = hEl("span", "g gy", String(v)); gy.style.bottom = (v / HI * 100) + "%"; plot.appendChild(gy); });
+  const tip = tipFor(el);
+  P0.forEach(([name, tb, ho, lab], k) => {
+    const pt = hEl("div", "pt"); pt.style.left = X(tb) + "%"; pt.style.top = Y(ho) + "%"; pt.style.setProperty("--d", (0.1 + k * 0.06) + "s"); pt.tabIndex = 0;
+    const text = `<b>${name}</b> &nbsp;TrackingBench ${tb.toFixed(1)} &nbsp;·&nbsp; ${L === "zh" ? "新视频" : "new videos"} ${ho.toFixed(1)}`;
+    pt.setAttribute("aria-label", text.replace(/<[^>]+>|&nbsp;/g, " "));
+    hover(pt, () => { const r = pt.getBoundingClientRect(); tip.show(text, r.left + 6, r.top); }, () => tip.hide());
+    plot.appendChild(pt);
+    if (lab) { const pl = hEl("span", "pl" + (lab === 2 ? " left" : ""), name); pl.style.left = X(tb) + "%"; pl.style.top = Y(ho) + "%"; plot.appendChild(pl); }
+  });
+  wrap.appendChild(hEl("div", "ax axx", L === "zh" ? "TrackingBench 上的 APD" : "APD on TrackingBench"));
+  wrap.appendChild(hEl("div", "ax axy", L === "zh" ? "新视频上的 APD" : "APD on the new videos"));
+}, 0.4);
 
 // ================================================================== language, progress, copy
 function setLang(l) {
@@ -1027,7 +1658,7 @@ function setLang(l) {
   document.documentElement.lang = lang;
   document.querySelectorAll(".langbtn").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
   document.title = lang === "zh" ? "点对应，需要推理 | Xuweiyi Chen" : "Correspondence Needs Reasoning | Xuweiyi Chen";
-  buildOpeningText(); buildPrec(); buildRank();
+  buildOpeningText(); renderCharts();
   try { localStorage.setItem("agentap-lang", lang); } catch (e) {}
   layout(); frame(tNow); if (typeof updateToc === "function") queueToc();
 }
@@ -1045,6 +1676,11 @@ function updateToc() {
     a.querySelector(".bar i").style.height = (pr * 100).toFixed(1) + "%";
     a.classList.toggle("cur", pr > 0 && pr < 1); a.classList.toggle("done", pr >= 1);
   });
+  // the marked point rides down the rail
+  const tr = toc.getBoundingClientRect(); let py = null;
+  tocLinks.forEach(a => { const bar = a.querySelector(".bar"), fill = parseFloat(a.querySelector(".bar i").style.height) / 100, r = bar.getBoundingClientRect();
+    if (py == null || fill > 0) py = r.top - tr.top + r.height * fill; });
+  toc.querySelector(".pt").style.top = py.toFixed(1) + "px";
   toc.classList.toggle("on", $("#essay").getBoundingClientRect().top < innerHeight * 0.55 && footTop - y > innerHeight * 0.5);
 }
 let tocQueued = false;
