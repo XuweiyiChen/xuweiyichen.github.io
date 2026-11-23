@@ -10,14 +10,13 @@ Before joining UVA, I have completed master of Computer Science and Engineering 
 
 ## Research Interests
 
-My research centers on scalable approaches to **3D computer vision, language-grounded robotics, and visual world models**. I am broadly interested in how visual foundation models can acquire **persistent, dynamic, and geometry-aware** world representations from real-world multi-view, video, and 3D data.
+Most of what is true about the physical world has never been written down. It is in how things look, move, break and fit together. I am interested in machines that learn it directly from the world.
 
+That takes four things. **Seeing**: recovering the 3D structure and motion of the world from any video. **Reasoning**: tying language to what is really there, and checking every answer against it. **Acting**: robots and personal agents that put this to use next to people. **Explaining**: writing the physics down so that a machine can prove what it predicts. My work so far is on the first two. The other two are where I am going.
 
-I currently focus on two themes:
+I believe in scale, and the world is the largest dataset there is.
 
-- **Developing vision-centric 3D/4D foundation models.** I study how large-scale visual models can learn spatially grounded representations of static and dynamic environments, with an emphasis on multi-view perception, novel view synthesis, 3D scene understanding, and persistent visual memory.
-
-- **Grounding language concepts in 3D environments and robotic actions.** I explore how language can be connected to 3D scenes, object affordances, spatial relations, and embodied actions, enabling agents to reason, navigate, and interact in complex physical environments.
+A machine that learns from what people wrote can become as good as people. A machine that learns from the world itself can go further, and tell us things we do not know. That is the one I want to build.
 
 ## Internships
 
