@@ -10,13 +10,13 @@ Before joining UVA, I have completed master of Computer Science and Engineering 
 
 ## Research Interests
 
-Most of what is true about the physical world has never been written down. It is in how things look, move, break and fit together. I am interested in machines that learn it directly from the world.
+Much of what we know about the physical world is never written down. We learn it by watching things move, seeing how they fit together, and discovering what happens when we act on them. I want to build machines that learn this way: through observation and interaction, with language as a guide and the world as a test.
 
-That takes four things. **Seeing**: recovering the 3D structure and motion of the world from any video. **Reasoning**: tying language to what is really there, and checking every answer against it. **Acting**: robots and personal agents that put this to use next to people. **Explaining**: writing the physics down so that a machine can prove what it predicts. My work so far is on the first two. The other two are where I am going.
+My research focuses on visual perception and grounded reasoning: recovering 3D structure and motion from video, and connecting language to visual evidence so that a model's conclusions can be checked against what it observes. I believe in scale: these models should learn from the world itself, with as little human labelling as possible.
 
-I believe in scale, and the world is the largest dataset there is.
+I am now extending this work toward action and scientific understanding. On real robots, this means using what they perceive to act alongside people and learn from the consequences. For science, it means turning learned patterns into explicit physical models that make testable predictions.
 
-A machine that learns from what people wrote can become as good as people. A machine that learns from the world itself can go further, and tell us things we do not know. That is the one I want to build.
+My long-term goal is to build machines that use observations to form hypotheses, use actions to test them, and revise their understanding when the world surprises them. I want these machines to help us discover things we do not yet know.
 
 ## Internships
 
