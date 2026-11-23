@@ -17,7 +17,7 @@
 :root{
   --paper:#f2ede3; --ink:#1f1b26; --body:#2e2a35; --soft:#5d5767; --faint:#857f8e; --rule:rgba(31,27,38,.14); --wash:rgba(31,27,38,.05);
   --accent:#7654a5; --stripe:#d3c6e6; --gold:#e3a62a; --inside:rgba(31,27,38,.13); --orange:#de5b24; --gray:#8b8794; --green:#2b9348;
-  --shadow:rgba(31,27,38,.11); --tape:rgba(205,190,228,.78); --card:#fff;
+  --shadow:rgba(31,27,38,.11); --tape:rgba(205,190,228,.78); --card:#f8f4ec;
   --c-direct:#de5b24; --c-agent:#7654a5;
   --en:"Fraunces", Georgia, serif; --zh:"Noto Serif SC", "Songti SC", serif;
   --hand-en:"Caveat", "Segoe Print", cursive; --hand-zh:"ZCOOL KuaiLe", "Kaiti SC", cursive; --mono:"JetBrains Mono", ui-monospace, monospace;
@@ -25,7 +25,7 @@
 @media (prefers-color-scheme: dark){
   :root{ --paper:#16141b; --ink:#ece6da; --body:#d9d3c8; --soft:#b5afbd; --faint:#8f8a98; --rule:rgba(236,230,218,.14); --wash:rgba(236,230,218,.06);
     --accent:#b79be0; --stripe:#3f3454; --gold:#e8b84a; --inside:rgba(0,0,0,.38); --orange:#e8743f; --gray:#8f8b99; --green:#5cc97c;
-    --shadow:rgba(0,0,0,.4); --tape:rgba(110,92,150,.62); --card:#f4f1ea; --c-direct:#d95926; --c-agent:#9085e9; }
+    --shadow:rgba(0,0,0,.4); --tape:rgba(110,92,150,.62); --card:#cfc9bd; --c-direct:#d95926; --c-agent:#9085e9; }
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -63,7 +63,7 @@ html[lang="zh"] .toc a{font-family:var(--zh);font-size:13.5px;letter-spacing:.02
 .toc .n{padding-top:5px;font:700 18px/1 var(--hand-en);color:var(--faint)}
 .toc .t{padding:5px 0}
 .toc a.cur{color:var(--ink);font-weight:600} .toc a.cur .n,.toc a.done .n{color:var(--accent)}
-@media (max-width:1259px){ .toc{display:none} }
+@media (max-width:1399px){ .toc{display:none} }
 
 /* ---------------- the opening ---------------- */
 #hook{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden}
@@ -109,7 +109,7 @@ html[lang="zh"] #scrollcue{font-family:var(--hand-zh);font-weight:400}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
 /* ---------------- the essay ---------------- */
-.essay{max-width:800px;margin:0 auto;padding:13vh 24px 8vh;font:400 21px/1.72 var(--en)}
+.essay{max-width:890px;margin:0 auto;padding:13vh 24px 8vh;font:400 21px/1.72 var(--en)}
 html[lang="zh"] .essay{font:400 19px/2 var(--zh);letter-spacing:.02em}
 .essay p{margin:0 0 1.15em}
 .essay .lede{font-size:1.12em;color:var(--ink)}
@@ -138,13 +138,12 @@ html[lang="zh"] .disclaimer{font-style:normal}
 html[lang="zh"] .disclaimer .tag{font:400 19px/1 var(--hand-zh)}
 
 figure{margin:2.4em 0}
-figure.wide{--fw:min(94vw,960px);position:relative;width:var(--fw);left:50%;margin-left:calc(var(--fw) / -2)}
-@media (min-width:1260px){ figure.wide{--fw:min(960px,calc(100vw - 500px))} }
+figure.wide{--fw:min(94vw,1010px);position:relative;width:var(--fw);left:50%;margin-left:calc(var(--fw) / -2)}
+@media (min-width:1400px){ figure.wide{--fw:min(1010px,calc(100vw - 500px))} }
 .photo{position:relative;display:block;background:var(--card);padding:10px;border-radius:3px;box-shadow:0 16px 34px -20px var(--shadow),0 2px 4px var(--shadow);transform:rotate(-.35deg)}
 .photo.r{transform:rotate(.4deg)}
 .photo::before{content:"";position:absolute;top:-13px;left:50%;width:118px;height:27px;margin-left:-59px;background:var(--tape);transform:rotate(-2.4deg);z-index:1}
-.photo img{display:block;width:100%;height:auto}
-@media (prefers-color-scheme: dark){ .photo img{filter:brightness(.93)} }
+.photo img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
 figcaption{margin-top:16px;font:400 .86em/1.6 var(--en);color:var(--soft)}
 html[lang="zh"] figcaption{font:400 .86em/1.75 var(--zh)}
 .reveal{opacity:0;transform:translateY(34px)}
@@ -316,7 +315,7 @@ ol.refs li:target{background:var(--stripe);border-radius:4px}
 .bib{position:relative;margin:1.4em 0;border:1.5px dashed var(--rule);border-radius:10px;padding:18px 20px}
 .bib pre{margin:0;font:400 13.5px/1.65 var(--mono);color:var(--ink);overflow-x:auto;letter-spacing:0}
 .copy{position:absolute;top:10px;right:12px;background:none;border:0;font:700 20px var(--hand-en);color:var(--accent);cursor:pointer}
-footer{max-width:800px;margin:0 auto;padding:30px 24px 60px;display:flex;justify-content:space-between;font:700 21px var(--hand-en);color:var(--soft)}
+footer{max-width:890px;margin:0 auto;padding:30px 24px 60px;display:flex;justify-content:space-between;font:700 21px var(--hand-en);color:var(--soft)}
 html[lang="zh"] footer{font:400 19px var(--hand-zh)}
 footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
 
@@ -564,11 +563,11 @@ footer a{color:var(--soft)} footer a:hover{color:var(--ink)}
     <figcaption class="zh">可见目标里有 456 个在两帧之间被遮挡过。在这些点上，使用 GPT-6 Astra 的 AgenTAP 达到 67.4 APD，追踪器是 57.5。</figcaption>
   </figure>
 
-  <h3 class="find"><span class="lab"><span class="en">against people</span><span class="zh">和人比</span></span><span class="en">On points that come back, AgenTAP is close to how well two people agree.</span><span class="zh">在重新出现的点上，AgenTAP 接近两个人之间的一致程度。</span></h3>
+  <h3 class="find"><span class="lab"><span class="en">against people</span><span class="zh">和人比</span></span><span class="en">On points that come back, AgenTAP is close to how well human annotators agree.</span><span class="zh">在重新出现的点上，AgenTAP 接近人工标注员之间的一致程度。</span></h3>
   <figure>
-    <div id="audit" role="img" aria-label="Reappearing points labelled by two people: agreement between the two people, AgenTAP and specialist models"></div>
-    <figcaption class="en">Reappearing points in long recordings from head-mounted cameras, labelled by two people who saw no model output (582 point and frame pairs from 49 events). The top bar scores one person against the other.</figcaption>
-    <figcaption class="zh">长时间头戴相机录像里重新出现的点，由两个人在看不到任何模型输出的情况下标注（49 个事件，582 个点和帧的组合）。最上面一条是用一个人的标注去评另一个人。</figcaption>
+    <div id="audit" role="img" aria-label="Reappearing points labelled by two human annotators: agreement between the annotators, AgenTAP and specialist models"></div>
+    <figcaption class="en">Reappearing points in long recordings from head-mounted cameras, labelled by two human annotators who saw no model output (582 point and frame pairs from 49 events). The top bar scores one annotator against the other.</figcaption>
+    <figcaption class="zh">长时间头戴相机录像里重新出现的点，由两名人工标注员在看不到任何模型输出的情况下标注（49 个事件，582 个点和帧的组合）。最上面一条是用一名标注员的标注去评另一名。</figcaption>
   </figure>
 
   <h3 class="find"><span class="lab"><span class="en">checking</span><span class="zh">检查</span></span><span class="en">Checking fixes far more answers than it breaks.</span><span class="zh">检查改对的答案，远多于改错的。</span></h3>
@@ -1429,11 +1428,11 @@ document.querySelectorAll(".said p.type").forEach(p => {
 // Every number below is from the paper: Table 1 (main results), the ablation and reappearance tables, and the data
 // files of the analysis figure (figures/data/analysis_*.csv).
 const CT = {
-  en: { direct: "Direct, one call", agent: "AgenTAP", spec: "Specialist model", human: "Two people", zoom: "Fixed zoom-ins",
+  en: { direct: "Direct, one call", agent: "AgenTAP", spec: "Specialist model", human: "Human annotators", zoom: "Fixed zoom-ins",
         y: "Visible points found (%)", x: "Distance to the true location (pixels)", within: t => `Within ${t} px`, d: "Direct",
         refs: ["Best two-image specialist", "Best full-video tracker"], two: "two images", video: "full video",
         plus: "+ AgenTAP", dsm: "direct", fixed: "fixed", broken: "broken", best: "Best tracker" },
-  zh: { direct: "直接回答（一次调用）", agent: "AgenTAP", spec: "专用模型", human: "两个人之间", zoom: "固定放大",
+  zh: { direct: "直接回答（一次调用）", agent: "AgenTAP", spec: "专用模型", human: "人工标注员", zoom: "固定放大",
         y: "找到的可见点（%）", x: "与真实位置的距离（像素）", within: t => `${t} 像素以内`, d: "直接",
         refs: ["两张图下最好的专用模型", "整段视频下最好的追踪器"], two: "两张图", video: "整段视频",
         plus: "+ AgenTAP", dsm: "直接回答", fixed: "改对", broken: "改错", best: "最好的追踪器" }
@@ -1612,7 +1611,7 @@ mount("#ladder", c => board(c, { metrics: ["APD", "AJ", "OA"], sort: false, rows
   { kind: "agent", name: { en: "with suggestions", zh: "加上专用模型的建议" }, vals: V(43.8, 64.1, 81.5) },
   { kind: "agent", name: { en: "with the full video", zh: "再加上整段视频" }, vals: V(48.5, 68.5, 83.2) }] }), 0.3);
 mount("#audit", c => board(c, { metrics: ["APD", "AJ", "OA"], rows: () => [
-  { kind: "human", name: { en: "Two people", zh: "两个人之间" }, vals: V(68.7, 79.3, 92.4) },
+  { kind: "human", name: { en: "Human annotators", zh: "人工标注员" }, vals: V(68.7, 79.3, 92.4) },
   { kind: "agent", name: "GPT-6 Astra", tag: "plus", vals: V(64.4, 76.9, 92.6) }, { kind: "agent", name: "Inkling 2 Small", tag: "plus", vals: V(42.5, 59.7, 86.0) },
   { kind: "spec", name: "RoMa v2", vals: V(24.2, 37.4, 73.2) }, { kind: "spec", name: "CoTracker3", vals: V(30.1, 33.1, 55.3) }, { kind: "spec", name: "BootsTAPIR", vals: V(36.4, 39.4, 58.2) },
   { kind: "spec", name: "TAPNext++", vals: V(13.8, 14.1, 33.7) }, { kind: "spec", name: "AllTracker", vals: V(34.8, 40.1, 60.1) }, { kind: "spec", name: "AllTracker, HR", vals: V(26.7, 28.4, 47.4) }] }), 0.3);
