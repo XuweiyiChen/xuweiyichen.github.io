@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MidasTUI | Xuweiyi Chen</title>
+  <meta name="description" content="Pick up whatever is on the table and use it as a slider, a knob, a mouse or a keypad for your headset.">
+  <link rel="icon" media="(prefers-color-scheme:light)" href="../../assets/img/favicon.png" type="image/png">
+  <link rel="icon" media="(prefers-color-scheme:dark)" href="../../assets/img/favicon-dark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Inter:wght@400;500;600&family=Patrick+Hand&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    /* Layout: a full-height hand-drawn stage; at the end the drawing moves right and the title sits left. Body column below. */
+    :root {
+      --paper: #f7f2e8; --ink: #2a2622; --ink2: #5b544b; --muted: #6f675c; --rule: #e2d9c8;
+      --hand: #d9621f; --obj: #2563c9; --hi: #ffd23f; --good: #1f8a4c; --bad: #cf2e2e; --accent: #7654a5;
+      --wood: #ead8b8; --wood2: #d6bd94; --tray: #dfe2e6; --tray2: #c3c8cf; --cloud: #ffffff;
+      --skin: #f2c8a4; --sleeve: #8c86a8;
+      --screen: #ffffff; --screen2: #eef1f6; --chk: #dbe1ea; --sky: #cfe3f7; --mtn: #7d9a7a; --lake: #9cc6e8;
+      --case: #fbfaf6; --book: #e9dcc2; --book2: #b9573c; --cup: #ffffff; --coffee: #6b4226; --saucer: #efe8da; --pastry: #dc9c4f;
+      --card: #fffdf8; --shadow: rgba(40, 28, 10, .16);
+      --hand-en: "Patrick Hand", "ZCOOL KuaiLe", "Comic Sans MS", cursive;
+      --hand-zh: "ZCOOL KuaiLe", "Patrick Hand", "PingFang SC", sans-serif;
+      --serif: "Crimson Pro", Georgia, serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --grain-op: .07;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #1c1a17; --ink: #efe8da; --ink2: #c4baa8; --muted: #a99f8f; --rule: #3a352d;
+        --hand: #ff9152; --obj: #75a7ff; --hi: #c99a12; --good: #5fd08f; --bad: #ff6b6b; --accent: #b79be0;
+        --wood: #3b3127; --wood2: #54463a; --tray: #3a3e44; --tray2: #2b2f34; --cloud: #c9d3de;
+        --skin: #d8a684; --sleeve: #6d6888;
+        --screen: #25272c; --screen2: #30333a; --chk: #3b3f47; --sky: #3c5874; --mtn: #5f7d5c; --lake: #4d7699;
+        --case: #e4e4df; --book: #6f624e; --book2: #c46a4e; --cup: #e9e6df; --coffee: #5a3920; --saucer: #8d8577; --pastry: #b67a36;
+        --card: #26231f; --shadow: rgba(0, 0, 0, .45); --grain-op: .05; color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: #1c1a17; --ink: #efe8da; --ink2: #c4baa8; --muted: #a99f8f; --rule: #3a352d;
+      --hand: #ff9152; --obj: #75a7ff; --hi: #c99a12; --good: #5fd08f; --bad: #ff6b6b; --accent: #b79be0;
+      --wood: #3b3127; --wood2: #54463a; --tray: #3a3e44; --tray2: #2b2f34; --cloud: #c9d3de;
+      --skin: #d8a684; --sleeve: #6d6888;
+      --screen: #25272c; --screen2: #30333a; --chk: #3b3f47; --sky: #3c5874; --mtn: #5f7d5c; --lake: #4d7699;
+      --case: #e4e4df; --book: #6f624e; --book2: #c46a4e; --cup: #e9e6df; --coffee: #5a3920; --saucer: #8d8577; --pastry: #b67a36;
+      --card: #26231f; --shadow: rgba(0, 0, 0, .45); --grain-op: .05; color-scheme: dark;
+    }
+    html { -webkit-text-size-adjust: 100%; }
+    html[lang="en"] { --handf: var(--hand-en); }
+    html[lang="zh-CN"] { --handf: var(--hand-zh); }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 400 21px/1.7 var(--serif); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: var(--grain-op);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::before { mix-blend-mode: screen; filter: invert(1); } }
+    :root[data-theme="dark"] body::before { mix-blend-mode: screen; filter: invert(1); }
+    a { color: var(--accent); text-decoration: none; }
+    button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+    .nav .inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; height: 56px; display: flex; align-items: center; justify-content: flex-end; font: 500 14px/1 var(--sans); }
+    .nav .right { display: flex; align-items: center; gap: 22px; }
+    .nav .menu { display: flex; gap: 22px; }
+    .nav .menu a { color: var(--muted); }
+    .nav .menu a.here { color: var(--ink); }
+    .lang { display: inline-flex; border: 1.5px solid var(--ink2); border-radius: 999px; overflow: hidden; }
+    .lang button { font: 600 13px/1 var(--sans); color: var(--ink2); background: transparent; border: 0; padding: 7px 11px; cursor: pointer; }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+    /* Hero animation */
+    .hero { position: relative; height: calc(100svh - 56px); min-height: 600px; max-height: 1000px; overflow: hidden; }
+    .scene-wrap { position: absolute; top: 18px; right: 3vw; left: calc(3vw + var(--p, 0) * 40vw); bottom: calc(132px - var(--p, 0) * 96px); }
+    #scene { width: 100%; height: 100%; display: block; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 6%, #000 90%, transparent 100%);
+      -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 6%, #000 90%, transparent 100%); mask-composite: intersect; }
+    #scene text { font-family: var(--handf); fill: var(--ink); }
+    .caption { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); width: min(1000px, 92vw); text-align: center; font: 400 clamp(26px, 2.5vw, 38px)/1.25 var(--handf); color: var(--ink); min-height: 1.3em; }
+    .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .02em .08em; margin-bottom: -.08em; }
+    .w > .i { display: inline-block; will-change: transform; }
+    html[lang="en"] .caption .w { margin-right: .26em; }
+    .titleblock { position: absolute; left: 5vw; width: 37vw; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    .titleblock.on { pointer-events: auto; }
+    .t-title { font: 400 clamp(64px, 7vw, 112px)/1 var(--hand-en); margin: 0 0 14px; letter-spacing: .01em; }
+    .t-sub { font: 400 clamp(24px, 2.1vw, 32px)/1.3 var(--handf); margin: 0 0 22px; color: var(--ink); }
+    html[lang="en"] .t-sub .w { margin-right: .24em; }
+    .t-auth { font: 500 16px/1.6 var(--sans); color: var(--ink); margin: 0; }
+    .t-aff { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 2px 0 22px; }
+    .t-auth sup, .t-aff sup { font-size: 10px; }
+    .fade { opacity: var(--o, 0); transform: translateY(calc((1 - var(--o, 0)) * 12px)); }
+    .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .legend li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font: 400 21px/1.2 var(--handf); color: var(--ink); opacity: var(--q, 0);
+      transform: translate(calc((1 - var(--q, 0)) * 44vw), calc((1 - var(--q, 0)) * -60px)) rotate(calc((1 - var(--q, 0)) * 8deg)); }
+    .legend svg { width: 54px; height: 22px; flex: none; }
+    .legend .gl { display: inline-flex; align-items: center; gap: 4px; font-size: 18px; color: var(--ink2); }
+    .legend .gl svg { width: 30px; height: 18px; }
+    .controls { position: absolute; right: 18px; bottom: 14px; display: flex; gap: 8px; z-index: 5; }
+    .controls button { font: 500 13px/1 var(--sans); color: var(--ink2); background: color-mix(in srgb, var(--paper) 80%, transparent); border: 1.5px solid var(--ink2); border-radius: 999px; padding: 7px 13px; cursor: pointer; }
+    .controls button:hover { color: var(--ink); border-color: var(--ink); }
+    .tbar { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 0; opacity: .7; }
+
+    @media (max-width: 760px) {
+      .nav .inner { padding: 0 16px; }
+      .nav .menu { display: none; }
+      .hero { height: auto; min-height: 0; max-height: none; padding-bottom: 60px; }
+      .scene-wrap { position: relative; inset: auto; width: 100%; aspect-ratio: 1000 / 700; }
+      .caption { position: relative; left: auto; bottom: auto; transform: none; width: auto; padding: 6px 16px 0; font-size: 23px; min-height: 3.9em; margin-bottom: calc(var(--p, 0) * -3.9em); opacity: calc(1 - var(--p, 0)); }
+      .titleblock { position: relative; left: auto; top: auto; transform: none; width: auto; padding: 8px 16px 0; max-height: calc(var(--p, 0) * 1000px); overflow: hidden; }
+      .t-title { font-size: 58px; }
+      .t-sub { font-size: 24px; }
+      .legend li { transform: translate(calc((1 - var(--q, 0)) * 30px), calc((1 - var(--q, 0)) * -80px)) rotate(calc((1 - var(--q, 0)) * 8deg)); }
+      .controls { right: 16px; bottom: 12px; }
+    }
+
+    /* Placeholder body for this draft */
+    .draftnote { max-width: 800px; margin: 40px auto 120px; padding: 0 16px; color: var(--muted); font: 400 18px/1.6 var(--sans); }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="inner">
+      <div class="right">
+        <div class="menu"><a href="../../">Home</a><a class="here" href="../">Blog</a></div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero" id="hero">
+    <div class="scene-wrap">
+      <svg id="scene" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sceneTitle">
+        <title id="sceneTitle" data-i18n="sceneAlt"></title>
+        <defs>
+          <filter id="rough" x="-3%" y="-3%" width="106%" height="106%">
+            <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.032" numOctaves="2" seed="1" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <filter id="mbE" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur id="mbEb" stdDeviation="0 0"/></filter>
+          <filter id="mbH" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur id="mbHb" stdDeviation="0 0"/></filter>
+          <pattern id="chk" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="var(--screen2)"/><rect width="8" height="8" fill="var(--chk)"/><rect x="8" y="8" width="8" height="8" fill="var(--chk)"/></pattern>
+          <clipPath id="photoClip"><rect x="272" y="62" width="286" height="190" rx="6"/></clipPath>
+          <clipPath id="winClip"><rect x="52" y="306" width="96" height="204" rx="48"/></clipPath>
+          <g id="handShape">
+            <path class="skin" d="M-27 30 L-30 430 L30 430 L27 30 Z"/>
+            <rect class="skin" x="-30" y="-80" width="15" height="56" rx="7.5"/>
+            <rect class="skin" x="-14" y="-87" width="15" height="62" rx="7.5"/>
+            <rect class="skin" x="2" y="-83" width="15" height="58" rx="7.5"/>
+            <rect class="skin" x="17" y="-69" width="14" height="46" rx="7"/>
+            <rect class="skin" x="-8" y="-30" width="16" height="46" rx="8" transform="translate(-36 6) rotate(-42)"/>
+            <rect class="skin" x="-34" y="-36" width="68" height="76" rx="24"/>
+            <path class="knuckle" d="M-22 -22 Q-4 -28 22 -22"/>
+            <path class="sleeve" d="M-31 56 L-35 430 L35 430 L31 56 Z"/>
+          </g>
+          <g id="handShadow"><ellipse cx="0" cy="-12" rx="40" ry="52"/><rect x="-31" y="30" width="62" height="400"/></g>
+          <g id="caseShape">
+            <rect x="-37" y="-25" width="74" height="50" rx="25" fill="var(--case)" class="ink"/>
+            <path d="M-33 -3 Q0 4 33 -3" fill="none" class="ink" stroke-width="2"/>
+            <circle cx="0" cy="13" r="2.8" fill="var(--good)"/>
+          </g>
+        </defs>
+        <style>
+          .ink { stroke: var(--ink); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+          .skin { fill: var(--skin); stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
+          .sleeve { fill: var(--sleeve); stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
+          .knuckle { fill: none; stroke: var(--ink); stroke-width: 1.4; opacity: .45; }
+          .trail { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+          .th { stroke: var(--hand); stroke-width: 5; }
+          .to { stroke: var(--obj); stroke-width: 5; }
+          .thi { stroke: var(--hi); stroke-width: 20; }
+          .pill rect { fill: var(--card); stroke: var(--ink); stroke-width: 2.2; }
+          .pill text { font-size: 22px; text-anchor: middle; dominant-baseline: central; }
+          .tag rect { fill: var(--ink); stroke: none; }
+          .tag text { fill: var(--paper) !important; font-size: 20px; text-anchor: middle; dominant-baseline: central; }
+          .mid { text-anchor: middle; dominant-baseline: central; }
+          .small { font-size: 15px; fill: var(--ink2) !important; }
+        </style>
+        <g id="root">
+          <g id="cam">
+            <g filter="url(#rough)">
+              <!-- Floating window on the headset -->
+              <g id="screen">
+                <rect x="250" y="20" width="500" height="250" rx="14" fill="var(--screen)" class="ink"/>
+                <path d="M250 50 H750" class="ink" fill="none"/>
+                <circle cx="270" cy="35" r="5" fill="var(--bad)"/><circle cx="287" cy="35" r="5" fill="var(--hi)"/><circle cx="304" cy="35" r="5" fill="var(--good)"/>
+                <g clip-path="url(#photoClip)">
+                  <rect x="272" y="62" width="286" height="190" fill="url(#chk)"/>
+                  <g id="photo">
+                    <g id="photoArt">
+                      <rect x="-98" y="-73" width="196" height="146" rx="3" fill="var(--sky)" class="ink"/>
+                      <circle cx="58" cy="-45" r="13" fill="var(--hi)"/>
+                      <path d="M-96 39 L-46 -29 L-12 13 L22 -37 L96 39 Z" fill="var(--mtn)" class="ink"/>
+                      <path d="M-96 39 H96 V71 H-96 Z" fill="var(--lake)"/>
+                      <path d="M-64 -7 L-46 -29 L-32 -11" fill="none" stroke="var(--paper)" stroke-width="3"/>
+                    </g>
+                    <rect id="sel" x="-107" y="-82" width="214" height="164" rx="4" fill="none" stroke="var(--obj)" stroke-width="3" stroke-dasharray="9 7" opacity="0"/>
+                  </g>
+                </g>
+                <rect x="272" y="62" width="286" height="190" rx="6" fill="none" class="ink" stroke-width="2"/>
+                <!-- Side panel: size slider, dial, tool keys -->
+                <text class="small" x="585" y="76" data-i18n="size"></text>
+                <path d="M585 94 H730" class="ink" stroke-width="2" opacity=".55"/>
+                <circle id="sizeKnob" cx="585" cy="94" r="7.5" fill="var(--obj)" class="ink" stroke-width="1.8"/>
+                <circle cx="606" cy="138" r="19" fill="var(--screen2)" class="ink" stroke-width="2"/>
+                <path id="dialInd" d="M606 138 L606 123" class="ink" stroke="var(--obj)" stroke-width="3.4"/>
+                <text id="lblAngle" class="small" x="636" y="143" data-i18n="angle"></text>
+                <text id="lblOpac" class="small" x="636" y="143" data-i18n="opacity" opacity="0"></text>
+                <g id="keys"></g>
+                <g id="cursor"><path d="M0 0 L0 26 L7 20 L12 31 L17 29 L12 18 L21 18 Z" fill="var(--ink)" stroke="var(--screen)" stroke-width="2" stroke-linejoin="round"/></g>
+              </g>
+
+              <!-- Act 1: tray table on a plane -->
+              <g id="plane">
+                <rect x="38" y="292" width="124" height="232" rx="62" fill="var(--tray2)" class="ink"/>
+                <g clip-path="url(#winClip)">
+                  <rect x="52" y="306" width="96" height="204" fill="var(--sky)"/>
+                  <g id="clouds" fill="var(--cloud)"></g>
+                </g>
+                <rect x="52" y="306" width="96" height="204" rx="48" fill="none" class="ink" stroke-width="2"/>
+                <path d="M52 340 H148" stroke="var(--tray2)" stroke-width="10" opacity=".0"/>
+                <rect x="190" y="330" width="620" height="330" rx="34" fill="var(--tray)" class="ink"/>
+                <rect x="206" y="346" width="588" height="298" rx="24" fill="none" stroke="var(--tray2)" stroke-width="3"/>
+                <rect x="478" y="336" width="44" height="8" rx="4" fill="var(--tray2)"/>
+                <circle cx="755" cy="398" r="36" fill="var(--tray2)" class="ink"/>
+                <circle cx="755" cy="398" r="26" fill="var(--tray)" opacity=".55"/>
+                <g id="tracesP"></g>
+                <g id="caseP"><g filter="url(#mbE)"><use href="#caseShape"/></g></g>
+                <g id="tagP" class="tag" opacity="0"><rect rx="13" height="28" y="-14"/><text></text></g>
+              </g>
+
+              <!-- Act 2: cafe table -->
+              <g id="cafe">
+                <rect x="40" y="300" width="920" height="390" rx="26" fill="var(--wood)" class="ink"/>
+                <path d="M70 360 C 250 352, 420 372, 600 358 S 880 366, 930 356 M60 470 C 200 478, 330 462, 480 474 M560 650 C 700 642, 820 656, 935 646 M80 600 C 180 592, 260 606, 380 598" fill="none" stroke="var(--wood2)" stroke-width="2.2" stroke-linecap="round"/>
+                <g transform="translate(118 612)">
+                  <circle r="44" fill="var(--saucer)" class="ink"/>
+                  <path d="M-30 8 Q-22 -24 0 -24 Q22 -24 30 8 Q15 -6 0 -6 Q-15 -6 -30 8 Z" fill="var(--pastry)" class="ink"/>
+                  <path d="M-12 -21 L-8 -7 M0 -24 V-7 M12 -21 L8 -7" class="ink" stroke-width="1.8" opacity=".6"/>
+                </g>
+                <g id="bookG"><g transform="rotate(-5)">
+                  <rect x="-55" y="-68" width="110" height="136" rx="5" fill="var(--book)" class="ink"/>
+                  <path d="M-44 -68 V68" class="ink" opacity=".5"/>
+                  <path d="M-30 -40 H38 M-30 -26 H24" class="ink" stroke="var(--book2)" stroke-width="4"/>
+                  <path d="M-30 24 L38 24 M-30 40 H20" class="ink" opacity=".35"/>
+                  <g id="bookGrid" opacity="0" stroke="var(--obj)" stroke-width="2" stroke-dasharray="5 5" fill="none"><path d="M-18.3 -68 V68 M18.3 -68 V68 M-55 0 H55"/></g>
+                </g></g>
+                <g id="cupG">
+                  <circle r="47" fill="var(--saucer)" class="ink"/>
+                  <g id="cupRot">
+                    <rect x="24" y="-9" width="26" height="18" rx="9" fill="var(--cup)" class="ink"/>
+                    <circle r="31" fill="var(--cup)" class="ink"/>
+                    <circle r="23" fill="var(--coffee)"/>
+                    <path d="M-10 -8 Q-2 -14 8 -9" fill="none" stroke="var(--paper)" stroke-width="2.4" opacity=".6"/>
+                  </g>
+                </g>
+                <g id="tracesC"></g>
+                <g id="caseC"><use href="#caseShape"/></g>
+                <g id="tagC" class="tag" opacity="0"><rect rx="13" height="28" y="-14"/><text data-i18n="mouse"></text></g>
+                <g id="tagBook" class="tag" opacity="0"><rect rx="13" height="28" y="-14"/><text data-i18n="keypad"></text></g>
+                <g id="tagCup" class="tag" opacity="0"><rect rx="13" height="28" y="-14"/><text data-i18n="knob"></text></g>
+              </g>
+
+              <g id="ripples"></g>
+              <!-- Hand -->
+              <g id="hRs" opacity="0" fill="var(--shadow)"><use href="#handShadow"/></g>
+              <g id="hR"><g filter="url(#mbH)"><use href="#handShape"/></g></g>
+              <g id="speed" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" fill="none"></g>
+              <g id="sparks" stroke="var(--good)" stroke-width="3.4" stroke-linecap="round" fill="none"></g>
+
+              <!-- Labels -->
+              <g id="badgeYes" class="pill" opacity="0"><rect height="40" y="-20" rx="20" style="stroke:var(--good);stroke-width:3"/><text style="fill:var(--good)" data-i18n="tog"></text></g>
+              <g id="badgeMem" class="pill" opacity="0"><rect height="36" y="-18" rx="18" style="stroke:var(--good);stroke-width:3"/><text style="fill:var(--good)" data-i18n="remembered"></text></g>
+              <g id="chips"></g>
+            </g>
+          </g>
+
+          <!-- Screen-space overlay: where we are -->
+          <g id="ui" filter="url(#rough)">
+            <g id="place" class="pill"><rect height="40" y="-20" rx="20"/><text></text></g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="caption" id="cap" aria-live="polite"></div>
+    <div class="titleblock" id="tb">
+      <h1 class="t-title"><span class="w"><span class="i" id="tTitle">MidasTUI</span></span></h1>
+      <p class="t-sub" id="tSub"></p>
+      <p class="t-auth fade" id="tAuth">Wen Ying<sup>1</sup> · Xuweiyi Chen<sup>1</sup> · Zezhou Cheng<sup>1</sup> · Seongkook Heo<sup>2</sup></p>
+      <p class="t-aff fade" id="tAff"><sup>1</sup><span data-i18n="uva"></span> &nbsp; <sup>2</sup><span data-i18n="unist"></span></p>
+      <ul class="legend" id="legend">
+        <li><svg viewBox="0 0 54 22"><path d="M4 14 C 16 4, 30 20, 50 9" fill="none" stroke="var(--hand)" stroke-width="5" stroke-linecap="round"/></svg><span data-i18n="lgHand"></span></li>
+        <li><svg viewBox="0 0 54 22"><path d="M4 14 C 16 4, 30 20, 50 9" fill="none" stroke="var(--obj)" stroke-width="5" stroke-linecap="round"/></svg><span data-i18n="lgObj"></span></li>
+        <li><svg viewBox="0 0 54 22"><path d="M4 13 C 16 3, 30 19, 50 8" fill="none" stroke="var(--hi)" stroke-width="16" stroke-linecap="round" opacity=".6"/><path d="M4 11 C 16 1, 30 17, 50 6" fill="none" stroke="var(--hand)" stroke-width="4" stroke-linecap="round"/><path d="M4 16 C 16 6, 30 22, 50 11" fill="none" stroke="var(--obj)" stroke-width="4" stroke-linecap="round"/></svg><span data-i18n="lgBoth"></span></li>
+        <li><span data-i18n="lgShape"></span>
+          <span class="gl"><svg viewBox="0 0 30 18"><path d="M3 9 H27" stroke="var(--obj)" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg><span data-i18n="slider"></span></span>
+          <span class="gl"><svg viewBox="0 0 30 18"><path d="M5 15 A10 10 0 0 1 25 15" stroke="var(--obj)" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg><span data-i18n="knob"></span></span>
+          <span class="gl"><svg viewBox="0 0 30 18"><path d="M3 12 C8 1, 12 17, 16 8 S 24 3, 27 12" stroke="var(--obj)" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg><span data-i18n="mouse"></span></span>
+          <span class="gl"><svg viewBox="0 0 30 18"><circle cx="10" cy="9" r="3.4" fill="var(--hand)"/><circle cx="21" cy="9" r="3.4" fill="var(--hand)"/></svg><span data-i18n="keypad"></span></span>
+        </li>
+      </ul>
+    </div>
+    <div class="controls">
+      <button type="button" id="skip" data-i18n="skip"></button>
+      <button type="button" id="replay" data-i18n="replay"></button>
+    </div>
+    <div class="tbar" id="tbar"></div>
+  </header>
+
+  <div class="draftnote" data-i18n="draft"></div>
+
+<script>
+(() => {
+  "use strict";
+  const DUR = 42;
+
+  /* ---------- Strings ---------- */
+  const STR = {
+    sceneAlt: { en: "On a plane, a hand turns an earbud case into a slider, a knob and a mouse by how it moves. In a cafe, the case is still a mouse, a book becomes a keypad and a cup becomes a knob.", zh: "飞机上，手推、转、划耳机盒，它就依次变成滑块、旋钮和鼠标。到了咖啡店，耳机盒还是鼠标，书成了键盘，杯子成了旋钮。" },
+    plane: { en: "On a plane", zh: "飞机上" }, cafe: { en: "At a café", zh: "咖啡店" },
+    size: { en: "size", zh: "大小" }, angle: { en: "angle", zh: "角度" }, opacity: { en: "opacity", zh: "透明度" },
+    slider: { en: "slider", zh: "滑块" }, knob: { en: "knob", zh: "旋钮" }, mouse: { en: "mouse", zh: "鼠标" }, touchpad: { en: "touchpad", zh: "触控板" },
+    pen: { en: "pen", zh: "笔" }, joystick: { en: "joystick", zh: "摇杆" }, keypad: { en: "keypad", zh: "键盘" }, dpad: { en: "d-pad", zh: "方向键" },
+    tog: { en: "moving together ✓", zh: "一起动 ✓" },
+    remembered: { en: "remembered ✓", zh: "记得它 ✓" },
+    uva: { en: "University of Virginia", zh: "弗吉尼亚大学" },
+    unist: { en: "UNIST", zh: "蔚山科学技术院" },
+    lgHand: { en: "the hand's trace", zh: "手的印" },
+    lgObj: { en: "the object's trace", zh: "物体的印" },
+    lgBoth: { en: "they overlap: you mean to use it", zh: "两道印重合：你要用它" },
+    lgShape: { en: "the shape picks the control:", zh: "印的形状决定控件：" },
+    skip: { en: "Skip", zh: "跳过" },
+    replay: { en: "↻ Replay", zh: "↻ 重播" },
+    sub: { en: "Instant tangible interfaces for wearable displays, made from everyday objects", zh: "随手拿起|日常物件，|就是|头显的|实体控件" },
+    draft: { en: "Draft: the opening animation only. The full essay goes below in the next step.", zh: "样稿：这里只有开场动画，正文下一步再加。" }
+  };
+
+  /* ---------- One timetable for every beat ---------- */
+  const BEATS = [
+    { id: "plane",    a: 0.0,  b: 3.2,  en: "On a plane. The tray table holds one earbud case.", zh: "飞机上，|小桌板上|只有|一个耳机盒。" },
+    { id: "engage",   a: 3.2,  b: 6.6,  en: "The hand and the case move together, so you mean to use it.", zh: "手和盒子|一起动，|就是|要用它。" },
+    { id: "slideDemo",a: 6.6,  b: 10.2, en: "Back and forth in a line, like a slider.", zh: "沿直线|来回推，|像个|滑块。" },
+    { id: "slideUse", a: 10.2, b: 12.8, en: "Push it across and the photo grows.", zh: "推过去，|图片|变大。" },
+    { id: "knobDemo", a: 12.8, b: 16.4, en: "New motion, new role. Twist it, like a knob.", zh: "换个动作，|就换个角色。|转一转，|像个旋钮。" },
+    { id: "knobUse",  a: 16.4, b: 19.0, en: "Turn a little more and the photo straightens.", zh: "再转一点，|图片|摆正了。" },
+    { id: "mouseDemo",a: 19.0, b: 22.6, en: "Wander around the tray, like a mouse.", zh: "在桌板上|四处划，|像个|鼠标。" },
+    { id: "mouseUse", a: 22.6, b: 25.2, en: "Click the photo and drag it to the middle.", zh: "点住图片，|拖到|中间。" },
+    { id: "travel",   a: 25.2, b: 27.4, en: "Off the plane and into a café. More things on the table.", zh: "下了飞机，|进了咖啡店，|桌上|东西多了。" },
+    { id: "recall",   a: 27.4, b: 31.2, en: "It still knows the case. Pick it up and it's a mouse.", zh: "还认得|这个盒子，|拿起来|就是鼠标。" },
+    { id: "book",     a: 31.2, b: 35.4, en: "Tap the book twice, like a keypad, and pick opacity.", zh: "在书上|点两下，|像个键盘，|选中透明度。" },
+    { id: "cup",      a: 35.4, b: 39.4, en: "Turn the cup and the opacity follows.", zh: "转一转|杯子，|透明度|跟着变。" },
+    { id: "title",    a: 39.4, b: 42.0 }
+  ];
+
+  /* ---------- Math helpers ---------- */
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const seg = (t, a, b) => cl((t - a) / (b - a));
+  const lerp = (a, b, u) => Array.isArray(a) ? a.map((v, i) => v + (b[i] - v) * u) : a + (b - a) * u;
+  const add = (p, d) => [p[0] + d[0], p[1] + d[1]];
+  const sub = (p, d) => [p[0] - d[0], p[1] - d[1]];
+  const E = {
+    lin: u => u,
+    inC: u => u * u * u,
+    outC: u => 1 - Math.pow(1 - u, 3),
+    ioC: u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2,
+    ioS: u => -(Math.cos(Math.PI * u) - 1) / 2,
+    outB: u => { const c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); }
+  };
+  function kf(K, t) {
+    if (t <= K[0][0]) return K[0][1];
+    for (let i = 1; i < K.length; i++) {
+      const k = K[i];
+      if (t <= k[0]) { const k0 = K[i - 1]; const u = (t - k0[0]) / ((k[0] - k0[0]) || 1); return lerp(k0[1], k[1], E[k[2] || "ioC"](u)); }
+    }
+    return K[K.length - 1][1];
+  }
+  function spline(P, u) {
+    const n = P.length - 1, x = cl(u) * n, i = Math.min(n - 1, Math.floor(x)), f = x - i;
+    const p0 = P[Math.max(0, i - 1)], p1 = P[i], p2 = P[i + 1], p3 = P[Math.min(n, i + 2)];
+    const c = (a, b, c2, d) => .5 * (2 * b + (-a + c2) * f + (2 * a - 5 * b + 4 * c2 - d) * f * f + (-a + 3 * b - 3 * c2 + d) * f * f * f);
+    return [c(p0[0], p1[0], p2[0], p3[0]), c(p0[1], p1[1], p2[1], p3[1])];
+  }
+  // Stop-and-go strokes: ease each leg separately
+  function legs(P, u) { const n = P.length - 1, x = cl(u) * n, i = Math.min(n - 1, Math.floor(x)); return lerp(P[i], P[i + 1], E.ioS(x - i)); }
+  const pop = (t, a, d = .4) => E.outB(seg(t, a, a + d));
+  const fio = (t, a, b, fi = .2, fo = .2) => Math.min(seg(t, a, a + fi), 1 - seg(t, b - fo, b));
+  const rotv = (o, deg) => { const a = deg * Math.PI / 180; return [o[0] * Math.cos(a) - o[1] * Math.sin(a), o[0] * Math.sin(a) + o[1] * Math.cos(a)]; };
+
+  /* ---------- Object tracks ---------- */
+  // Plane: the earbud case
+  const P0 = [430, 520];
+  const NUDGE = [[430, 520], [462, 508], [436, 524]];
+  const SLIDE = [[436, 524], [560, 516], [340, 516], [520, 516], [350, 516]];
+  const LOOP = [[560, 516], [430, 450], [320, 560], [470, 612], [390, 480], [450, 540]];
+  function caseP(t) {
+    if (t < 4.5) return P0;
+    if (t < 5.3) return spline(NUDGE, E.ioS(seg(t, 4.5, 5.3)));
+    if (t < 6.8) return NUDGE[2];
+    if (t < 9.0) return legs(SLIDE, seg(t, 6.8, 9.0));
+    if (t < 10.4) return SLIDE[4];
+    if (t < 19.4) return [lerp(350, 560, E.ioC(seg(t, 10.4, 12.0))), 516];
+    if (t < 21.3) return spline(LOOP, E.ioS(seg(t, 19.4, 21.3)));
+    return kf([[22.7, [450, 540]], [23.3, [503, 534]], [23.6, [503, 534]], [24.6, [450, 520]]], t);
+  }
+  function caseRotP(t) {
+    if (t < 13.0) return 0;
+    if (t < 15.0) return legs([0, 70, -35, 30], seg(t, 13.0, 15.0));
+    return kf([[16.6, 30], [18.2, 100]], t);
+  }
+  // Cafe objects
+  const C0 = [240, 470], C1 = [360, 540], BOOK = [620, 540], CUP = [820, 440];
+  const caseC = t => kf([[28.6, C0], [29.4, C1]], t);
+  const book = t => add(BOOK, spline([[0, 0], [10, -6], [0, 0]], E.ioS(seg(t, 31.95, 32.45))));
+  function cupRot(t) {
+    if (t < 36.1) return 0;
+    if (t < 37.3) return legs([0, 60, -20, 40], seg(t, 36.1, 37.3));
+    return kf([[38.3, 40], [39.2, 120]], t);
+  }
+
+  /* ---------- The hand: [x, y, rotation, scale] ---------- */
+  const grip = (c, o, deg = 0, k = .3) => { const d = rotv(o, deg * k); return [c[0] + d[0], c[1] + d[1], deg * k, 1]; };
+  const gripCaseP = t => grip(caseP(t), [8, 70], caseRotP(t));
+  const g19 = gripCaseP(19.0), g19b = grip([560, 516], [8, 70], 0);
+  const TAP_KEY = [586, 577];
+  const HRK = [
+    [0, [470, 900, -8, 1]], [3.3, [470, 900, -8, 1]],
+    [3.8, [452, 700, -4, 1], "outC"], [3.98, [458, 722, -2, 1], "ioS"], [4.3, [438, 590, 0, 1], "outB"],
+    [19.0, g19], [19.18, [(g19[0] + g19b[0]) / 2, (g19[1] + g19b[1]) / 2 - 8, g19[2] / 2, 1.06]], [19.35, g19b],
+    [24.8, grip([450, 520], [8, 70])], [25.3, [520, 900, 6, 1], "inC"],
+    [27.4, [300, 900, -6, 1]], [28.0, grip(C0, [8, 70]), "outB"],
+    [31.25, grip(C1, [8, 70])], [31.75, grip(BOOK, [8, 78]), "ioC"],
+    [34.25, grip(BOOK, [8, 78])], [34.42, [TAP_KEY[0] + 22, TAP_KEY[1] + 80, 0, 1], "ioC"], [35.3, [TAP_KEY[0] + 22, TAP_KEY[1] + 80, 0, 1]],
+    [35.9, grip(CUP, [8, 75]), "ioC"],
+    [39.35, grip(CUP, [8, 75], 120)], [39.8, [880, 900, 8, 1], "inC"]
+  ];
+  const FR = [
+    [4.3, 19.0, gripCaseP],
+    [19.35, 24.8, t => grip(caseP(t), [8, 70])],
+    [28.0, 31.25, t => grip(caseC(t), [8, 70])],
+    [31.75, 34.25, t => grip(book(t), [8, 78])],
+    [35.9, 39.35, t => grip(CUP, [8, 75], cupRot(t))]
+  ];
+  const TAPS = [23.4, 29.6, 32.7, 33.05, 34.5];
+  function handR(t) {
+    let h = null;
+    for (const [a, b, f] of FR) if (t >= a && t < b) { h = f(t).slice(); break; }
+    if (!h) h = kf(HRK, t).slice();
+    for (const tp of TAPS) h[3] *= 1 - .08 * Math.sin(Math.PI * seg(t, tp - .08, tp + .08));
+    return h;
+  }
+  const fingertip = h => add([h[0], h[1]], rotv([-22 * h[3], -82 * h[3]], h[2]));
+
+  /* ---------- Scene changes ---------- */
+  // One continuous pan: the cafe sits right next to the plane
+  const pan = t => E.ioC(seg(t, 25.4, 26.8));
+  const planeX = t => -1100 * pan(t);
+  const cafeX = t => 1100 * (1 - pan(t));
+
+  /* ---------- The window on the headset ---------- */
+  const REST = [390, 95];
+  const mapP = p => [272 + (p[0] - 260) / 380 * 286, 62 + (p[1] - 420) / 200 * 190];
+  const mapC = p => [272 + (p[0] - 200) / 320 * 286, 62 + (p[1] - 430) / 220 * 190];
+  function cursor(t) {
+    if (t < 21.95) return REST;
+    if (t < 22.25) return lerp(REST, mapP(caseP(t)), E.ioC(seg(t, 21.95, 22.25)));
+    if (t < 25.6) return mapP(caseP(t));
+    if (t < 28.0) return lerp(mapP(caseP(25.6)), mapC(C0), E.ioC(seg(t, 25.6, 26.8)));
+    return mapC(caseC(t));
+  }
+  const sizeV = t => t < 10.4 ? 0 : seg(caseP(Math.min(t, 12.6))[0], 350, 560);
+  const photoRot = t => t < 16.6 ? -14 : -14 + 14 * seg(caseRotP(Math.min(t, 18.6)), 30, 100);
+  const PH0 = [455, 170];
+  const photoC = t => t < 23.6 ? PH0 : add(PH0, sub(mapP(caseP(Math.min(t, 24.6))), mapP(caseP(23.6))));
+  const photoOp = t => t < 38.3 ? 1 : 1 - .6 * seg(cupRot(t), 40, 120);
+
+  /* ---------- Traces ---------- */
+  const arcAt = (cf, rf, r) => t => { const a = (rf(t) - 90) * Math.PI / 180, c = cf(t); return [c[0] + r * Math.cos(a), c[1] + r * Math.sin(a)]; };
+  const TR = [
+    // plane: engage, slider, knob, mouse
+    { g: "P", k: "thi", a: 4.5, b: 5.3, f: caseP, out: 6.8 }, { g: "P", k: "th", a: 4.5, b: 5.3, f: t => add(caseP(t), [7, 7]), out: 6.8 }, { g: "P", k: "to", a: 4.5, b: 5.3, f: caseP, out: 6.8 },
+    { g: "P", k: "thi", a: 6.8, b: 9.0, f: caseP, out: 12.9 }, { g: "P", k: "th", a: 6.8, b: 9.0, f: t => add(caseP(t), [0, 9]), out: 12.9 }, { g: "P", k: "to", a: 6.8, b: 9.0, f: caseP, out: 12.9 },
+    { g: "P", k: "thi", a: 13.0, b: 15.0, f: arcAt(caseP, caseRotP, 42), out: 19.3 }, { g: "P", k: "th", a: 13.0, b: 15.0, f: arcAt(caseP, caseRotP, 51), out: 19.3 }, { g: "P", k: "to", a: 13.0, b: 15.0, f: arcAt(caseP, caseRotP, 42), out: 19.3 },
+    { g: "P", k: "thi", a: 19.4, b: 21.3, f: caseP }, { g: "P", k: "th", a: 19.4, b: 21.3, f: t => add(caseP(t), [7, 7]) }, { g: "P", k: "to", a: 19.4, b: 21.3, f: caseP },
+    // cafe: recall, book nudge, cup
+    { g: "C", k: "thi", a: 28.6, b: 29.4, f: caseC }, { g: "C", k: "th", a: 28.6, b: 29.4, f: t => add(caseC(t), [7, 7]) }, { g: "C", k: "to", a: 28.6, b: 29.4, f: caseC },
+    { g: "C", k: "thi", a: 31.95, b: 32.45, f: book }, { g: "C", k: "th", a: 31.95, b: 32.45, f: t => add(book(t), [7, 7]) }, { g: "C", k: "to", a: 31.95, b: 32.45, f: book },
+    { g: "C", k: "thi", a: 36.1, b: 37.3, f: arcAt(() => CUP, cupRot, 58) }, { g: "C", k: "th", a: 36.1, b: 37.3, f: arcAt(() => CUP, cupRot, 67) }, { g: "C", k: "to", a: 36.1, b: 37.3, f: arcAt(() => CUP, cupRot, 58) }
+  ];
+  // Tap marks: the hand leaves dots, the book stays still
+  const DOTS = [[32.7, null], [33.05, null], [34.5, TAP_KEY]];
+
+  /* ---------- Top-3 suggestions ---------- */
+  const tagPpos = t => add(caseP(t), [0, -46]);
+  const CH = [
+    { t0: 9.0,  sel: 9.6,  keys: ["slider", "touchpad", "mouse"],  at: [450, 430], tgt: tagPpos },
+    { t0: 15.0, sel: 15.5, keys: ["knob", "slider", "joystick"],   at: [560, 425], tgt: tagPpos },
+    { t0: 21.3, sel: 21.8, keys: ["mouse", "touchpad", "pen"],     at: [450, 440], tgt: tagPpos },
+    { t0: 33.3, sel: 33.8, keys: ["keypad", "touchpad", "dpad"],   at: [620, 432], tgt: () => add(BOOK, [0, -92]) },
+    { t0: 37.3, sel: 37.8, keys: ["knob", "joystick", "slider"],   at: [820, 345], tgt: () => add(CUP, [0, -74]) }
+  ];
+  const TAGP = [[10.05, "slider"], [15.95, "knob"], [22.25, "mouse"]];
+  const STALE = [[13.2, 15.95], [19.5, 22.25]];
+
+  /* ---------- Camera and shake ---------- */
+  const CAM = [[0, [1.15, 500, 380]], [1.8, [1, 500, 350], "outC"], [25.4, [1, 500, 350]], [26.0, [.94, 500, 350], "ioC"], [26.8, [1, 500, 350], "ioC"]];
+  const SHAKES = [[9.6, 4], [15.5, 4], [21.8, 4], [26.6, 4], [28.3, 3], [33.8, 4], [37.8, 4]];
+  function shake(t) {
+    let x = 0, y = 0;
+    for (const [s, a] of SHAKES) { const d = t - s; if (d >= 0 && d < .7) { const k = a * Math.exp(-d * 9); x += k * Math.sin(d * 70); y += k * .7 * Math.cos(d * 55); } }
+    return [x, y];
+  }
+
+  /* ---------- DOM ---------- */
+  const NS = "http://www.w3.org/2000/svg";
+  const $ = id => document.getElementById(id);
+  const mk = (tag, attrs, parent) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); if (parent) parent.appendChild(el); return el; };
+  const cache = new WeakMap();
+  function set(el, k, v) { let c = cache.get(el); if (!c) { c = {}; cache.set(el, c); } const s = String(v); if (c[k] !== s) { c[k] = s; el.setAttribute(k, s); } }
+  function setText(el, s) { if (el.textContent !== s) el.textContent = s; }
+  const tr = (x, y, r = 0, s = 1, sx) => `translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${r.toFixed(2)}) scale(${(sx ?? s).toFixed(3)} ${s.toFixed(3)})`;
+
+  const el = {};
+  ["root", "cam", "turb", "screen", "photo", "photoArt", "sel", "cursor", "keys", "sizeKnob", "dialInd", "lblAngle", "lblOpac",
+   "plane", "clouds", "tracesP", "caseP", "tagP", "cafe", "bookG", "bookGrid", "cupG", "cupRot", "tracesC", "caseC", "tagC", "tagBook", "tagCup",
+   "ripples", "hR", "hRs", "mbEb", "mbHb", "speed", "sparks", "badgeYes", "badgeMem", "chips", "place",
+   "cap", "tb", "tTitle", "tSub", "tAuth", "tAff", "legend", "skip", "replay", "tbar", "hero"].forEach(k => el[k] = $(k));
+
+  // Tool keys on the window; key 3 is the opacity tool
+  const KEY_ICONS = [
+    "M-8 0 H8 M0 -8 V8 M-8 0 L-5 -3 M-8 0 L-5 3 M8 0 L5 -3 M8 0 L5 3",
+    "M-7 7 L5 -5 L8 -2 L-4 10 Z",
+    "M-6 -9 V6 H9 M-9 -6 H6 V9",
+    "",
+    "M-7 -7 H7 M0 -7 V8",
+    "M-8 4 L2 -6 L8 0 L-2 10 Z"
+  ];
+  const keyEls = KEY_ICONS.map((d, i) => {
+    const r = Math.floor(i / 3), c = i % 3, x = 584 + c * 50, y = 176 + r * 38;
+    const g = mk("g", {}, el.keys);
+    const rect = mk("rect", { x, y, width: 42, height: 32, rx: 6, fill: "var(--screen2)", class: "ink", "stroke-width": 2 }, g);
+    const ig = mk("g", { transform: `translate(${x + 21} ${y + 16})` }, g);
+    if (i === 3) { mk("rect", { x: -9, y: -9, width: 18, height: 18, fill: "url(#chk)", class: "ink", "stroke-width": 1.6 }, ig); }
+    else mk("path", { d, fill: "none", class: "ink", "stroke-width": 2 }, ig);
+    return rect;
+  });
+  // Clouds in the plane window
+  const cloudEls = [0, 1, 2].map(i => { const g = mk("g", {}, el.clouds); mk("ellipse", { cx: 0, cy: 0, rx: 22, ry: 9 }, g); mk("ellipse", { cx: 10, cy: -6, rx: 13, ry: 8 }, g); mk("ellipse", { cx: -9, cy: -4, rx: 10, ry: 7 }, g); return g; });
+  // Traces
+  const trailEls = TR.map(T => mk("path", { class: "trail " + T.k, d: "" }, T.g === "P" ? el.tracesP : el.tracesC));
+  const dotEls = DOTS.map(() => mk("circle", { r: 7, fill: "var(--hand)", stroke: "var(--paper)", "stroke-width": 2, opacity: 0 }, el.tracesC));
+  const rippleEls = TAPS.map(() => mk("circle", { r: 0, fill: "none", stroke: "var(--good)", "stroke-width": 4, opacity: 0 }, el.ripples));
+  const speedEls = [0, 1, 2, 3].map(() => mk("path", { d: "" }, el.speed));
+  const sparkEls = Array.from({ length: 8 }, () => mk("path", { d: "" }, el.sparks));
+  const chipEls = [0, 1, 2].map(() => { const g = mk("g", { class: "pill", opacity: 0 }, el.chips); mk("rect", { height: 42, y: -21, rx: 21 }, g); mk("text", {}, g); return g; });
+
+  /* ---------- Language ---------- */
+  let lang = "en";
+  const L = k => STR[k][lang];
+  function fitPills() {
+    document.querySelectorAll("#scene .pill, #scene .tag").forEach(g => {
+      const t = g.querySelector("text"), r = g.querySelector("rect"); if (!t || !r) return;
+      let w = 0; try { w = t.getComputedTextLength(); } catch (e) { w = 0; }
+      const pad = g.classList.contains("tag") ? 12 : 18;
+      set(r, "width", (w + pad * 2).toFixed(1)); set(r, "x", (-(w / 2) - pad).toFixed(1));
+    });
+  }
+  function words(text, l) { return l === "zh" ? text.split("|") : text.split(" "); }
+  function buildWords(container, text, l) {
+    container.textContent = "";
+    return words(text, l).map(w => { const o = document.createElement("span"); o.className = "w"; const i = document.createElement("span"); i.className = "i"; i.textContent = w; o.appendChild(i); container.appendChild(o); return i; });
+  }
+  let subWords = [];
+  function setLang(l, push) {
+    lang = l === "zh" ? "zh" : "en";
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(n => { const s = STR[n.getAttribute("data-i18n")]; if (s) n.textContent = s[lang].replace(/\|/g, ""); });
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    subWords = buildWords(el.tSub, STR.sub[lang], lang);
+    capKey = "";
+    if (push) { try { const u = new URL(location.href); u.searchParams.set("lang", lang); u.hash = ""; history.replaceState(null, "", u); } catch (e) {} }
+    render(curT);
+  }
+
+  /* ---------- Captions ---------- */
+  let capKey = "", capWords = [];
+  function renderCaption(t) {
+    const B = BEATS.find(b => t >= b.a && t < b.b && b.en);
+    const key = B ? B.id + lang : "none" + lang;
+    if (key !== capKey) { capKey = key; if (B) capWords = buildWords(el.cap, B[lang], lang); else { el.cap.textContent = ""; capWords = []; } }
+    if (!B) return;
+    const n = capWords.length;
+    capWords.forEach((w, i) => {
+      const s = B.a + .3 * i / Math.max(1, n - 1);
+      const u = seg(t, s, s + .22), ux = seg(t, B.b - .08, B.b);
+      const y = (1 - E.outB(u)) * 105 - ux * 105;
+      w.style.transform = `translateY(${y.toFixed(1)}%) rotate(${((1 - u) * 6).toFixed(1)}deg)`;
+    });
+  }
+
+  /* ---------- Render: a pure function of time ---------- */
+  let REDUCED = false;
+  const HI_OP_LIGHT = .7, HI_OP_DARK = .4;
+  let HI_OP = HI_OP_LIGHT;
+  const darkQ = matchMedia("(prefers-color-scheme: dark)");
+  const syncTheme = () => { const th = document.documentElement.dataset.theme; HI_OP = (th === "dark" || (th !== "light" && darkQ.matches)) ? HI_OP_DARK : HI_OP_LIGHT; };
+
+  function speedLines(pos, prev) {
+    const vx = (pos[0] - prev[0]) * 60, vy = (pos[1] - prev[1]) * 60, sp = Math.hypot(vx, vy);
+    if (REDUCED || sp < 300) { speedEls.forEach(p => set(p, "d", "")); return; }
+    const ux = vx / sp, uy = vy / sp, nx = -uy, ny = ux, len = Math.min(80, sp * .08);
+    speedEls.forEach((p, i) => { const o = (i - 1.5) * 15, back = 46 + (i % 2) * 14; const x0 = pos[0] - ux * back + nx * o, y0 = pos[1] - uy * back + ny * o; set(p, "d", `M${x0.toFixed(1)} ${y0.toFixed(1)} L${(x0 - ux * len).toFixed(1)} ${(y0 - uy * len).toFixed(1)}`); });
+  }
+  function blur(node, pos, prev) {
+    if (REDUCED) { set(node, "stdDeviation", "0 0"); return; }
+    const vx = Math.abs(pos[0] - prev[0]) * 60, vy = Math.abs(pos[1] - prev[1]) * 60;
+    set(node, "stdDeviation", `${Math.min(7, vx * .005).toFixed(2)} ${Math.min(7, vy * .005).toFixed(2)}`);
+  }
+  function samplePath(f, a, b, t) {
+    if (t <= a) return "";
+    const end = Math.min(t, b), pts = [];
+    for (let s = a; s < end; s += 1 / 60) pts.push(f(s));
+    pts.push(f(end));
+    return "M" + pts.map(p => p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" L");
+  }
+  function sparksAt(c, t0, t) {
+    const u = seg(t, t0, t0 + .4);
+    sparkEls.forEach((p, i) => {
+      if (u <= 0 || u >= 1) { set(p, "d", ""); return; }
+      const a = i / sparkEls.length * Math.PI * 2 + .3, r0 = 26 + 40 * E.outC(u), r1 = r0 + 16 * (1 - u);
+      set(p, "d", `M${(c[0] + Math.cos(a) * r0).toFixed(1)} ${(c[1] + Math.sin(a) * r0).toFixed(1)} L${(c[0] + Math.cos(a) * r1).toFixed(1)} ${(c[1] + Math.sin(a) * r1).toFixed(1)}`);
+    });
+  }
+  function showPill(g, v, x, y, r = 0) { set(g, "opacity", Math.min(1, v * 1.4).toFixed(2)); set(g, "transform", tr(x, y, r, Math.max(.001, v))); }
+
+  let curT = 0;
+  function render(t) {
+    curT = t = cl(t, 0, DUR);
+    set(el.turb, "seed", REDUCED ? 1 : 1 + (Math.floor(t * 8) % 9));
+
+    // Camera and shake
+    const c = kf(CAM, t), sh = REDUCED ? [0, 0] : shake(t);
+    set(el.root, "transform", `translate(${sh[0].toFixed(2)} ${sh[1].toFixed(2)})`);
+    set(el.cam, "transform", `translate(500 350) scale(${c[0].toFixed(4)}) translate(${-c[1]} ${-c[2]})`);
+
+    // Setup pops
+    const ps = pop(t, .15, .5);
+    set(el.screen, "transform", `translate(500 145) scale(${ps.toFixed(3)}) translate(-500 -145)`);
+    set(el.plane, "transform", `translate(${planeX(t).toFixed(1)} 0)`);
+    set(el.cafe, "transform", `translate(${cafeX(t).toFixed(1)} 0)`);
+    set(el.cafe, "opacity", t < 25.3 ? 0 : 1);
+    set(el.plane, "opacity", t > 26.9 ? 0 : 1);
+    cloudEls.forEach((g, i) => { const x = 40 + ((i * 60 + 200 - t * 14) % 180 + 180) % 180, y = 340 + i * 60; set(g, "transform", `translate(${x.toFixed(1)} ${y})`); });
+
+    // Where we are
+    const place = t < 26.2 ? "plane" : "cafe";
+    setText(el.place.querySelector("text"), L(place));
+    const pf = Math.abs(Math.cos(Math.PI * seg(t, 26.0, 26.4)));
+    set(el.place, "transform", tr(120, 46, -2, Math.max(.001, pop(t, .5, .4)), Math.max(.001, pop(t, .5, .4) * pf)));
+    set(el.place, "opacity", (seg(t, .5, .7) * (1 - seg(t, 39.4, 39.8))).toFixed(2));
+
+    // Plane: the case
+    const ep = caseP(t), epp = caseP(t - 1 / 60);
+    set(el.caseP, "transform", tr(ep[0], ep[1], caseRotP(t), pop(t, .7, .45)));
+    blur(el.mbEb, ep, epp);
+
+    // Cafe: case, book, cup
+    const cc = caseC(t);
+    set(el.caseC, "transform", tr(cc[0], cc[1]));
+    const bk = book(t);
+    set(el.bookG, "transform", `translate(${bk[0].toFixed(1)} ${bk[1].toFixed(1)})`);
+    set(el.bookGrid, "opacity", (seg(t, 34.25, 34.45) * (1 - .5 * seg(t, 35.4, 35.8))).toFixed(2));
+    set(el.cupG, "transform", `translate(${CUP[0]} ${CUP[1]})`);
+    set(el.cupRot, "transform", `rotate(${cupRot(t).toFixed(2)})`);
+
+    // Hand
+    const hr = handR(t), hrp = handR(t - 1 / 60);
+    const show = hr[1] < 880;
+    set(el.hR, "transform", tr(hr[0], hr[1], hr[2], hr[3]));
+    set(el.hR, "opacity", show ? 1 : 0);
+    const lift = Math.max(0, hr[3] - 1) * 230 + 7;
+    set(el.hRs, "transform", tr(hr[0] + lift * .6, hr[1] + lift, hr[2], hr[3] * .98));
+    set(el.hRs, "opacity", show ? .9 : 0);
+    blur(el.mbHb, hr, hrp);
+    if (t < 25.2) speedLines(ep, epp); else speedLines(hr, hrp);
+
+    // Window content
+    const cp = cursor(t);
+    set(el.cursor, "transform", `translate(${cp[0].toFixed(1)} ${cp[1].toFixed(1)})`);
+    const pc = photoC(t), sc = .7 + .3 * sizeV(t);
+    set(el.photo, "transform", tr(pc[0], pc[1], photoRot(t), sc));
+    set(el.photoArt, "opacity", photoOp(t).toFixed(3));
+    const selOn = (t > 23.45 && t < 25.2) || t > 29.7;
+    set(el.sel, "opacity", selOn ? 1 : 0);
+    set(el.sizeKnob, "cx", (585 + 145 * sizeV(t)).toFixed(1));
+    const toolOn = t > 34.55;
+    const dialDeg = toolOn ? -120 + 240 * photoOp(t) : photoRot(t) * 5;
+    set(el.dialInd, "transform", `rotate(${dialDeg.toFixed(2)} 606 138)`);
+    set(el.lblAngle, "opacity", toolOn ? 0 : 1); set(el.lblOpac, "opacity", toolOn ? 1 : 0);
+    keyEls.forEach((k, i) => set(k, "fill", i === 3 && toolOn ? "var(--good)" : "var(--screen2)"));
+
+    // Traces
+    TR.forEach((T, i) => {
+      const p = trailEls[i];
+      set(p, "d", samplePath(T.f, T.a, T.b, t));
+      const o = T.out ? 1 - seg(t, T.out, T.out + .3) : 1;
+      set(p, "opacity", (T.k === "thi" ? HI_OP * o : o).toFixed(3));
+    });
+    DOTS.forEach(([tp, at], i) => {
+      const pos = at || fingertip(handR(tp));
+      set(dotEls[i], "cx", pos[0].toFixed(1)); set(dotEls[i], "cy", pos[1].toFixed(1));
+      const v = pop(t, tp, .25);
+      set(dotEls[i], "opacity", Math.min(1, v * 1.4).toFixed(2)); set(dotEls[i], "r", (7 * Math.max(.001, v)).toFixed(2));
+    });
+    // Ripples on taps and clicks
+    rippleEls.forEach((r, i) => {
+      const tp = TAPS[i], u = seg(t, tp, tp + .5), pos = fingertip(handR(tp));
+      set(r, "cx", pos[0].toFixed(1)); set(r, "cy", pos[1].toFixed(1)); set(r, "r", (8 + 46 * E.outC(u)).toFixed(1)); set(r, "opacity", (u > 0 && u < 1 ? 1 - u : 0).toFixed(2));
+    });
+
+    // Moving together badge
+    showPill(el.badgeYes, pop(t, 5.2) * (1 - seg(t, 6.5, 6.7)), 450, 440, -2);
+    // Remembered badge
+    showPill(el.badgeMem, pop(t, 28.3) * (1 - seg(t, 30.4, 30.7)), cc[0] + 4, cc[1] - 90, -3);
+
+    // Top-3 suggestions; the chosen one flies onto the object and becomes its tag
+    let chipSet = null;
+    for (const C of CH) if (t >= C.t0 - .01 && t < C.sel + .6) chipSet = C;
+    chipEls.forEach((g, i) => {
+      if (!chipSet) { set(g, "opacity", 0); return; }
+      const C = chipSet;
+      setText(g.querySelector("text"), L(C.keys[i]));
+      const v = pop(t, C.t0 + i * .1) * (i === 0 ? 1 - seg(t, C.sel + .42, C.sel + .52) : 1 - seg(t, C.sel + .05, C.sel + .25));
+      const chosen = i === 0 && t > C.sel;
+      const rect = g.querySelector("rect");
+      rect.style.stroke = chosen ? "var(--good)" : ""; rect.style.strokeWidth = chosen ? "3.4" : "";
+      let x = C.at[0] + (i - 1) * 122, y = C.at[1], s = v;
+      if (i === 0) { const f = E.ioC(seg(t, C.sel + .15, C.sel + .45)), tg = C.tgt(t); x = lerp(x, tg[0], f); y = lerp(y, tg[1], f) - 40 * Math.sin(Math.PI * f); s = v * (1 + .15 * Math.sin(Math.PI * seg(t, C.sel, C.sel + .15)) - .25 * f); }
+      set(g, "opacity", Math.min(1, v * 1.4).toFixed(2));
+      set(g, "transform", tr(x, y, 0, Math.max(.001, s)));
+    });
+    let sp = null; for (const C of CH) if (t > C.sel && t < C.sel + .45) sp = [C.sel, C.at];
+    if (sp) sparksAt(sp[1], sp[0], t); else sparksAt([0, 0], -9, t);
+
+    // Tag on the plane case: slider, then knob, then mouse
+    let lab = null, changeAt = -9;
+    for (const [tt, k] of TAGP) if (t >= tt) { lab = k; changeAt = tt; }
+    const tp0 = pop(t, TAGP[0][0], .3);
+    const flip = TAGP.slice(1).reduce((m, [tt]) => Math.min(m, Math.abs(t - tt)), 9);
+    const fx = cl(flip / .12, .02, 1);
+    let stale = 0, wob = 0;
+    for (const [a, b] of STALE) if (t >= a && t < b) { stale = 1; wob = 9 * Math.sin((t - a) * 26) * Math.exp(-(t - a) * 3.5); }
+    setText(el.tagP.querySelector("text"), lab ? L(lab) : L("slider"));
+    const tg = tagPpos(t);
+    set(el.tagP, "transform", tr(tg[0], tg[1], wob, Math.max(.001, tp0), Math.max(.001, tp0) * fx));
+    set(el.tagP, "opacity", (Math.min(1, tp0 * 1.4) * (stale ? .45 : 1)).toFixed(2));
+    // Cafe tags
+    const tc = pop(t, 28.3, .3) * (1 + .25 * Math.sin(Math.PI * seg(t, 28.3, 28.6)));
+    set(el.tagC, "transform", tr(cc[0], cc[1] - 46, 0, Math.max(.001, tc))); set(el.tagC, "opacity", Math.min(1, tc * 1.4).toFixed(2));
+    const tb = pop(t, 34.25, .3);
+    set(el.tagBook, "transform", tr(BOOK[0], BOOK[1] - 92, 0, Math.max(.001, tb))); set(el.tagBook, "opacity", Math.min(1, tb * 1.4).toFixed(2));
+    const tu = pop(t, 38.25, .3);
+    set(el.tagCup, "transform", tr(CUP[0], CUP[1] - 74, 0, Math.max(.001, tu))); set(el.tagCup, "opacity", Math.min(1, tu * 1.4).toFixed(2));
+
+    // Title
+    const p = E.ioC(seg(t, 39.6, 40.5));
+    el.hero.style.setProperty("--p", p.toFixed(4));
+    const tw = seg(t, 40.1, 40.35);
+    el.tTitle.style.transform = `translateY(${((1 - E.outB(tw)) * 105).toFixed(1)}%)`;
+    subWords.forEach((w, i) => { const u = seg(t, 40.35 + i * .05, 40.55 + i * .05); w.style.transform = `translateY(${((1 - E.outB(u)) * 105).toFixed(1)}%) rotate(${((1 - u) * 6).toFixed(1)}deg)`; });
+    el.tAuth.style.setProperty("--o", E.outC(seg(t, 40.7, 41.05)).toFixed(3));
+    el.tAff.style.setProperty("--o", E.outC(seg(t, 40.8, 41.15)).toFixed(3));
+    [...el.legend.children].forEach((li, i) => li.style.setProperty("--q", E.outB(seg(t, 40.95 + i * .16, 41.4 + i * .16)).toFixed(4)));
+    el.tb.classList.toggle("on", t > 40.2);
+
+    fitPills();
+    renderCaption(t);
+    el.tbar.style.width = (t / DUR * 100).toFixed(2) + "%";
+    el.tbar.style.opacity = t >= DUR ? 0 : .7;
+    el.skip.hidden = t >= DUR - .05;
+  }
+
+  /* ---------- Playback ---------- */
+  const SEEN = "midastui-intro-seen-v2";
+  let raf = 0, t0 = 0;
+  function play(from = 0) {
+    cancelAnimationFrame(raf);
+    t0 = performance.now() - from * 1000;
+    const step = now => { const t = (now - t0) / 1000; render(t); if (t < DUR) raf = requestAnimationFrame(step); else { try { localStorage.setItem(SEEN, "1"); } catch (e) {} } };
+    raf = requestAnimationFrame(step);
+  }
+  function stop(at) { cancelAnimationFrame(raf); render(at); }
+
+  let qs; try { qs = new URLSearchParams(location.search); } catch (e) { qs = new URLSearchParams(""); }
+  const initLang = qs.get("lang") === "zh" || location.hash.toLowerCase() === "#zh" ? "zh" : "en";
+  try { REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  syncTheme(); try { darkQ.addEventListener("change", () => { syncTheme(); render(curT); }); } catch (e) {}
+  setLang(initLang, false);
+
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang, true)));
+  el.skip.addEventListener("click", () => { stop(DUR); try { localStorage.setItem(SEEN, "1"); } catch (e) {} });
+  el.replay.addEventListener("click", () => play(0));
+
+  const fixed = qs.get("t");
+  const ready = (document.fonts && document.fonts.load)
+    ? Promise.all([document.fonts.load('22px "Patrick Hand"'), document.fonts.load('22px "ZCOOL KuaiLe"', "飞机上咖啡店滑块旋钮鼠标键盘触控板摇杆方向键笔一起动记得它大小角度透明度")]).catch(() => {}).then(() => document.fonts.ready)
+    : Promise.resolve();
+  ready.then(() => {
+    if (fixed !== null && !isNaN(parseFloat(fixed))) { stop(parseFloat(fixed)); document.documentElement.dataset.frozen = "1"; return; }
+    let seen = false; try { seen = localStorage.getItem(SEEN) === "1"; } catch (e) {}
+    if (REDUCED || seen) stop(DUR); else play(0);
+  });
+})();
+</script>
+</body>
+</html>
