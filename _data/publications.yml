@@ -82,16 +82,6 @@ main:
     conference_short: CVPR 2025
     conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2025.
     
-  - title: "UniCtrl: Improving the Spatiotemporal Consistency of Text-to-Video Diffusion Models via Training-Free Unified Attention Control"
-    authors: "Tian Xia*, Xuweiyi Chen*, Sihan Xu"
-    pdf: https://arxiv.org/pdf/2403.02332.pdf
-    code: https://github.com/XuweiyiChen/UniCtrl
-    page: https://unified-attention-control.github.io/
-    livedemo: https://huggingface.co/spaces/Xuweiyi/UniCtrl
-    image: ./assets/img/teaser_pic.jpg
-    conference_short: TMLR
-    conference: Transactions on Machine Learning Research.
-    
   - title: "LLM-Grounder: Open-Vocabulary 3D Visual Grounding with Large Language Model as an Agent"
     authors: "Jianing Yang*, Xuweiyi Chen*, Shengyi Qian, Nikhil Madaan, Madhavan Iyengar, David F. Fouhey, Joyce Chai"
     conference_short: ICRA 2024
