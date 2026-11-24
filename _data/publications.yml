@@ -16,7 +16,8 @@ main:
 
   - title: "PoinTTT: Recurrent Point Transformer via Test-Time Training"
     authors: "Wentao Zhou, Xuweiyi Chen, Charles Saunders, Aruni RoyChowdhury, Zezhou Cheng"
-    pdf_soon: true
+    pdf: https://arxiv.org/abs/2611.29059
+    page: https://pointtt.cs.virginia.edu/
     code: https://github.com/UVA-Computer-Vision-Lab/pointtt
     image: ./assets/img/teaser_pointttt.jpg
     conference_short: arXiv 2026
