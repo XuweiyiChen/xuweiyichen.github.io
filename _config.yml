@@ -17,9 +17,8 @@ cv_link: assets/files/Resume_XuweiyiChen_AI_2026.pdf
 github_link: https://github.com/xuweiyichen
 linkedin: https://www.linkedin.com/in/chenxuweiyi/
 twitter: https://twitter.com/Chenxuweiyi
-blog_link: "#blog"
-# Set to true to show the Blog section, the header link and the Blog buttons on publications.
-show_blog: true
+# Set to true to show the Blog section and the Blog buttons on publications.
+show_blog: false
 
 # Images (e.g., your profile picture and your website's favicon) 
 # "favicon" and "favicon_dark" are used for the light and dark modes, respectively. 
