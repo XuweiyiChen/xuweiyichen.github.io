@@ -2,6 +2,7 @@ main:
   - title: "Tracking Any Point with Agentic Visual Reasoning"
     authors: "Xuweiyi Chen*‡, Jin Yao*, Linzhan Mou*, Lei Gong*, Di Liu, Cheng Zhang, Ziqiao Ma, Sihan Xu, Adam W. Harley, Shengyi Qian†, Zezhou Cheng†"
     pdf_soon: true
+    dataset: https://huggingface.co/datasets/uva-cv-lab/TrackingBench
     blog: ./blog/agentap/
     image: ./assets/img/teaser_agentap.jpg
     conference_short: arXiv 2026
