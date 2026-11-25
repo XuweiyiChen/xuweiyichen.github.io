@@ -26,8 +26,11 @@
         <a href="{{ link.pdf }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
         {% endif %}
         {% if link.pdf_soon %}
-        <a class="btn btn-sm z-depth-0" aria-disabled="true" style="font-size:12px; opacity:0.5; pointer-events:none;">PDF (soon)</a>
+        <a class="btn btn-sm z-depth-0" aria-disabled="true" style="font-size:12px; opacity:0.5; pointer-events:none; white-space:nowrap;">PDF (soon)</a>
         {% endif %}
+        {% for name in link.soon %}
+        <a class="btn btn-sm z-depth-0" aria-disabled="true" style="font-size:12px; opacity:0.5; pointer-events:none; white-space:nowrap;">{{ name }} (soon)</a>
+        {% endfor %}
         {% if link.code %} 
         <a href="{{ link.code }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Code</a>
         {% endif %}

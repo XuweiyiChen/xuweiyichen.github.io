@@ -2,7 +2,10 @@ main:
   - title: "Tracking Any Point with Agentic Visual Reasoning"
     authors: "Xuweiyi Chen*‡, Jin Yao*, Linzhan Mou*, Lei Gong*, Di Liu, Cheng Zhang, Ziqiao Ma, Sihan Xu, Adam W. Harley, Shengyi Qian†, Zezhou Cheng†"
     pdf_soon: true
-    dataset: https://huggingface.co/datasets/uva-cv-lab/TrackingBench
+    # Shown disabled for now (2026-11-25). To turn them on, drop `soon` and add page: https://agentap.cs.virginia.edu/,
+    # code: https://github.com/UVA-Computer-Vision-Lab/agentap, livedemo: https://www.cs.virginia.edu/~rqa8sm/agentap-demo/,
+    # dataset: https://huggingface.co/datasets/uva-cv-lab/TrackingBench
+    soon: [Project Page, Code, Demo, Dataset]
     blog: ./blog/agentap/
     image: ./assets/img/teaser_agentap.jpg
     conference_short: arXiv 2026
@@ -11,6 +14,10 @@ main:
   - title: "Metric 4D Modeling for Embodied Perception"
     authors: "Di Liu, Xuweiyi Chen, Cheng Zhang, Adam Harley, Zhao Dong, Tanner Schmidt, David Caruso, Pierre Moulon, Shugao Ma, Zezhou Cheng, Richard Newcombe, Jakob Julian Engel"
     pdf_soon: true
+    # Shown disabled for now (2026-11-25), as in the paper's link row. To turn them on, drop `soon` and add
+    # page: https://facebookresearch.github.io/rlr_scale4d/, code: https://github.com/facebookresearch/rlr_scale4d,
+    # dataset: https://huggingface.co/facebook/SCALE4D (its paper calls it Benchmark)
+    soon: [Project Page, Code, Benchmark]
     image: ./assets/img/teaser_scale4d.jpg
     conference_short: arXiv 2026
     conference: arXiv preprint, 2026.
