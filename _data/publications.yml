@@ -20,13 +20,11 @@ main:
   - title: "Metric 4D Modeling for Embodied Perception"
     authors: "Di Liu, Xuweiyi Chen, Cheng Zhang, Adam Harley, Zhao Dong, Tanner Schmidt, David Caruso, Pierre Moulon, Shugao Ma, Zezhou Cheng, Richard Newcombe, Jakob Julian Engel"
     pdf_soon: true
-    # The paper's links (2026-11-25), shown as "(soon)" for now. To turn one on, give it its url:
-    # Project Page https://facebookresearch.github.io/rlr_scale4d/, Code https://github.com/facebookresearch/rlr_scale4d,
-    # Benchmark https://huggingface.co/facebook/SCALE4D
+    # The project page's links (2026-11-25): code and checkpoints are public; arXiv is still pending there.
     buttons:
-      - {name: Project Page}
-      - {name: Code}
-      - {name: Benchmark}
+      - {name: Project Page, url: "https://facebookresearch.github.io/rlr_scale4d/"}
+      - {name: Code, url: "https://github.com/facebookresearch/rlr_scale4d"}
+      - {name: Checkpoints, url: "https://huggingface.co/facebook/SCALE4D"}
     image: ./assets/img/teaser_scale4d.jpg
     conference_short: arXiv 2026
     conference: arXiv preprint, 2026.
