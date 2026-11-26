@@ -2,15 +2,16 @@ main:
   - title: "Tracking Any Point with Agentic Visual Reasoning"
     authors: "Xuweiyi Chen*‡, Jin Yao*, Linzhan Mou*, Lei Gong*, Di Liu, Cheng Zhang, Ziqiao Ma, Sihan Xu, Adam W. Harley, Shengyi Qian†, Zezhou Cheng†"
     pdf_soon: true
-    # The paper's links plus the Demo (open since 2026-11-26). A button without url shows as "(soon)". To be added later:
+    # Every button shown as "(soon)" since 2026-11-26 (owner). A button without url shows as "(soon)". The links:
     # Project Page https://agentap.cs.virginia.edu/, Code https://github.com/UVA-Computer-Vision-Lab/agentap,
-    # Dataset (EgoTAP-4D) https://huggingface.co/datasets/uva-cv-lab/EgoTAP-4D
+    # Demo https://agentap.cs.virginia.edu/demo/, Benchmark https://huggingface.co/datasets/uva-cv-lab/TrackingBench,
+    # Leaderboard https://agentap.cs.virginia.edu/leaderboard/, Dataset (EgoTAP-4D) https://huggingface.co/datasets/uva-cv-lab/EgoTAP-4D
     buttons:
       - {name: Project Page}
       - {name: Code}
-      - {name: Demo, url: "https://agentap.cs.virginia.edu/demo/"}
-      - {name: Benchmark, url: "https://huggingface.co/datasets/uva-cv-lab/TrackingBench"}
-      - {name: Leaderboard, url: "https://agentap.cs.virginia.edu/leaderboard/"}
+      - {name: Demo}
+      - {name: Benchmark}
+      - {name: Leaderboard}
       - {name: Dataset}
     blog: ./blog/agentap/
     image: ./assets/img/teaser_agentap.jpg
