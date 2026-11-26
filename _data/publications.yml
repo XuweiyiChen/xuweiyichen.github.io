@@ -19,8 +19,8 @@ main:
 
   - title: "Metric 4D Modeling for Embodied Perception"
     authors: "Di Liu, Xuweiyi Chen, Cheng Zhang, Adam Harley, Zhao Dong, Tanner Schmidt, David Caruso, Pierre Moulon, Shugao Ma, Zezhou Cheng, Richard Newcombe, Jakob Julian Engel"
-    pdf_soon: true
-    # The project page's links (2026-11-25): code and checkpoints are public; arXiv is still pending there.
+    pdf: https://facebookresearch.github.io/rlr_scale4d/scale4d.pdf
+    # The project page's links (2026-11-25); the PDF is the arXiv version, hosted on the project page until arXiv is out.
     buttons:
       - {name: Project Page, url: "https://facebookresearch.github.io/rlr_scale4d/"}
       - {name: Code, url: "https://github.com/facebookresearch/rlr_scale4d"}
